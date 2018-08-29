@@ -11,11 +11,11 @@ $username = "s29765706";
 $password = "monash00";
 $dbname = "S29765706";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    echo "Connected successfully";
+//$conn = mysqli_connect($servername, $username, $password, $dbname);
+//
+//    if (!$conn) {
+//        die("Connection failed: " . mysqli_connect_error());
+//    }
+//    echo "Connected successfully";
 // add comment testing
 //add my comment
