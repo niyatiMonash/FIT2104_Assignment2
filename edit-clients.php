@@ -29,6 +29,9 @@ while ($row = $result->fetch_array()) {
         <td>
             <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Delete">Delete</a>
         </td>
+        <td>
+            <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Update">Update</a>
+        </td>
     </tr>
  <?php
 }

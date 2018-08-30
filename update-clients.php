@@ -5,7 +5,7 @@
  * Date: 30/8/18
  * Time: 9:18 PM
  */
-
+ob_start();
 //connection statement
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -62,6 +62,41 @@ else{
 echo "<input type='button' value='Return to List'
 OnClick='window.location=\"edit-clients.php\"'>";
 break;
+
+case "Update": ?>
+<form method="post" action="update-clients.php?client_id=<?php echo $_GET["client_id"]; ?>&Action=ConfirmUpdate">
+    Customer details amendment<br /><p />
+    <table align="center" cellpadding="3">
+        <tr />
+        <td><b>Client Id</b></td>
+        <td><?php echo $row["client_id"]; ?></td>
+        </tr>
+        <tr>
+            <td><b>Firstname</b></td>
+            <td>
+                <input type="text" name="client_fname" size="30"
+                       value="<?php echo $row["client_fname"]; ?>">
+            </td>
+
+            <td>
+                <input type="text" name="client_lname" size="30"
+                       value="<?php echo $row["client_lname"]; ?>">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Update Customer">
+    <input type="button" value="Return to List"
+           OnClick="window.location='edit-clients.php'">
+</form>
+    <?php
+        break;
+
+    case "ConfirmUpdate":
+        $query="UPDATE client set client_fname='$_POST[client_fname]',client_lname='$_POST[client_lname]'
+                WHERE client_id =".$_GET["client_id"];
+        $result= $conn->query($query);
+        header("Location: edit-clients.php");
+        break;
 }
 ?>
 
