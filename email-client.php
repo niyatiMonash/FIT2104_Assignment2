@@ -21,7 +21,8 @@ while ($row = $result-->fetch_array()) {
     <tr>
         <td><?php echo $row["client_id"] ?></td>
         <td><?php echo $row["client_email"] ?></td>
-        <td><a href="send-email.php?client_id= <?php echo $row["client_id"]; ?> &Action=SendEmail"></a>
+        <td>
+            <a href="send-email.php?client_id= <?php echo $row["client_id"]; ?> &Action=SendEmail"></a>
         </td>
     </tr>
 
@@ -30,9 +31,4 @@ while ($row = $result-->fetch_array()) {
 
 <?php
 }
-$recipient = "mail@example.com";
-$subject = "Subject of your email";
-$message = "Thank you for subscribing to our mailing list! Make sure you keep updated!";
-
-mail($recipient, $subject, $message);
 ?>
