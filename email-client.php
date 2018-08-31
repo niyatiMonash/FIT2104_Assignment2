@@ -13,6 +13,11 @@ $result = mysqli_query($conn, $query);
 
 ?>
 <table border="1px solid black">
+    <tr>
+        <th>Client ID</th>
+        <th>Client Email</th>
+        <th>Button</th>
+    </tr>
     <?php
     while ($row = $result->fetch_array()) {
         ?>
@@ -27,8 +32,6 @@ $result = mysqli_query($conn, $query);
                         Email to user </a></button>
             </td>
         </tr>
-
-
         <?php
     }
     ?>
