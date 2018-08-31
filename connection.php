@@ -16,6 +16,5 @@ $dbname = "s29765706";
 //    if (!$conn) {
 //        die("Connection failed: " . mysqli_connect_error());
 //    }
-//    echo "Connected successfully";
 // add comment testing
 //add my comment
