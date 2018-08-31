@@ -1,8 +1,37 @@
 <?php
 if (empty($_POST["client_lname"]))
 {
-"Invalid error";
+    echo "Need to enter required fields";
 }
+elseif (empty($_POST["client_fname"]))
+{
+    echo "Need to enter required fields";
+}
+elseif (empty($_POST["client_street"]))
+{
+    echo "Need to enter required fields";
+}
+elseif (empty($_POST["client_suburb"]))
+{
+    echo "Need to enter required fields";
+}
+elseif (empty($_POST["client_state"]))
+{
+    echo "Need to enter required fields";
+}
+elseif (empty($_POST["client_email"]))
+{
+    echo "Need to enter required fields";
+}
+elseif (empty($_POST["client_mobile"]))
+{
+    echo "Need to enter required fields";
+}
+elseif (empty($_POST["client_mailinglist"]))
+{
+    echo "Need to enter required fields";
+}
+
 else
 {
 include("connection.php");
