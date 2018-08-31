@@ -12,7 +12,7 @@ $query = "SELECT client_id, client_email from client where client_mailinglist='Y
 $result = mysqli_query($conn, $query);
 
 ?>
-<table>
+<table border="1px solid black">
     <?php
     while ($row = $result->fetch_array()) {
         ?>
