@@ -5,11 +5,18 @@
     <title>Email Subscribed Clients</title>
 </head>
 <body>
+<form method="post" action="email-client.php">
+To <input type="text" name="recipient"> <br/>
+From <input type="text" name="from"> <br/>
+Subject <input type="text" name="subject"> <br/>
+Message <input type="text" name="message"> <br/>
 
-To <input type="text" name="recipient">
-From <input type="text" name="from">
-Subject <input type="text" name="subject">
-Message <input type="text" name="message">
-
+<td>
+    <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Delete">Delete</a>
+</td>
+<td>
+    <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Update">Update</a>
+</td>
+</form>
 </body>
 </html>
