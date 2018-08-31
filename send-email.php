@@ -12,9 +12,9 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <?php
-$recipient = "mail@example.com";
-$subject = "Subject of your email";
-$message = "Thank you for subscribing to our mailing list! Make sure you keep updated!";
+$recipient = "SELECT client_email from client where client_mailinglist='Y'";
+$subject = "Welcome Message";
+$message = "Thank you for subscribing to our mailing list.. Make sure to keep updated!";
 
 mail($recipient, $subject, $message);
 ?>
