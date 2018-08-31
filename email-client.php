@@ -8,27 +8,28 @@
 
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query="SELECT client_id, client_email from client where client_mailinglist='Y'";
+$query = "SELECT client_id, client_email from client where client_mailinglist='Y'";
 $result = mysqli_query($conn, $query);
 
 ?>
 <table>
-<?php
-while ($row = $result-->fetch_array()) {
+    <?php
+    while ($row = $result->fetch_array()) {
+        ?>
 
-?>
+        <tr>
+            <td><?php echo $row["client_id"]; ?></td>
 
-    <tr>
-        <td><?php echo $row["client_id"] ?></td>
-        <td><?php echo $row["client_email"] ?></td>
-        <td>
-            <a href="send-email.php?client_id= <?php echo $row["client_id"]; ?> &Action=SendEmail"></a>
-        </td>
-    </tr>
+            <td><?php echo $row["client_email"]; ?></td>
+
+            <td>
+                <button><a href="send-email.php?client_id= <?php echo $row["client_id"]; ?> &Action=SendEmail"> Send
+                        Email to user </a></button>
+            </td>
+        </tr>
 
 
+        <?php
+    }
+    ?>
 </table>
-
-<?php
-}
-?>
