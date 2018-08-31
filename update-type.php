@@ -65,12 +65,11 @@ break;
 
 case "Update": ?>
 <form method="post" action="update-type.php?type_id=<?php echo $_GET["type_id"]; ?>&Action=ConfirmUpdate">
-    Property Type details amendment<br /><p />
+    Property Type details amendment<br />
     <table align="center" cellpadding="3">
-        <tr />
+
         <td><b>Type Id</b></td>
         <td><?php echo $row["type_id"]; ?></td>
-        </tr>
         <tr>
             <td><b>Property Name</b></td>
             <td>

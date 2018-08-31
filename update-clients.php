@@ -65,12 +65,11 @@ break;
 
 case "Update": ?>
 <form method="post" action="update-clients.php?client_id=<?php echo $_GET["client_id"]; ?>&Action=ConfirmUpdate">
-    Customer details amendment<br /><p />
+    Customer details amendment<br />
     <table align="center" cellpadding="3">
-        <tr />
+
         <td><b>Client Id</b></td>
         <td><?php echo $row["client_id"]; ?></td>
-        </tr>
         <tr>
             <td><b>Firstname</b></td>
             <td>
