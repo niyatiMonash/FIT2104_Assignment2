@@ -7,16 +7,21 @@
  */
 
    include('session.php');
-?>
-<html>
 
-   <head>
+?>
+
+<html>
+<style>
+    <?php include('stylesheets/welcome.css'); ?>
+</style>
+
+<head>
       <title>Welcome </title>
    </head>
 
    <body>
       <h1>Welcome <?php echo $login_session; ?></h1>
-      <h2><input type="button" href = "logout.php">Sign Out</input></h2>
+      <button><a href = "logout.php">Sign Out</a></button>
    </body>
 
 </html>
