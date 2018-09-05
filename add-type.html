@@ -39,20 +39,23 @@
         </div>
     </div>
 </nav>
-
-<form method="post" Action="types.php">
+<div class="container">
     <p>Add a property type </p>
-    Type Name <input type="text" name="type_name">
+    <form method="post" Action="types.php">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Type Name </label> <input type="text" name="type_name" class="form-control">
+            </div>
+        </div>
 
-
-    <input type="Submit" Value="Submit">
-    <input type="Reset" Value="Clear Form Fields">
-</form>
-
+        <button type="Submit" Value="Submit" class="btn btn-primary">Submit</button>
+        <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
+    </form>
+</div>
 <!-- Footer to be used in all main pages-->
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-danger">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
     </div>
 </footer>
 
