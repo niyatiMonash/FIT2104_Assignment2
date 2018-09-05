@@ -27,7 +27,7 @@
       if($count == 1) {
          $_SESSION['login_user'] = $myusername;
 
-         header("location: welcome.php");
+         header("location: welcome.php"); //TODO: change location to be the place they previously clicked. 
       }else {
          $error = "Your Login Name or Password is invalid";
       }

@@ -1,3 +1,18 @@
 h1{
     color: blue;
 }
+
+.carousel-inner{
+    height: 50vh;
+}
+.carousel-item{
+    height: 50vh;
+}
+.img.d-block.w-100{
+    height: inherit;
+    background-position: center center;
+}
+
+.three-section-content{
+    padding: 1rem 0rem;
+}

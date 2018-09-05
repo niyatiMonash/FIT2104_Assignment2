@@ -6,6 +6,7 @@
  * Time: 9:15 PM
  */
 include("connection.php");
+include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query="SELECT * FROM client";
 $result = mysqli_query($conn, $query);
@@ -23,7 +24,7 @@ $result = mysqli_query($conn, $query);
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -79,8 +80,8 @@ $result = mysqli_query($conn, $query);
     ?>
 </table>
 <!-- Footer to be used in all main pages-->
-<footer class="py-5 bg-dark">
-    <div class="container">
+<footer class="py-5 bg-danger">
+    <div class="container-fluid">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
     </div>
 </footer>
