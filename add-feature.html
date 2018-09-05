@@ -1,25 +1,12 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: niyatisrinivasan
- * Date: 31/8/18
- * Time: 10:57 AM
- */
-
-include("connection.php");
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-$query="SELECT * FROM type";
-$result = mysqli_query($conn, $query);
-?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Add New Property Feature</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
-</head>
-
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -33,7 +20,7 @@ $result = mysqli_query($conn, $query);
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="add-clients.html">Clients</a>
+                    <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="add-properties.html">Properties</a>
@@ -48,39 +35,22 @@ $result = mysqli_query($conn, $query);
                     <a class="nav-link" href="email-client.php">Send Email</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Logout</a>
+                    <a class="nav-link" href="login.php">Login</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<h2>Property Types</h2>
-<a><button type="button" href="add-feature.html" class="btn btn-outline-primary">Add Type</button></a>
-<table border="1">
 
-<?php
-while ($row = $result->fetch_array()) {
-    ?>
+<form method="post" Action="feature.php">
+    <p>Add a property feature </p>
+    Type Name <input type="text" name="feature_name">
 
 
+    <input type="Submit" Value="Submit">
+    <input type="Reset" Value="Clear Form Fields">
+</form>
 
-        <tr>
-            <td><?php echo $row["type_name"] ?> </td>
-            <td>
-                <a href="update-type.php?type_id= <?php echo $row["type_id"]; ?> &Action=Delete">Delete</a>
-            </td>
-            <td>
-                <a href="update-type.php?type_id= <?php echo $row["type_id"]; ?> &Action=Update">Update</a>
-            </td>
-        </tr>
-
-
-    <?php
-
-}
-?>
-
-</table>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-dark">
     <div class="container">
@@ -92,5 +62,4 @@ while ($row = $result->fetch_array()) {
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

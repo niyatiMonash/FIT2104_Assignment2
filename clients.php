@@ -41,4 +41,6 @@ $query="INSERT INTO client (client_lname, client_fname, client_street, client_su
 VALUES('$_POST[client_lname]', '$_POST[client_fname]', '$_POST[client_street]', '$_POST[client_suburb]', '$_POST[client_state]', '$_POST[client_pc]', '$_POST[client_email]', '$_POST[client_mobile]', '$_POST[client_mailinglist]')";
 
 $conn->query($query);
+
+echo "Successfuly added client";
 }

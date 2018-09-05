@@ -42,7 +42,10 @@
                     <a class="nav-link" href="add-properties.html">Properties</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="add-type.html">Property Type</a>
+                    <a class="nav-link" href="edit-type.php">Property Type</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-feature.php">Property Feature</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="email-client.php">Send Email</a>

@@ -1,3 +1,4 @@
+<html>
 <?php
 /**
  * Created by PhpStorm.
@@ -33,7 +34,7 @@
       }
    }
 ?>
-<html>
+
 
    <head>
       <title>Login Page</title>
@@ -55,13 +56,13 @@
 
    </head>
 
-   <body bgcolor = "#FFFFFF">
+   <body>
 
-      <div align = "center">
+      <div align = "center" >
          <div style = "border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+            <div style = "background-color:#333333; color:#FFFFFF; padding:10px;" align="center"><b>Login</b></div>
 
-            <div style="margin:30px">
+            <div style="margin:30px" align="center">
 
                <form action = "" method = "post">
                   <label>Username  : </label><input type = "text" name = "uname" class = "box"/><br /><br />

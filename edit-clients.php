@@ -34,26 +34,30 @@ $result = mysqli_query($conn, $query);
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="add-clients.html">Clients</a>
+                    <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="add-properties.html">Properties</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="add-type.html">Property Type</a>
+                    <a class="nav-link" href="edit-type.php">Property Type</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-feature.php">Property Feature</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="email-client.php">Send Email</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Logout</a>
+                    <a class="nav-link" href="login.php">Login</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<h2>Clients</h2>
 <a><button type="button" href="add-clients.html" class="btn btn-outline-primary">Add Clients</button></a>
-<table>
+<table border="1">
     <?php
     //connection, query and execute statements
     while ($row = $result->fetch_array()) {

@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: niyatisrinivasan
- * Date: 31/8/18
- * Time: 10:57 AM
+ * User: stephanietran
+ * Date: 5/9/18
+ * Time: 11:20 AM
  */
 
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query="SELECT * FROM type";
+$query="SELECT * FROM feature";
 $result = mysqli_query($conn, $query);
 ?>
 <html>
@@ -54,31 +54,32 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 </nav>
-<h2>Property Types</h2>
-<a><button type="button" href="add-feature.html" class="btn btn-outline-primary">Add Type</button></a>
+<h2>Property Features</h2>
+<a><button type="button" href="add-feature.html" class="btn btn-outline-primary">Add Feature</button></a>
 <table border="1">
 
-<?php
-while ($row = $result->fetch_array()) {
-    ?>
-
-
-
-        <tr>
-            <td><?php echo $row["type_name"] ?> </td>
-            <td>
-                <a href="update-type.php?type_id= <?php echo $row["type_id"]; ?> &Action=Delete">Delete</a>
-            </td>
-            <td>
-                <a href="update-type.php?type_id= <?php echo $row["type_id"]; ?> &Action=Update">Update</a>
-            </td>
-        </tr>
-
-
     <?php
+    //connection, query and execute statements
+    while ($row = $result->fetch_array()) {
+        ?>
 
-}
-?>
+
+
+            <tr>
+                <td><?php echo $row["feature_name"] ?> </td>
+                <td>
+                    <a href="update-feature.php?type_id= <?php echo $row["feature_id"]; ?> &Action=Delete">Delete</a>
+                </td>
+                <td>
+                    <a href="update-feature.php?type_id= <?php echo $row["feature_id"]; ?> &Action=Update">Update</a>
+                </td>
+            </tr>
+
+
+        <?php
+
+    }
+    ?>
 
 </table>
 <!-- Footer to be used in all main pages-->
@@ -94,3 +95,4 @@ while ($row = $result->fetch_array()) {
 </body>
 
 </html>
+
