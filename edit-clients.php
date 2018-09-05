@@ -59,7 +59,6 @@ $result = mysqli_query($conn, $query);
 <a><button type="button" href="add-clients.html" class="btn btn-outline-primary">Add Clients</button></a>
 <table border="1">
     <?php
-    //connection, query and execute statements
     while ($row = $result->fetch_array()) {
         ?>
 
