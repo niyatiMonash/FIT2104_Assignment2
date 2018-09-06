@@ -6,37 +6,33 @@
  * Time: 3:07 PM
  */
 
-
 function display_data()
 {
     $output = '';
     include("connection.php");
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $query="SELECT * FROM client order by client_lname, client_fname ASC";
+    $query = "SELECT * FROM client order by client_lname, client_fname ASC";
     $result = mysqli_query($conn, $query);
-    while ($row = $result->fetch_array())
-    {
+    while ($row = $result->fetch_array()) {
 
         $output .= '
         <tr>
-            <td>'. $row["client_id"].'</td>
-            <td>'. $row["client_lname"].'</td>
-            <td>'. $row["client_fname"].'</td>
-            <td>'. $row["client_street"].', <br/> '. $row["client_suburb"].', <br/> '. $row["client_state"].' '. $row["client_pc"].'</td>
-            <td>'. $row["client_email"].'</td>
-            <td>'. $row["client_mobile"].'</td>
+            <td>' . $row["client_id"] . '</td>
+            <td>' . $row["client_lname"] . '</td>
+            <td>' . $row["client_fname"] . '</td>
+            <td>' . $row["client_street"] . ', <br/> ' . $row["client_suburb"] . ', <br/> ' . $row["client_state"] . ' ' . $row["client_pc"] . '</td>
+            <td>' . $row["client_email"] . '</td>
+            <td>' . $row["client_mobile"] . '</td>
         </tr>
         ';
     }
     return $output;
 }
 
-if(isset($_POST["create_pdf"]))
-
-{
+if (isset($_POST["create_pdf"])) {
     require_once("tcpdf/tcpdf.php");
     $obj_pdf = new TCPDF("P", PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-    $obj_pdf->AddPage("", "", false, false );
+    $obj_pdf->AddPage("", "", false, false);
     $obj_pdf->SetCreator(PDF_CREATOR);
     $obj_pdf->SetTitle("List of Clients in PDF");
     $obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);
@@ -47,7 +43,7 @@ if(isset($_POST["create_pdf"]))
     $obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);
     $obj_pdf->SetPrintHeader(false);
     $obj_pdf->SetPrintFooter(false);
-    $obj_pdf->SetAutoPageBreak(true,10);
+    $obj_pdf->SetAutoPageBreak(true, 10);
     $obj_pdf->SetFont('helvetica', '', 10);
 
     $content = '';
@@ -120,28 +116,28 @@ if(isset($_POST["create_pdf"]))
         </div>
     </div>
 </nav>
-    <br/> <br/>
+<br/> <br/>
+<div>
+    <h3 align="center">Clients</h3><br/>
     <div>
-        <h3 align="center">Clients</h3><br/>
-            <div>
-                <table border="1" align="center">
-                    <tr>
-                        <th width="5%"><b>ID</b></th>
-                        <th><b>Last Name</b></th>
-                        <th><b>First Name</b></th>
-                        <th width="20%">Address</th>
-                        <th width="25%">Email</th>
-                        <th>Mobile</th>
-                    </tr>
-                    <?php
-                        echo display_data();
-                    ?>
-                </table>
-                <form method="post" align="center">
-                    <input type="submit" name="create_pdf" class="btn btn-danger" value="Generate PDF"/>
-                </form>
-            </div>
+        <table border="1" align="center">
+            <tr>
+                <th width="5%"><b>ID</b></th>
+                <th><b>Last Name</b></th>
+                <th><b>First Name</b></th>
+                <th width="20%">Address</th>
+                <th width="25%">Email</th>
+                <th>Mobile</th>
+            </tr>
+            <?php
+            echo display_data();
+            ?>
+        </table>
+        <form method="post" align="center">
+            <input type="submit" name="create_pdf" class="btn btn-danger" value="Generate PDF"/>
+        </form>
     </div>
+</div>
 
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">

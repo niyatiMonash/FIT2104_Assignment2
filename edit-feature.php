@@ -7,6 +7,7 @@
  */
 
 include("connection.php");
+include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT * FROM feature";
 $result = mysqli_query($conn, $query);

@@ -7,6 +7,7 @@
  */
 
 include("connection.php");
+include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT client_id, client_email from client where client_mailinglist='Y'";
 $result = mysqli_query($conn, $query);

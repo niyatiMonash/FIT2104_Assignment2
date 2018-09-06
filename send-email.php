@@ -6,6 +6,7 @@
  * Time: 11:58 AM
  */
 include("connection.php");
+include("session.php");
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query="SELECT client_id, client_email from client where client_mailinglist='Y' and client_id=".$_GET["client_id"];

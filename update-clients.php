@@ -6,6 +6,7 @@
  * Time: 9:18 PM
  */
 ob_start();
+include("session.php");
 //connection statement
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
