@@ -11,8 +11,10 @@ function display_data()
 {
     $output = '';
     include("connection.php");
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
     $query="SELECT * FROM client order by client_lname, client_fname ASC";
-    while ($row = $query->fetch_array())
+    $result = mysqli_query($conn, $query);
+    while ($row = $result->fetch_array())
     {
 
         $output .= '
