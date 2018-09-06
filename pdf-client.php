@@ -11,10 +11,8 @@ function display_data()
 {
     $output = '';
     include("connection.php");
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
     $query="SELECT * FROM client order by client_lname, client_fname ASC";
-    $result = mysqli_query($conn, $query);
-    while ($row = $result->fetch_array())
+    while ($row = $query->fetch_array())
     {
 
         $output .= '
@@ -102,7 +100,7 @@ if(isset($_POST["create_pdf"]))
                     <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="add-properties.html">Properties</a>
+                    <a class="nav-link" href="add-properties.php">Properties</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="edit-type.php">Property Type</a>
