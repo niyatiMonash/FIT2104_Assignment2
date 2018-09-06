@@ -58,7 +58,7 @@ $result = mysqli_query($conn, $query);
 <h2>Clients</h2>
 
 <a role="button" href="add-clients.html" class="btn btn-outline-primary">Add Clients</a>
-
+<a role="button" href="pdf-client.php" class="btn btn-outline-primary">Export to .pdf file</a>
 <table class="table table-striped">
     <thead>
     <tr>
