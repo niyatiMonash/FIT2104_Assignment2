@@ -54,25 +54,29 @@ $result = mysqli_query($conn, $query);
 
 ?>
 
+
 <?php
 if (!isset($_POST["to"])) {
 
     ?>
+    <table border="1" cellpadding="10" align="center">
+        <?php
+        while ($row = $result->fetch_array()) {
+            ?>
+            <tr>
+                <td>
+                    <input type="checkbox" name="check[]" value=""<?php echo $row["client_id"]; ?>">
+                    <?php echo $row["client_email"]; ?><br/>
+
+                </td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
     <table>
         <form method="post" action="send-email.php" align="center">
-
-            To: <select name="to">
-                <?php
-                while ($row = $result->fetch_array()) {
-                    ?>
-                    <option value="<?php echo $row["client_email"]; ?>"><?php echo $row["client_email"];
-                        ?>
-                    </option>
-                    <?php
-                }
-                ?>
-            </select> <br/>
-
+            To: <input type="text" name="to"> <br/>
             Subject: <input type="text" name="subject"> <br/>
             Message: <input type="text" name="message"> <br/>
             <td>
