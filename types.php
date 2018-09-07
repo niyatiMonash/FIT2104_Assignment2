@@ -5,7 +5,7 @@
  * Date: 31/8/18
  * Time: 11:35 AM
  */
-
+include("session.php");
 if (empty($_POST["type_name"]))
 {
     "Invalid error";

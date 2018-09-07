@@ -10,7 +10,7 @@
     <link href="stylesheets/modern-business.css" rel="stylesheet">
     <title>Add Properties</title>
 </head>
-<body>
+<body class="container-fluid">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
@@ -24,8 +24,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="add-properties.php">Properties</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="add-properties.html">Properties</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="edit-type.php">Property Type</a>
@@ -34,10 +34,10 @@
                     <a class="nav-link" href="edit-feature.php">Property Feature</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="email-client.php">Send Email</a>
+                    <a class="nav-link" href="send-email.php">Send Email</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -60,13 +60,15 @@
         <div class="form-group">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" class= "btn btn-default" value="Upload Image" name="submit">
+            <input type="submit" class="btn btn-default" value="Upload Image" name="submit">
         </div>
-        <input type="Submit" class= "btn btn-default" Value="Submit">
-        <input type="Reset" class= "btn btn-default"  Value="Clear Form Fields">
+        <input type="Submit" class="btn btn-default" Value="Submit">
+        <input type="Reset" class="btn btn-default" Value="Clear Form Fields">
     </form>
 
 </div>
+</body>
+
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
@@ -77,5 +79,5 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
+
 </html>

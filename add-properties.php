@@ -8,7 +8,7 @@
 
 include("connection.php");
 include("session.php");
-$query="SELECT * FROM type ORDER BY type_name";
+$query = "SELECT * FROM type ORDER BY type_name";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $query);
                     <a class="nav-link" href="edit-feature.php">Property Feature</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="email-client.php">Send Email</a>
+                    <a class="nav-link" href="send-email.php">Send Email</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php">Login</a>
@@ -62,18 +62,17 @@ $result = mysqli_query($conn, $query);
     <form method="post" action="properties.php" enctype="multipart/form-data">
         <p>Please enter your property details below </p>
         <div class="form-group">
-Street <input type="text" name="property_street" class="form-control">
-Suburb <input type="text" name="property_suburb" class="form-control">
-State <input type="text" name="property_state" class="form-control">
-Postal Code <input type="text" name="property_pc" class="form-control">
+            Street <input type="text" name="property_street" class="form-control">
+            Suburb <input type="text" name="property_suburb" class="form-control">
+            State <input type="text" name="property_state" class="form-control">
+            Postal Code <input type="text" name="property_pc" class="form-control">
         </div>
         <div>
             <form>
-                Select Property Type<br />
+                Select Property Type<br/>
                 <select name="PubList">
                     <?php
-                    while ($row = $result->fetch_array())
-                    {
+                    while ($row = $result->fetch_array()) {
                         ?>
                         <option value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
                             ?>
@@ -85,16 +84,16 @@ Postal Code <input type="text" name="property_pc" class="form-control">
             </form>
         </div>
         <div class="form-group">
-Property Description <textarea name="property_desc" class="form-control"> </textarea>
-Listing Date <input type="date" name="listing_date" class="form-control">
+            Property Description <textarea name="property_desc" class="form-control"> </textarea>
+            Listing Date <input type="date" name="listing_date" class="form-control">
         </div>
         <div class="form-group">
-Select image to upload:
+            Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" class= "btn btn-default" value="Upload Image" name="submit">
+            <input type="submit" class="btn btn-default" value="Upload Image" name="submit">
         </div>
-        <input type="Submit" class= "btn btn-default" Value="Submit">
-        <input type="Reset" class= "btn btn-default"  Value="Clear Form Fields">
+        <input type="Submit" class="btn btn-default" Value="Submit">
+        <input type="Reset" class="btn btn-default" Value="Clear Form Fields">
     </form>
 
 </div>

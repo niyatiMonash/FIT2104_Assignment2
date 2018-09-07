@@ -8,7 +8,7 @@
 include("connection.php");
 include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query="SELECT * FROM client";
+$query = "SELECT * FROM client";
 $result = mysqli_query($conn, $query);
 
 ?>
@@ -22,7 +22,7 @@ $result = mysqli_query($conn, $query);
 </head>
 
 </head>
-<body>
+<body class="container-fluid">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
@@ -33,7 +33,7 @@ $result = mysqli_query($conn, $query);
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
                 <li class="nav-item">
@@ -46,18 +46,35 @@ $result = mysqli_query($conn, $query);
                     <a class="nav-link" href="edit-feature.php">Property Feature</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="email-client.php">Send Email</a>
+                    <a class="nav-link" href="send-email.php">Send Email</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <h2>Clients</h2>
-<a><button type="button" href="add-clients.html" class="btn btn-outline-primary">Add Clients</button></a>
-<table border="1">
+
+<a role="button" href="add-clients.html" class="btn btn-outline-primary">Add Clients</a>
+<a role="button" href="pdf-client.php" class="btn btn-outline-primary">Export to .pdf file</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Street</th>
+        <th scope="col">Suburb</th>
+        <th scope="col">State</th>
+        <th scope="col">Postal Code</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Delete Row</th>
+        <th scope="col">Update Row</th>
+    </tr>
+    </thead>
+    <tbody>
     <?php
     while ($row = $result->fetch_array()) {
         ?>
@@ -81,7 +98,10 @@ $result = mysqli_query($conn, $query);
         <?php
     }
     ?>
+    </tbody>
 </table>
+</body>
+
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
@@ -92,7 +112,6 @@ $result = mysqli_query($conn, $query);
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
 
 </html>
 
