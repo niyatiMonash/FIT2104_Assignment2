@@ -19,5 +19,8 @@
    $login_session = $row['uname'];
 
    if(!isset($_SESSION['login_user'])){
-       header("location:login.php");
+       $_SESSION["page"] = $_SERVER["php_self"];
+       header("location:login.php " . $_SESSION["page"]);
    }
+
+
