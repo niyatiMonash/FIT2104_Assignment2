@@ -14,8 +14,11 @@ else
 {   include("connection.php");
     $conn = new mysqli($servername, $username, $password, $dbname)
     or die("Couldn't log on to database");
-    $query="INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_desc, listing_date)
-            VALUES('$_POST[property_street]', '$_POST[property_suburb]', '$_POST[property_state]', '$_POST[property_pc]', '$_POST[property_desc]', '$_POST[listing_date]')";
+    $query="INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, 
+            sale_date, sale_price, image_name, property_desc)
+            VALUES('$_POST[property_street]', '$_POST[property_suburb]', '$_POST[property_state]', '$_POST[property_pc]', '$_POST[property_type]', 
+            '$_POST[seller_id]', '$_POST[listing_date]', '$_POST[listing_price]', '$_POST[sale_date]', '$_POST[sale_price]','$_POST[image_name]', 
+            '$_POST[property_desc]')";
 
     $conn->query($query);
 }
