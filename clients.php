@@ -42,5 +42,5 @@ VALUES('$_POST[client_lname]', '$_POST[client_fname]', '$_POST[client_street]', 
 
 $conn->query($query);
 
-echo "Successfuly added client";
+echo "Successfully added client";
 }

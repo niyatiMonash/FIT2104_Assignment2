@@ -8,6 +8,7 @@
 
 include("connection.php");
 include("session.php");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT * FROM type ORDER BY type_name";
 $result = mysqli_query($conn, $query);
 ?>
@@ -59,18 +60,20 @@ $result = mysqli_query($conn, $query);
 </nav>
 <div class="container-fluid">
 
-    <form method="post" action="properties.php" enctype="multipart/form-data">
+    <form method="POST" Action="properties.php" >
         <p>Please enter your property details below </p>
         <div class="form-group">
+            First Name <input type="text" name="client_fname" class="form-control">
+            Last Name <input type="text" name="client_lname" class="form-control">
             Street <input type="text" name="property_street" class="form-control">
             Suburb <input type="text" name="property_suburb" class="form-control">
             State <input type="text" name="property_state" class="form-control">
             Postal Code <input type="text" name="property_pc" class="form-control">
         </div>
         <div>
-            <form>
+
                 Select Property Type<br/>
-                <select name="PubList">
+                <select name="property_type">
                     <?php
                     while ($row = $result->fetch_array()) {
                         ?>
@@ -81,22 +84,24 @@ $result = mysqli_query($conn, $query);
                     }
                     ?>
                 </select>
-            </form>
+
         </div>
         <div class="form-group">
             Property Description <textarea name="property_desc" class="form-control"> </textarea>
             Listing Date <input type="date" name="listing_date" class="form-control">
+            Listing Price <input type="number" name="listing_price" class="form-control">
         </div>
         <div class="form-group">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" class="btn btn-default" value="Upload Image" name="submit">
         </div>
-        <input type="Submit" class="btn btn-default" Value="Submit">
-        <input type="Reset" class="btn btn-default" Value="Clear Form Fields">
+        <button type="Submit" Value="Submit" class="btn btn-primary">Submit</button>
+        <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
     </form>
 
 </div>
+</body>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
@@ -107,5 +112,5 @@ $result = mysqli_query($conn, $query);
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
+
 </html>
