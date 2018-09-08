@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $query);
                     <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="add-properties.php">Properties</a>
+                    <a class="nav-link" href="edit-properties.php">Properties</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="edit-type.php">Property Type</a>
