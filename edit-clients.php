@@ -20,8 +20,6 @@ $result = mysqli_query($conn, $query);
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
 </head>
-
-</head>
 <body class="container-fluid">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
