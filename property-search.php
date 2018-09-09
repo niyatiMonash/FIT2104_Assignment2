@@ -14,19 +14,52 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-<div class="container-fluid">
-<h2> Search Properties</h2>
-<form action="search.php" method="POST">
-    <div class="input-group mb-3">
-
-        <input type="text" name="query" class="form-control" placeholder="Search properties based on suburb and property type"
-               aria-label="Search properties based on suburb and property type" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit">Search</button>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-clients.php">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-properties.php">Properties</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-type.php">Property Type</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-feature.php">Property Feature</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="send-email.php">Send Email</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php">Login</a>
+                </li>
+            </ul>
         </div>
     </div>
-</form>
+</nav>
+<div class="container-fluid">
+    <h2> Search Properties</h2>
+    <form action="search.php" method="POST">
+        <div class="input-group mb-3">
 
+            <input type="text" name="query" id="search_text" class="form-control"
+                   placeholder="Search properties based on suburb and property type"
+                   aria-label="Search properties based on suburb and property type" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+    <div id="result"></div>
 </div>
 </body>
 <!-- Footer to be used in all main pages-->
@@ -39,5 +72,31 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function () {
 
+        load_data();
+
+        function load_data(query) {
+            $.ajax({
+                url: "search.php",
+                method: "POST",
+                data: {query: query},
+                success: function (data) {
+                    $('#result').html(data);
+                }
+            });
+        }
+
+        $('#search_text').keyup(function () {
+            var search = $(this).val();
+            if (search != '') {
+                load_data(search);
+            }
+            else {
+                load_data();
+            }
+        });
+    });
+</script>
 </html>

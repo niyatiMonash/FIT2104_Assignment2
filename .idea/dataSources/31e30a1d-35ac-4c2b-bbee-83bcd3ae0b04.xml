@@ -1055,7 +1055,7 @@
     </column>
     <column id="257" parent="229" name="property_type">
       <Position>6</Position>
-      <DataType>decimal(10)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1097,22 +1097,20 @@
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="265" parent="229" name="PRIMARY">
+    <index id="265" parent="229" name="propertyType">
+      <ColNames>property_type</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="266" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>property_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="266" parent="229" name="property_type">
-      <ColNames>property_id</ColNames>
+    <foreign-key id="267" parent="229" name="propertyType">
+      <ColNames>property_type</ColNames>
       <RefSchemaName>s29765706</RefSchemaName>
       <RefTableName>type</RefTableName>
       <RefColNames>type_id</RefColNames>
-    </foreign-key>
-    <foreign-key id="267" parent="229" name="seller_id">
-      <ColNames>property_id</ColNames>
-      <RefSchemaName>s29765706</RefSchemaName>
-      <RefTableName>client</RefTableName>
-      <RefColNames>client_id</RefColNames>
     </foreign-key>
     <column id="268" parent="230" name="propertyfeature_id">
       <Position>1</Position>
