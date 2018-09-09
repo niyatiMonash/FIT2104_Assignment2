@@ -12,8 +12,11 @@ include("session.php");
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT * FROM property";
+$query2 = "SELECT * FROM type";
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
+$results = $conn->query($query2);
+
 
 
 switch ($_GET["Action"]) {
@@ -96,7 +99,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
                         Select Property Type<br/>
                         <select name="property_type">
                             <?php
-                            while ($row = $result->fetch_array()) {
+                            while ($row = $results->fetch_array()) {
                                 ?>
                                 <option value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
                                     ?>

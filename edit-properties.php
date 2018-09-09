@@ -9,8 +9,10 @@
 include("connection.php");
 include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM property p join client c on p.seller_id=c.client_id join type t on p.property_type=t.type_id";
+$query = "SELECT property_id, client_fname, client_lname, property_street, property_suburb, property_state,
+ property_pc, type_name, property_desc, listing_date, listing_price, sale_date, sale_price, image_name FROM property p join client c on p.seller_id=c.client_id join type t on p.property_type=t.type_id";
 $result = mysqli_query($conn, $query);
+
 
 ?>
 <html>
@@ -34,10 +36,10 @@ $result = mysqli_query($conn, $query);
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="edit-properties.php">Properties</a>
                 </li>
                 <li class="nav-item">
@@ -81,6 +83,7 @@ $result = mysqli_query($conn, $query);
         ?>
 
         <tr>
+
             <td><?php echo $row["client_fname"]." ".$row["client_lname"]; ?></td>
             <td><?php echo $row["property_street"]."<br/> ".$row["property_suburb"]." ".$row["property_state"]. "<br/>".$row["property_pc"];?></td>
             <td><?php echo $row["type_name"]; ?></td>

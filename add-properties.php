@@ -10,7 +10,9 @@ include("connection.php");
 include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT * FROM type ORDER BY type_name";
+$query2 = "SELECT * FROM client order by client_fname, client_lname";
 $result = mysqli_query($conn, $query);
+$results = mysqli_query($conn, $query2);
 ?>
 
 <!DOCTYPE html>
@@ -62,9 +64,23 @@ $result = mysqli_query($conn, $query);
 
     <form method="POST" Action="properties.php" >
         <p>Please enter your property details below </p>
+        <div>
+
+            Select Seller<br/>
+            <select name="seller_id">
+                <?php
+                while ($row = $results->fetch_array()) {
+                    ?>
+                    <option value="<?php echo $row["client_id"]; ?>"><?php echo $row["client_fname"]." ".$row["client_lname"];
+                        ?>
+                    </option>
+                    <?php
+                }
+                ?>
+            </select>
+
+        </div>
         <div class="form-group">
-            First Name <input type="text" name="client_fname" class="form-control">
-            Last Name <input type="text" name="client_lname" class="form-control">
             Street <input type="text" name="property_street" class="form-control">
             Suburb <input type="text" name="property_suburb" class="form-control">
             State <input type="text" name="property_state" class="form-control">
