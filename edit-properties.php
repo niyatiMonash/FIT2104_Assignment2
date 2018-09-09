@@ -43,6 +43,9 @@ $result = mysqli_query($conn, $query);
                     <a class="nav-link" href="edit-properties.php">Properties</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="multiple-properties.php">Property Prices</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="edit-type.php">Property Type</a>
                 </li>
                 <li class="nav-item">
