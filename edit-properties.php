@@ -9,8 +9,7 @@
 include("connection.php");
 include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT property_id, client_fname, client_lname, property_street, property_suburb, property_state,
- property_pc, type_name, property_desc, listing_date, listing_price, sale_date, sale_price, image_name FROM property p join client c on p.seller_id=c.client_id join type t on p.property_type=t.type_id";
+$query = "SELECT * FROM property p join client c on p.seller_id=c.client_id join type t on p.property_type=t.type_id";
 $result = mysqli_query($conn, $query);
 
 
@@ -75,9 +74,11 @@ $result = mysqli_query($conn, $query);
         <th scope="col">Listing Price</th>
         <th scope="col">Sale Date</th>
         <th scope="col">Sale Price</th>
-        <th scope="col">Image</th>
+        <th scope="col">Image Name</th>
         <th scope="col">Delete Row</th>
         <th scope="col">Update Row</th>
+        <th scope="col">View Property</th>
+
     </tr>
     </thead>
     <tbody>
@@ -101,6 +102,9 @@ $result = mysqli_query($conn, $query);
             </td>
             <td>
                 <a href="update-properties.php?property_id= <?php echo $row["property_id"]; ?> &Action=Update">Update</a>
+            </td>
+            <td>
+                <a href="view-property.php?property_id= <?php echo $row["property_id"]; ?> &Action=Get">View</a>
             </td>
         </tr>
         <?php

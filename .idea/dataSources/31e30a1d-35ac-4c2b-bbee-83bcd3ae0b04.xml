@@ -1144,17 +1144,17 @@ feature_id</ColNames>
 feature_id</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
-    <foreign-key id="274" parent="230" name="property_id_id">
+    <foreign-key id="274" parent="230" name="property_featureId">
+      <ColNames>propertyfeature_id</ColNames>
+      <RefSchemaName>s29765706</RefSchemaName>
+      <RefTableName>feature</RefTableName>
+      <RefColNames>feature_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="275" parent="230" name="property_id_id">
       <ColNames>propertyfeature_id</ColNames>
       <RefSchemaName>s29765706</RefSchemaName>
       <RefTableName>property</RefTableName>
       <RefColNames>property_id</RefColNames>
-    </foreign-key>
-    <foreign-key id="275" parent="230" name="property_feature_feature_feature_id_fk">
-      <ColNames>feature_id</ColNames>
-      <RefSchemaName>s29765706</RefSchemaName>
-      <RefTableName>feature</RefTableName>
-      <RefColNames>feature_id</RefColNames>
     </foreign-key>
     <column id="276" parent="231" name="type_id">
       <Position>1</Position>

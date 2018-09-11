@@ -1,20 +1,21 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: stephanietran
- * Date: 6/9/18
- * Time: 6:13 PM
+ * User: niyatisrinivasan
+ * Date: 11/9/18
+ * Time: 10:05 AM
  */
-
-include("connection.php");
 include("session.php");
+//connection statement
+include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM type ORDER BY type_name";
-$query2 = "SELECT * FROM client order by client_fname, client_lname";
-$result = mysqli_query($conn, $query);
-$results = mysqli_query($conn, $query2);
-?>
+$query = "SELECT * FROM property p join client c on p.seller_id=c.client_id join type t on p.property_type=t.type_id 
+        WHERE property_id =" . $_GET["property_id"];
 
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,62 +65,14 @@ $results = mysqli_query($conn, $query2);
     </div>
 </nav>
 <div class="container-fluid">
-
-    <form method="POST" Action="properties.php" enctype="multipart/form-data" >
-        <p>Please enter your property details below </p>
-        <div>
-
-            Select Seller<br/>
-            <select name="seller_id">
-                <?php
-                while ($row = $results->fetch_array()) {
-                    ?>
-                    <option value="<?php echo $row["client_id"]; ?>"><?php echo $row["client_fname"]." ".$row["client_lname"];
-                        ?>
-                    </option>
-                    <?php
-                }
-                ?>
-            </select>
-
-        </div>
-        <div class="form-group">
-            Street <input type="text" name="property_street" class="form-control">
-            Suburb <input type="text" name="property_suburb" class="form-control">
-            State <input type="text" name="property_state" class="form-control">
-            Postal Code <input type="text" name="property_pc" class="form-control">
-        </div>
-        <div>
-
-                Select Property Type<br/>
-                <select name="property_type">
-                    <?php
-                    while ($row = $result->fetch_array()) {
-                        ?>
-                        <option value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
-                            ?>
-                        </option>
-                        <?php
-                    }
-                    ?>
-                </select>
-
-        </div>
-        <div class="form-group">
-            Property Description <textarea name="property_desc" class="form-control"> </textarea>
-            Listing Date <input type="date" name="listing_date" class="form-control">
-            Listing Price <input type="number" name="listing_price" class="form-control">
-        </div>
-        <div class="form-group">
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-        </div>
-        <button type="submit" Value="Submit" class="btn btn-primary">Submit</button>
-        <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
-    </form>
+    <!--    display property specific details-->
+    <?php echo $row["property_id"]; ?>
+    <?php echo $row["property_street"]; ?>
+    <?php echo $row["property_suburb"]; ?>
 
 </div>
 </body>
+
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
