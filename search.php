@@ -21,29 +21,43 @@ if (isset($_POST["query"])) {
 }
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-    $output .= '
-  <div class="table-responsive">
-   <table class="table table bordered">
+    ?>
+
+    <div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
     <tr>
-     <th>Street</th>
-     <th>Suburb</th>
-     <th>State</th>
-     <th>Postal Code</th>
-     <th>Type</th>
-     <th>Listing Price</th>
+        <th scope="col">Address</th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+        <th scope="col">Listing Date</th>
+        <th scope="col">Listing Price</th>
+        <th scope="col">Sale Date</th>
+        <th scope="col">Sale Price</th>
+        <th scope="col">Image Name</th>
+        <th scope="col">View Property</th>
+
     </tr>
- ';
-    while ($row = mysqli_fetch_array($result)) {
-        $output .= '
-   <tr>
-    <td>' . $row["property_street"] . '</td>
-    <td>' . $row["property_suburb"] . '</td>
-    <td>' . $row["property_state"] . '</td>
-    <td>' . $row["property_pc"] . '</td>
-    <td>' . $row["type_name"] . '</td>
-    <td>' . $row["listing_price"] . '</td>
-   </tr>
-  ';
+    </thead>
+    <tbody>
+    <?php
+    while ($row = $result->fetch_array()) {
+        ?>
+
+        <tr>
+
+        <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
+        <td><?php echo $row["type_name"]; ?></td>
+        <td><?php echo $row["property_desc"]; ?></td>
+        <td><?php echo $row["listing_date"]; ?></td>
+        <td><?php echo $row["listing_price"]; ?></td>
+        <td><?php echo $row["sale_date"]; ?></td>
+        <td><?php echo $row["sale_price"]; ?></td>
+        <td><?php echo $row["image_name"]; ?></td>
+        <td>
+            <a href="view-property.php?property_id= <?php echo $row["property_id"]; ?> &Action=Get">View</a>
+        </td>
+        <?php
     }
     echo $output;
 } else {
