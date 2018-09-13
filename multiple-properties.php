@@ -1,3 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: stephanietran
+ * Date: 9/9/18
+ * Time: 6:26 PM
+ */
+
+include("connection.php");
+include("session.php");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT property_id, property_state, property_street, property_suburb, property_pc, listing_price FROM property";
+$result = mysqli_query($conn, $query);
+if (empty($_POST["check"])) {
+?>
 <html>
 <head>
     <!-- Bootstrap core CSS -->
@@ -45,26 +60,6 @@
     </div>
 </nav>
 <table class="table table-striped">
-
-    <?php
-    if (empty($_POST["check"])) {
-    ?>
-    <?php
-    /**
-     * Created by PhpStorm.
-     * User: stephanietran
-     * Date: 9/9/18
-     * Time: 6:26 PM
-     */
-
-    include("connection.php");
-    include("session.php");
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $query = "SELECT property_id, property_state, property_street, property_suburb, property_pc, listing_price FROM property";
-    $result = mysqli_query($conn, $query);
-
-
-    ?>
     <thead>
     <tr>
         <th scope="col">Property ID</th>
@@ -89,18 +84,14 @@
 
             <?php
         } ?>
-        <input type="submit" value="Update" class="btn btn-primary"/>
-    </form>
     </tbody>
 </table>
+<input type="submit" value="Update" class="btn btn-primary"/>
+</form>
 <?php } else {
     ?>
     <input type="button" value="Return to List" OnClick="window.location='multiple-properties.php'"><br/>
     <?php
-    include("connection.php");
-    include("session.php");
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
     foreach ($_POST["check"] as $property_id) {
         $query2 = "UPDATE property set listing_price = $_POST[$property_id] WHERE property_id = $property_id";
         $conn->query($query2);
@@ -112,4 +103,15 @@
 
 ?>
 </body>
+<!-- Footer to be used in all main pages-->
+<footer class="py-5 bg-danger">
+    <div class="container-fluid">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </html>

@@ -113,6 +113,7 @@ $results = mysqli_query($conn, $query2);
         <div class="form-group">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
+            <div id="thumbnail"></div>
         </div>
         <button type="submit" Value="Submit" class="btn btn-primary">Submit</button>
         <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
