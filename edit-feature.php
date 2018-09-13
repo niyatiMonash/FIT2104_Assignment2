@@ -79,10 +79,10 @@ $result = mysqli_query($conn, $query);
         <tr>
             <td><?php echo $row["feature_name"] ?> </td>
             <td>
-                <a href="update-feature.php?type_id= <?php echo $row["feature_id"]; ?> &Action=Delete">Delete</a>
+                <a href="update-feature.php?feature_id= <?php echo $row["feature_id"]; ?> &Action=Delete">Delete</a>
             </td>
             <td>
-                <a href="update-feature.php?type_id= <?php echo $row["feature_id"]; ?> &Action=Update">Update</a>
+                <a href="update-feature.php?feature_id= <?php echo $row["feature_id"]; ?> &Action=Update">Update</a>
             </td>
         </tr>
         <?php

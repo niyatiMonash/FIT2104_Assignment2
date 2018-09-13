@@ -12,7 +12,7 @@ include("session.php");
 //connection statement
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query="SELECT * FROM feature";
+$query="SELECT * FROM feature  WHERE feature_id =".$_GET["feature_id"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 
