@@ -1112,7 +1112,7 @@
       <RefTableName>type</RefTableName>
       <RefColNames>type_id</RefColNames>
     </foreign-key>
-    <column id="268" parent="230" name="propertyfeature_id">
+    <column id="268" parent="230" name="property_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1129,47 +1129,42 @@
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="271" parent="230" name="id">
-      <ColNames>propertyfeature_id
-feature_id</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <index id="272" parent="230" name="property_feature_feature_feature_id_fk">
+    <index id="271" parent="230" name="property_featureId">
       <ColNames>feature_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="273" parent="230" name="id">
-      <ColNames>propertyfeature_id
+    <key id="272" parent="230" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>property_id
 feature_id</ColNames>
-      <UnderlyingIndexName>id</UnderlyingIndexName>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="274" parent="230" name="property_featureId">
-      <ColNames>propertyfeature_id</ColNames>
-      <RefSchemaName>s29765706</RefSchemaName>
-      <RefTableName>feature</RefTableName>
-      <RefColNames>feature_id</RefColNames>
-    </foreign-key>
-    <foreign-key id="275" parent="230" name="property_id_id">
-      <ColNames>propertyfeature_id</ColNames>
+    <foreign-key id="273" parent="230" name="property_propertyId">
+      <ColNames>property_id</ColNames>
       <RefSchemaName>s29765706</RefSchemaName>
       <RefTableName>property</RefTableName>
       <RefColNames>property_id</RefColNames>
     </foreign-key>
-    <column id="276" parent="231" name="type_id">
+    <foreign-key id="274" parent="230" name="property_featureId">
+      <ColNames>feature_id</ColNames>
+      <RefSchemaName>s29765706</RefSchemaName>
+      <RefTableName>feature</RefTableName>
+      <RefColNames>feature_id</RefColNames>
+    </foreign-key>
+    <column id="275" parent="231" name="type_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="231" name="type_name">
+    <column id="276" parent="231" name="type_name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="278" parent="231" name="PRIMARY">
+    <key id="277" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>type_id</ColNames>
       <Primary>1</Primary>
