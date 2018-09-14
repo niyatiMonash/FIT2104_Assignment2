@@ -66,8 +66,23 @@ $row = $result->fetch_assoc();
 </nav>
 <div class="container-fluid">
     <!--    display property specific details-->
-    <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-         class="img-thumbnail rounded ">
+    <?php
+    if (isset($row["image_name"])) {
+        ?>
+        <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
+             class="img-thumbnail rounded ">
+
+        <?php
+    } else {
+        ?>
+        <img src="property_images/no_image.png?>" alt="property-image"
+             class="img-thumbnail rounded ">
+
+        <?php
+    }
+
+    ?>
+
     <div class="property-details">
         <h1> <?php echo $row["property_street"]; ?>, <?php echo $row["property_suburb"]; ?></h1>
         <h2> <?php echo $row["property_state"]; ?><?php echo $row["property_pc"]; ?></h2>
@@ -103,18 +118,17 @@ $row = $result->fetch_assoc();
                     $result2 = $conn->query($query3);
                     $pf = $result2->fetch_assoc();
                     ?>
-                    <br>
                     <td><?php echo $row["feature_name"] ?></td>
                     <td><input type="text" name="feature_desc" value="<?php echo $pf["feature_desc"] ?>"</td>
                     <?php
                     if (isset($pf["feature_desc"])) {
                         ?>
                         <td><input type="checkbox" name="check" checked value="<?php echo $row["property_id"]; ?>"></td>
-                        <br/>
+                        
                         <?php
                     } else {
                         ?>
-                        <td><input type="checkbox" name="check" value="<?php echo $row["property_id"]; ?>"></td><br/>
+                        <td><input type="checkbox" name="check" value="<?php echo $row["property_id"]; ?>"></td>
                         <?php
                     }
                     ?>
