@@ -1,3 +1,48 @@
+<html>
+<head>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/modern-business.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-clients.php">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-properties.php">Properties</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="multiple-properties.php">Property Prices</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-type.php">Property Type</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-feature.php">Property Feature</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="send-email.php">Send Email</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
 <?php
 /**
  * Created by PhpStorm.
@@ -22,20 +67,20 @@ switch($_GET["Action"]){
     Confirm deletion of the customer record <br />
 <table>
     <tr>
-        <td><b>Client no.</b></td>
+        <td><b>Client no:</b></td>
         <td><?php echo $row["client_id"]; ?></td>
     </tr>
     <tr>
-        <td><b>Name</b></td>
+        <td><b>Name:</b></td>
         <td><?php echo $row["client_lname"]. " ".$row["client_fname"]; ?></td> </tr>
 </table>
 <br/>
-    <table align="center">
+    <table>
         <tr>
             <td>
-                <input type="button" value="Confirm" OnClick="confirm_delete();"></td>
+                <input type="button" value="Confirm" class="btn btn-primary" OnClick="confirm_delete();"></td>
             <td>
-                <input type="button" value="Cancel" OnClick="window.location='edit-clients.php'">
+                <input type="button" value="Cancel" class="btn btn-secondary" OnClick="window.location='edit-clients.php'">
             </td>
         </tr>
     </table>
@@ -65,40 +110,76 @@ OnClick='window.location=\"edit-clients.php\"'>";
 break;
 
 case "Update": ?>
-<form method="post" action="update-clients.php?client_id=<?php echo $_GET["client_id"]; ?>&Action=ConfirmUpdate">
-    Customer details amendment<br />
-    <table align="center" cellpadding="3">
-
-        <td><b>Client Id</b></td>
-        <td><?php echo $row["client_id"]; ?></td>
-        <tr>
-            <td><b>Firstname</b></td>
-            <td>
-                <input type="text" name="client_fname" size="30"
+    <form method="post" action="update-clients.php?client_id=<?php echo $_GET["client_id"]; ?>&Action=ConfirmUpdate">
+        <h1>Customer details amendment</h1><br/>
+        <table align="center" cellpadding="3">
+            <div>
+                Client Id:
+                <?php echo $row["client_id"]; ?>
+            </div>
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" name="client_fname" size="30" class="form-control"
                        value="<?php echo $row["client_fname"]; ?>">
-            </td>
-
-            <td>
-                <input type="text" name="client_lname" size="30"
+            </div>
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" name="client_lname" size="30" class="form-control"
                        value="<?php echo $row["client_lname"]; ?>">
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="Update Customer">
-    <input type="button" value="Return to List"
-           OnClick="window.location='edit-clients.php'">
-</form>
+            </div>
+
+            <div class="form-group">
+                <label>Street:</label>
+                <input type="text" name="client_street" size="30" class="form-control" value="<?php echo $row["client_street"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>Suburb:</label>
+                <input type="text" name="client_suburb" size="30" class="form-control" value="<?php echo $row["client_suburb"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>State:</label>
+                <input type="text" name="client_state" size="30" class="form-control" value="<?php echo $row["client_state"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>Postcode:</label>
+                <input type="text" name="client_pc" size="30" class="form-control" value="<?php echo $row["client_pc"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" name="client_email" size="30" class="form-control" value="<?php echo $row["client_email"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>Mobile:</label>
+                <input type="text" name="client_mobile" size="30" class="form-control" value="<?php echo $row["client_mobile"]; ?>">
+            </div>
+            <input type="submit" value="Update Customer" class="btn btn-primary">
+            <input type="button" value="Return to List" class="btn btn-secondary" OnClick="window.location='edit-clients.php'">
+        </table>
+    </form>
     <?php
         break;
 
     case "ConfirmUpdate":
-        $query="UPDATE client set client_fname='$_POST[client_fname]',client_lname='$_POST[client_lname]'
+        $query="UPDATE client set client_fname='$_POST[client_fname]',client_lname='$_POST[client_lname]', client_street='$_POST[client_street]', 
+client_suburb='$_POST[client_suburb]', client_state='$_POST[client_state]', client_pc='$_POST[client_pc]', client_email='$_POST[client_email]', client_mobile='$_POST[client_mobile]'
                 WHERE client_id =".$_GET["client_id"];
         $result= $conn->query($query);
         header("Location: edit-clients.php");
         break;
 }
 ?>
+<!-- Footer to be used in all main pages-->
+<footer class="py-5 bg-danger">
+    <div class="container-fluid">
+        <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
+    </div>
+</footer>
 
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
 
 

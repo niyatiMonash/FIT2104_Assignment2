@@ -1,3 +1,48 @@
+<html>
+<head>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/modern-business.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-clients.php">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-properties.php">Properties</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="multiple-properties.php">Property Prices</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-type.php">Property Type</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="edit-feature.php">Property Feature</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="send-email.php">Send Email</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
 <?php
 /**
  * Created by PhpStorm.
@@ -20,112 +65,105 @@ $results = $conn->query($query2);
 
 
 switch ($_GET["Action"]) {
-    case "Delete":
-        ?>
+case "Delete":
+    ?>
 
-        Confirm deletion of the property record <br/>
-        <table>
-            <tr>
-                <td><b>Property no.</b></td>
-                <td><?php echo $row["property_id"]; ?></td>
-            </tr>
-            <tr>
-                <td><b>Address</b></td>
-                <td><?php echo $row["property_street"] . "</br>" . $row["property_suburb"] . ", " . $row["property_state"] . " " . $row["property_pc"]; ?></td>
-            </tr>
-        </table>
-        <br/>
-        <table align="center">
-            <tr>
-                <td>
-                    <input type="button" value="Confirm" OnClick="confirm_delete();"></td>
-                <td>
-                    <input type="button" value="Cancel" OnClick="window.location='edit-properties.php'">
-                </td>
-            </tr>
-        </table>
+    Confirm deletion of the property record <br/>
+    <table>
+        <tr>
+            <td><b>Property no.</b></td>
+            <td><?php echo $row["property_id"]; ?></td>
+        </tr>
+        <tr>
+            <td><b>Address</b></td>
+            <td><?php echo $row["property_street"] . "</br>" . $row["property_suburb"] . ", " . $row["property_state"] . " " . $row["property_pc"]; ?></td>
+        </tr>
+    </table>
+<br/>
+    <table>
+        <tr>
+            <td>
+                <input type="button" value="Confirm" class="btn btn-primary" OnClick="confirm_delete();" ></td>
+            <td>
+                <input type="button" value="Cancel" class="btn btn-secondary" OnClick="window.location='edit-properties.php'">
+            </td>
+        </tr>
+    </table>
 
-        <script language="javascript">
-            function confirm_delete() {
-                window.location = 'update-properties.php?property_id= <?php echo $_GET["property_id"];?> &Action=ConfirmDelete';
-            }
-        </script>
-        <?php
-        break;
-
-    case "ConfirmDelete":
-        $query = "DELETE FROM property WHERE property_id =" . $_GET["property_id"];
-        if ($conn->query($query)) {
-            ?>
-            The following property record has been successfully deleted<br/>
-            <?php echo "Property no." . $row["property_id"] . " " . $row["property_street"] . "</br>" . $row["property_suburb"] . ", " . $row["property_state"] . " " . $row["property_pc"];
-        } else {
-            echo "Error deleting customer record";
+    <script language="javascript">
+        function confirm_delete() {
+            window.location = 'update-properties.php?property_id= <?php echo $_GET["property_id"];?> &Action=ConfirmDelete';
         }
-        echo "<input type='button' value='Return to List'
+    </script>
+<?php
+break;
+
+case "ConfirmDelete":
+$query = "DELETE FROM property WHERE property_id =" . $_GET["property_id"];
+if ($conn->query($query)) {
+?>
+    The following property record has been successfully deleted<br/>
+<?php echo "Property no: " . $row["property_id"] . " " . $row["property_street"] . "</br>" . $row["property_suburb"] . ", " . $row["property_state"] . " " . $row["property_pc"];
+} else {
+    echo "Error deleting customer record";
+}
+echo "<input type='button' value='Return to List'
 OnClick='window.location=\"edit-properties.php\"'>";
-        break;
+break;
 
-    case "Update": ?>
-        <form method="post"
-              action="update-properties.php?property_id=<?php echo $_GET["property_id"]; ?>&Action=ConfirmUpdate">
-            Property amendment<br/>
-            <table align="center" cellpadding="3">
-
-                <td><b>Property Id</b></td>
-                <td><?php echo $row["property_id"]; ?></td>
-                <tr>
-                    <td><b>Street</b></td>
-                    <td>
-                        <input type="text" name="property_street" size="30"
-                               value="<?php echo $row["property_street"]; ?>">
-                    </td>
-                    <td><b>Suburb</b></td>
-                    <td>
-                        <input type="text" name="property_suburb" size="30"
-                               value="<?php echo $row["property_suburb"]; ?>">
-                    </td>
-                    <td><b>State</b></td>
-                    <td>
-                        <input type="text" name="property_state" size="30"
-                               value="<?php echo $row["property_state"]; ?>">
-                    </td>
-                    <td><b>Postcode</b></td>
-                    <td>
-                        <input type="text" name="property_pc" size="30"
-                               value="<?php echo $row["property_pc"]; ?>">
-                    </td>
-                    <form>
-                        Select Property Type<br/>
-                        <select name="property_type">
-                            <?php
-                            while ($row = $results->fetch_array()) {
-                                ?>
-                                <option value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
-                                    ?>
-                                </option>
-                                <?php
-                            }
+case "Update": ?>
+    <form method="post"
+          action="update-properties.php?property_id=<?php echo $_GET["property_id"]; ?>&Action=ConfirmUpdate">
+        <h1>Property Amendment</h1><br/>
+        <table>
+            <div>
+                Property Id
+                <?php echo $row["property_id"]; ?>
+            </div>
+            <div class="form-group">
+                <label>Street:</label>
+                <input type="text" name="property_street" size="30" class="form-control" value="<?php echo $row["property_street"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>Suburb:</label>
+                <input type="text" name="property_suburb" size="30" class="form-control" value="<?php echo $row["property_suburb"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>State:</label>
+                <input type="text" name="property_state" size="30" class="form-control" value="<?php echo $row["property_state"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>Postcode:</label>
+                <input type="text" name="property_pc" size="30" class="form-control" value="<?php echo $row["property_pc"]; ?>">
+            </div>
+            <div>
+                <label>Select Property Type:</label>
+                <select class="form-control" >
+                    <?php
+                    while ($row = $results->fetch_array()) {
+                        ?>
+                        <option name="property_type" value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
                             ?>
-                        </select>
-                    </form>
-                    <td><b>Listing Date</b></td>
-                    <td>
-                        <input type="date" name="listing_date" size="30"
-                               value="<?php echo $row["listing_date"]; ?>">
-                    </td>
-                    <td>
-                        <input type="number" name="listing_price" size="30"
-                               value="<?php echo $row["listing_price"]; ?>">
-                    </td>
-                </tr>
-            </table>
-            <input type="submit" value="Update Customer">
-            <input type="button" value="Return to List"
-                   OnClick="window.location='edit-properties.php'">
-        </form>
-        <?php
-        break;
+                        </option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Listing Date:</label>
+                <input type="date" name="listing_date" size="30" class="form-control" value="<?php echo $row["listing_date"]; ?>">
+            </div>
+            <div class="form-group">
+                <label>Listing Price:</label>
+                <input type="number" name="listing_price" size="30" class="form-control" value="<?php echo $row["listing_price"]; ?>">
+            </div>
+            <input type="submit" value="Update Property" class="btn btn-primary">
+            <input type="button" value="Return to List" class="btn btn-secondary" OnClick="window.location='edit-properties.php'">
+        </table>
+    </form>
+    <?php
+    break;
 
     case "ConfirmUpdate":
         $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
@@ -137,6 +175,19 @@ OnClick='window.location=\"edit-properties.php\"'>";
         break;
 }
 ?>
+<!-- Footer to be used in all main pages-->
+<footer class="py-5 bg-danger">
+    <div class="container-fluid">
+        <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
 
 
 
