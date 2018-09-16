@@ -112,6 +112,9 @@ $result = mysqli_query($conn, $query);
     ?>
     </tbody>
 </table>
+<button class="btn btn-outline-primary">
+    <a href='display-source.php?filename=edit-properties.php'>DOCUMENTATION</a><br/>
+</button>
 </body>
 
 <!-- Footer to be used in all main pages-->

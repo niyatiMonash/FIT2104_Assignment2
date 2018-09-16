@@ -57,52 +57,56 @@ $result = mysqli_query($conn, $query);
 
 ?>
 
-
-<?php
-if (!isset($_POST["to"])) {
-
-    ?>
-    <table border="1" cellpadding="10" align="center">
-        <?php
-        while ($row = $result->fetch_array()) {
-            ?>
-            <tr>
-                <td>
-                    <input type="checkbox" name="check[]" value=""<?php echo $row["client_id"]; ?>">
-                    <?php echo $row["client_email"]; ?><br/>
-
-                </td>
-            </tr>
-            <?php
-        }
+<div class="container-fluid">
+    <?php
+    if (!isset($_POST["check"])) {
         ?>
-    </table>
-    <table>
-        <form method="post" action="send-email.php" align="center">
-            To: <input type="text" name="to"> <br/>
-            Subject: <input type="text" name="subject"> <br/>
-            Message: <input type="text" name="message"> <br/>
-            <td>
-                <input type="submit" value="Send Email"/>
-                <input type="reset" value="clear"/>
-            </td>
+        <form method="post" action="send-email.php">
+            <table>
+                <?php
+                while ($row = $result->fetch_array()) {
+                    ?>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="check[]" value="<?php echo $row["client_email"]; ?>">
+                            <?php echo $row["client_email"]; ?><br/>
+
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </table>
+            <table>
+                Subject: <input type="text" name="subject" class="form-control"> <br/>
+                Message: <textarea type="text" name="message" class="form-control"> </textarea><br/>
+                <td>
+                    <button type="submit" value="Send Email" class="btn btn-primary">Send Email</button>
+                    <button type="reset" value="clear" class="btn btn-secondary">Clear</button>
+                </td>
 
         </form>
-    </table>
-    <?php
-} else {
-    $from = "From: Ruthless Real Estate <nsri0001@student.monash.edu>";
-    $to = $_POST["to"];
-    $msg = $_POST["message"];
-    $subject = $_POST["subject"];
-    if (mail($to, $subject, $msg, $from)) {
-        echo "Email has been sent";
+        </table>
+        <?php
     } else {
-        echo "Error Sending Mail";
-    }
-}
-?>
+        if (!empty($_POST['check'])) {
+            // Loop to store and display values of individual checked checkbox.
+            foreach ($_POST['check'] as $selected) {
+                $from = "From: Ruthless Real Estate <nsri0001@student.monash.edu>";
+                $to = $selected;
+                $msg = $_POST["message"];
+                $subject = $_POST["subject"];
+                if (mail($to, $subject, $msg, $from)) {
+                    echo '<div class="alert alert-success">Email has been sent to </div>';
+                } else {
+                    echo '<div class="alert alert-danger">Sorry there was an error sending your Mail. Please try again later</div>';
+                }
+            }
+        }
 
+    }
+    ?>
+</div>
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
