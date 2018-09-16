@@ -11,10 +11,12 @@ include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT * FROM property p 
           join client c on p.seller_id=c.client_id 
-          join type t on p.property_type=t.type_id WHERE property_id =" . $_GET["property_id"];
+          join type t on p.property_type=t.type_id WHERE p.property_id =" . $_GET["property_id"];
 
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
+
+if (empty($_POST["check"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,22 +68,8 @@ $row = $result->fetch_assoc();
 </nav>
 <div class="container-fluid">
     <!--    display property specific details-->
-    <?php
-    if (isset($row["image_name"])) {
-        ?>
-        <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-             class="img-thumbnail rounded ">
-
-        <?php
-    } else {
-        ?>
-        <img src="property_images/no_image.png?>" alt="property-image"
-             class="img-thumbnail rounded ">
-
-        <?php
-    }
-
-    ?>
+    <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
+         class="img-thumbnail rounded ">
 
     <div class="property-details">
         <h1> <?php echo $row["property_street"]; ?>, <?php echo $row["property_suburb"]; ?></h1>
@@ -124,7 +112,7 @@ $row = $result->fetch_assoc();
                     if (isset($pf["feature_desc"])) {
                         ?>
                         <td><input type="checkbox" name="check" checked value="<?php echo $row["property_id"]; ?>"></td>
-                        
+
                         <?php
                     } else {
                         ?>
@@ -132,7 +120,6 @@ $row = $result->fetch_assoc();
                         <?php
                     }
                     ?>
-
                     </tr>
 
                     <?php
@@ -141,6 +128,16 @@ $row = $result->fetch_assoc();
             </table>
             <input type="submit" value="Update" class="btn btn-primary"/>
         </form>
+        <?php
+        } else
+            foreach ($_POST["check"] as $feature_id) {
+                $query2 = "UPDATE property_feature set feature_id = $_POST[feature_id] WHERE feature_id = $feature_id";
+                $conn->query($query2);
+
+                echo "Feature number '$feature_id' has been successfully updated<br/>";
+
+            }
+        ?>
     </div>
 </div>
 </body>
