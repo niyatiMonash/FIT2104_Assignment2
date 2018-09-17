@@ -1,3 +1,11 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: stephanietran
+ * Date: 17/9/18
+ * Time: 9:59 PM
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,14 +56,18 @@
 <div class="container-fluid">
     <form method="post" Action="clients.php">
         <div class="alert alert-info" role="alert">
-            Please enter client details
-        </div>
+    Please enter client details
+</div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label> Last Name </label> <input type="text" name="client_lname" class="form-control" required>
+                <label> Last Name </label> <input type="text" name="client_lname" class="form-control" required
+                                                  onInvalid="this.setCustomValidity('Please enter your last name.')"
+                                                  onInput="this.setCustomValidity('')">
             </div>
             <div class="form-group col-md-6">
-                <label>First Name </label> <input type="text" name="client_fname" class="form-control">
+                <label>First Name </label> <input type="text" name="client_fname" class="form-control" required
+                                                  onInvalid="this.setCustomValidity('Please enter your first name.')"
+                                                  onInput="this.setCustomValidity('')">
             </div>
 
             <div class="form-group col-md-6">

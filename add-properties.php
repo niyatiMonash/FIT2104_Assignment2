@@ -71,6 +71,7 @@ $results = mysqli_query($conn, $query2);
 
             Select Seller<br/>
             <select name="seller_id">
+                <option>Select Seller</option>
                 <?php
                 while ($row = $results->fetch_array()) {
                     ?>
@@ -84,19 +85,31 @@ $results = mysqli_query($conn, $query2);
 
         </div>
         <div class="form-group">
-            Street <input type="text" name="property_street" class="form-control">
-            Suburb <input type="text" name="property_suburb" class="form-control">
-            State <input type="text" name="property_state" class="form-control">
-            Postal Code <input type="text" name="property_pc" class="form-control">
+            Street <input type="text" name="property_street" class="form-control" required
+                          onInvalid="this.setCustomValidity('Please enter your street.')"
+                          onInput="this.setCustomValidity('')">
+            Suburb <input type="text" name="property_suburb" class="form-control" required
+                          onInvalid="this.setCustomValidity('Please enter your suburb.')"
+                          onInput="this.setCustomValidity('')">
+            State <input type="text" name="property_state" class="form-control" required
+                         onInvalid="this.setCustomValidity('Please enter your state.')"
+                         onInput="this.setCustomValidity('')">
+            Postal Code <input type="text" name="property_pc" class="form-control" required
+                               onInvalid="this.setCustomValidity('Please enter your postcode.')"
+                               onInput="this.setCustomValidity('')">
         </div>
         <div>
 
             Select Property Type<br/>
             <select name="property_type">
+                <option>Select Property Type</option>
                 <?php
                 while ($row = $result->fetch_array()) {
                     ?>
-                    <option value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
+
+                    <option value="<?php echo $row["type_id"]; ?>" required
+                            onInvalid="this.setCustomValidity('Please select a type.')"
+                            onInput="this.setCustomValidity('')"><?php echo $row["type_name"];
                         ?>
                     </option>
                     <?php
@@ -107,8 +120,12 @@ $results = mysqli_query($conn, $query2);
         </div>
         <div class="form-group">
             Property Description <textarea name="property_desc" class="form-control"> </textarea>
-            Listing Date <input type="date" name="listing_date" class="form-control">
-            Listing Price <input type="number" name="listing_price" class="form-control">
+            Listing Date <input type="date" name="listing_date" class="form-control" required
+                                onInvalid="this.setCustomValidity('Please enter the listing date for the property.')"
+                                onInput="this.setCustomValidity('')">
+            Listing Price <input type="number" name="listing_price" class="form-control" required
+                                 onInvalid="this.setCustomValidity('Please enter the listing price for the property.')"
+                                 onInput="this.setCustomValidity('')">
         </div>
         <div class="form-group">
             Select image to upload:

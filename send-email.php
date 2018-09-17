@@ -78,8 +78,12 @@ $result = mysqli_query($conn, $query);
                 ?>
             </table>
             <table>
-                Subject: <input type="text" name="subject" class="form-control"> <br/>
-                Message: <textarea type="text" name="message" class="form-control"> </textarea><br/>
+                Subject: <input type="text" name="subject" class="form-control" required
+                                onInvalid="this.setCustomValidity('Please enter the subject.')"
+                                onInput="this.setCustomValidity('')"> <br/>
+                Message: <input type="text" name="message" class="form-control" required
+                                   onInvalid="this.setCustomValidity('Please enter your message.')"
+                                   onInput="this.setCustomValidity('')"><br/>
                 <td>
                     <button type="submit" value="Send Email" class="btn btn-primary">Send Email</button>
                     <button type="reset" value="clear" class="btn btn-secondary">Clear</button>

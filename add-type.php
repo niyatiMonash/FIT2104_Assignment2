@@ -1,8 +1,15 @@
-<!DOCTYPE html>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: stephanietran
+ * Date: 17/9/18
+ * Time: 10:08 PM
+ */
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add New Clients</title>
+    <title>Add New Property Type</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -46,49 +53,13 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <form method="post" Action="clients.php">
-        <div class="alert alert-info" role="alert">
-            Please enter client details
-        </div>
+    <p>Add a property type </p>
+    <form method="post" Action="types.php">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label> Last Name </label> <input type="text" name="client_lname" class="form-control" required>
-            </div>
-            <div class="form-group col-md-6">
-                <label>First Name </label> <input type="text" name="client_fname" class="form-control">
-            </div>
-
-            <div class="form-group col-md-6">
-                <label>Street </label> <input type="text" name="client_street" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Suburb </label> <input type="text" name="client_suburb" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label>State </label> <input type="text" name="client_state" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Postal Code </label> <input type="text" name="client_pc" class="form-control">
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Email </label> <input type="text" name="client_email" class="form-control"
-                                                               id="inputEmail4" placeholder="Email">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Mobile </label> <input type="text" name="client_mobile" class="form-control">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <p> Subscribe to our mailing list?</p>
-            <div class="form-check form-check-inline">
-                <input type="radio" name="client_mailinglist" value="Y" checked class="form-check-input">
-                <label class="form-check-label">Yes</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input type="radio" name="client_mailinglist" value="N" class="form-check-input">
-                <label class="form-check-label">No</label>
+                <label>Type Name </label> <input type="text" name="type_name" class="form-control" required
+                                                 onInvalid="this.setCustomValidity('Please enter the type of property.')"
+                                                 onInput="this.setCustomValidity('')">
             </div>
         </div>
 
@@ -96,7 +67,6 @@
         <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
     </form>
 </div>
-
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
