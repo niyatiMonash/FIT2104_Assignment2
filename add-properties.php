@@ -91,18 +91,18 @@ $results = mysqli_query($conn, $query2);
         </div>
         <div>
 
-                Select Property Type<br/>
-                <select name="property_type">
-                    <?php
-                    while ($row = $result->fetch_array()) {
-                        ?>
-                        <option value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
-                            ?>
-                        </option>
-                        <?php
-                    }
+            Select Property Type<br/>
+            <select name="property_type">
+                <?php
+                while ($row = $result->fetch_array()) {
                     ?>
-                </select>
+                    <option value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
+                        ?>
+                    </option>
+                    <?php
+                }
+                ?>
+            </select>
 
         </div>
         <div class="form-group">
