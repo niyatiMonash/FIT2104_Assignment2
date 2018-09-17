@@ -113,7 +113,7 @@ $result = mysqli_query($conn, $query);
     </tbody>
 </table>
 <button class="btn btn-outline-primary">
-    <a href='display-source.php?filename=edit-properties.php'>DOCUMENTATION</a><br/>
+    <a href='display-source.php?filename=edit-properties.php'>Property</a><br/>
 </button>
 </body>
 

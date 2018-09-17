@@ -15,6 +15,9 @@ $query = "SELECT * FROM property p
 
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
+$query2 ="Select * from authenticate";
+$results = $conn->query($query2);
+$rows = $results->fetch_assoc();
 
 if (empty($_POST["check"])) {
 ?>
@@ -68,31 +71,51 @@ if (empty($_POST["check"])) {
 </nav>
 <div class="container-fluid">
     <!--    display property specific details-->
+    <div>
     <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-         class="img-thumbnail rounded ">
-
-    <div class="property-details">
-        <h1> <?php echo $row["property_street"]; ?>, <?php echo $row["property_suburb"]; ?></h1>
-        <h2> <?php echo $row["property_state"]; ?><?php echo $row["property_pc"]; ?></h2>
-        <p>  <?php echo $row["property_desc"]; ?></p>
+         class="img-fluid rounded " width="100%" height="auto">
+    </div>
+    </br>
+    </br>
+<div class="row">
+    <div  class="col-sm" >
+<!--        class="property-details"-->
+        <h4><u>Address:</u></h4>
+        <p> <h3><?php echo $row["property_street"]; ?>, <br/><?php echo $row["property_suburb"]; ?> <?php echo $row["property_state"]; ?> <?php echo $row["property_pc"]; ?> </h3></p>
+        <h4><u>Description:</u></h4>
+        <p>  <h5><?php echo $row["property_desc"]; ?></h5> </p>
     </div>
 
-    <div class="agent-details">
-        <p> Agent Details</p>
-    </div>
-    <div class="property-listing">
-        <p> <?php echo $row["listing_price"]; ?></p>
-        <p> <?php echo $row["listing_date"]; ?></p>
+    <div  class="col-sm" align="center">
+<!--        class="agent-details"-->
+        <p> <h4><u>Contact Agent:</u></h4></p><br/>
+        <h4><?php echo $rows["given_name"];?> <?php echo $rows["family_name"];?></h4></br>
+        <button class="btn btn-info btn-lg">Email Agent</button>
+
+
+
     </div>
 
+    <div class="col-sm" align="center">
+
+<!--        class="property-listing"-->
+        <h4><u>Price:</u></h4>
+        <p><h1>$<?php echo $row["listing_price"]; ?></h1> </p></br>
+        <p><h5><u>Date listed:</u> <?php echo $row["listing_date"]; ?></h5></p>
+
+    </div>
+</div>
+    </br>
+    </br>
     <div class="property-features">
+        <h4><u>Property Features:</u></h4>
         <form method="post" action="view-property.php">
-            <table>
+            <table border="1" cellpadding="10">
                 <thead>
                 <tr>
-                    <th>Feature Name</th>
-                    <th>Feature Description</th>
-                    <th>CheckBox</th>
+                    <th scope="col">Feature Name</th>
+                    <th scope="col">Feature Description</th>
+                    <th scope="col">CheckBox</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -107,16 +130,16 @@ if (empty($_POST["check"])) {
                     $pf = $result2->fetch_assoc();
                     ?>
                     <td><?php echo $row["feature_name"] ?></td>
-                    <td><input type="text" name="feature_desc" value="<?php echo $pf["feature_desc"] ?>"</td>
+                    <td  ><input type="text" name="feature_desc" class="form-control" value="<?php echo $pf["feature_desc"] ?>"</td>
                     <?php
                     if (isset($pf["feature_desc"])) {
                         ?>
-                        <td><input type="checkbox" name="check" checked value="<?php echo $row["property_id"]; ?>"></td>
+                        <td align="center"><input type="checkbox" name="check" checked value="<?php echo $row["property_id"]; ?>"></td>
 
                         <?php
                     } else {
                         ?>
-                        <td><input type="checkbox" name="check" value="<?php echo $row["property_id"]; ?>"></td>
+                        <td align="center"><input type="checkbox" name="check" value="<?php echo $row["property_id"]; ?>"></td>
                         <?php
                     }
                     ?>
@@ -126,7 +149,9 @@ if (empty($_POST["check"])) {
                 } ?>
                 </tbody>
             </table>
+        </br>
             <input type="submit" value="Update" class="btn btn-primary"/>
+<!--            <input type="button" value="Delete" class="btn btn-primary" OnClick="confirm_delete();">-->
         </form>
         <?php
         } else
@@ -140,6 +165,63 @@ if (empty($_POST["check"])) {
         ?>
     </div>
 </div>
+</br>
+</br>
+</br>
+<h4>Similar Properties:</h4>
+</br>
+<div class="row">
+
+    <div class="col portfolio-item" >
+        <div class="card">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="#">Goldcoast, Queensland</a>
+                </h4>
+
+            </div>
+        </div>
+    </div>
+    <div class="col portfolio-item">
+        <div class="card">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="#">Surfer's Paradise, Queensland</a>
+                </h4>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col portfolio-item">
+        <div class="card">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="#">Stretton, Brisbane</a>
+                </h4>
+
+            </div>
+        </div>
+    </div>
+    <div class="col portfolio-item">
+        <div class="card">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="#">Betau Bay, Brisbane</a>
+                </h4>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<button class="btn btn-outline-primary">
+    <a href='display-source.php?filename=view-property.php'>Property Feature</a><br/>
+</button>
 </body>
 
 <!-- Footer to be used in all main pages-->

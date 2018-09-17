@@ -103,7 +103,7 @@ $result = mysqli_query($conn, $query);
 </table>
 
 <button class="btn btn-outline-primary">
-    <a href='display-source.php?filename=edit-clients.php'>DOCUMENTATION</a><br/>
+    <a href='display-source.php?filename=edit-clients.php'>Client</a><br/>
 </button>
 </body>
 
