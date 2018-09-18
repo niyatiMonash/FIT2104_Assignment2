@@ -78,7 +78,7 @@ $result = mysqli_query($conn, $query);
         // Loop to store and display values of individual checked checkbox.
         foreach ($_POST['check'] as $selectedPropertyId) {
             if (count($selectedPropertyId) > 0) {
-                $query2 = "SELECT image_name from property where property_id =" . $selectedPropertyId;
+//                $query2 = "SELECT image_name from property where property_id =" . $selectedPropertyId;
 //                code to delete image to be here
 //                delete image name from property table
 //                delete image from property_images/ folder as well

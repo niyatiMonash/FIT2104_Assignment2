@@ -31,6 +31,10 @@ if (empty($_POST["check"])) {
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
     <title>Add Properties</title>
 </head>
 <body>
@@ -70,6 +74,17 @@ if (empty($_POST["check"])) {
     </div>
 </nav>
 <div class="container-fluid">
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="edit-properties.php">Properties</a></li>
+                    <li class="breadcrumb-item active"><?php echo $row["property_street"]?> </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <!--    display property specific details-->
     <div>
     <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"

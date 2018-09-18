@@ -16,6 +16,10 @@
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -54,6 +58,17 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="edit-clients.php">Clients</a></li>
+                    <li class="breadcrumb-item active">Add Clients</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <form method="post" Action="clients.php">
         <div class="alert alert-info" role="alert">
     Please enter client details

@@ -25,6 +25,11 @@ $results = mysqli_query($conn, $query2);
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
+
     <title>Add Properties</title>
 </head>
 <body>
@@ -64,7 +69,17 @@ $results = mysqli_query($conn, $query2);
     </div>
 </nav>
 <div class="container-fluid">
-
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="edit-properties.php">Properties</a></li>
+                    <li class="breadcrumb-item active">Add Property</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <form method="POST" Action="properties.php" enctype="multipart/form-data" >
         <p>Please enter your property details below </p>
         <div>

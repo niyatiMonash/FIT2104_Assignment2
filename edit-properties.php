@@ -21,6 +21,10 @@ $result = mysqli_query($conn, $query);
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 
 </head>
@@ -61,8 +65,18 @@ $result = mysqli_query($conn, $query);
     </div>
 </nav>
 <h2>Properties</h2>
+<div class="grid second-nav">
+    <div class="column-xs-12">
+        <nav>
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                <li class="breadcrumb-item">Properties</a></li>
+            </ol>
+        </nav>
+    </div>
+</div>
 
-<a role="button" href="add-properties.php" class="btn btn-outline-primary">Add Property</a>
+<a role="button" href="add-properties.php" class="btn btn-outline-primary float-right">Add Property</a>
 <table class="table table-striped">
     <thead>
     <tr>

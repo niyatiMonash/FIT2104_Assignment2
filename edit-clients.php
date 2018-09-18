@@ -19,6 +19,10 @@ $result = mysqli_query($conn, $query);
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body class="container-fluid">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -56,55 +60,68 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 </nav>
-<h2>Clients</h2>
+<div class="container-fluid">
+    <h2>Clients</h2>
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item">Clients</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 
-<a role="button" href="add-clients.html" class="btn btn-outline-primary">Add Clients</a>
-<a role="button" href="pdf-client.php" class="btn btn-outline-primary">Export to .pdf file</a>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">Last Name</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Street</th>
-        <th scope="col">Suburb</th>
-        <th scope="col">State</th>
-        <th scope="col">Postal Code</th>
-        <th scope="col">Email</th>
-        <th scope="col">Mobile</th>
-        <th scope="col">Delete Row</th>
-        <th scope="col">Update Row</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    while ($row = $result->fetch_array()) {
-        ?>
 
+    <a role="button" href="pdf-client.php" class="btn btn-outline-secondary float-right">Export to .pdf file</a>
+    <a role="button" href="add-clients.html" class="btn btn-outline-primary float-right">Add Clients</a>
+    <table class="table table-striped">
+        <thead>
         <tr>
-            <td><?php echo $row["client_lname"]; ?></td>
-            <td><?php echo $row["client_fname"]; ?></td>
-            <td><?php echo $row["client_street"]; ?></td>
-            <td><?php echo $row["client_suburb"]; ?></td>
-            <td><?php echo $row["client_state"]; ?></td>
-            <td><?php echo $row["client_pc"]; ?></td>
-            <td><?php echo $row["client_email"]; ?></td>
-            <td><?php echo $row["client_mobile"]; ?></td>
-            <td>
-                <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Delete">Delete</a>
-            </td>
-            <td>
-                <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Update">Update</a>
-            </td>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Street</th>
+            <th scope="col">Suburb</th>
+            <th scope="col">State</th>
+            <th scope="col">Postal Code</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Delete Row</th>
+            <th scope="col">Update Row</th>
         </tr>
+        </thead>
+        <tbody>
         <?php
-    }
-    ?>
-    </tbody>
-</table>
+        while ($row = $result->fetch_array()) {
+            ?>
 
-<button class="btn btn-outline-primary">
-    <a href='display-source.php?filename=edit-clients.php'>Client</a><br/>
-</button>
+            <tr>
+                <td><?php echo $row["client_lname"]; ?></td>
+                <td><?php echo $row["client_fname"]; ?></td>
+                <td><?php echo $row["client_street"]; ?></td>
+                <td><?php echo $row["client_suburb"]; ?></td>
+                <td><?php echo $row["client_state"]; ?></td>
+                <td><?php echo $row["client_pc"]; ?></td>
+                <td><?php echo $row["client_email"]; ?></td>
+                <td><?php echo $row["client_mobile"]; ?></td>
+                <td>
+                    <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Delete">Delete</a>
+                </td>
+                <td>
+                    <a href="update-clients.php?client_id= <?php echo $row["client_id"]; ?> &Action=Update">Update</a>
+                </td>
+            </tr>
+            <?php
+        }
+        ?>
+        </tbody>
+    </table>
+
+    <button class="btn btn-outline-primary">
+        <a href='display-source.php?filename=edit-clients.php'>Client</a><br/>
+    </button>
+</div>
 </body>
 
 <!-- Footer to be used in all main pages-->
