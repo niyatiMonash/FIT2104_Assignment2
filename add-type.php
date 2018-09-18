@@ -52,6 +52,9 @@
         </div>
     </div>
 </nav>
+<div class="alert alert-info" role="alert">
+    Please enter type details
+</div>
 <div class="container-fluid">
     <p>Add a property type </p>
     <form method="post" Action="types.php">
@@ -63,7 +66,7 @@
             </div>
         </div>
 
-        <button type="Submit" Value="Submit" class="btn btn-primary">Submit</button>
+        <button type="Submit" Value="Submit" class="btn btn-primary">Add Type</button>
         <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
     </form>
 </div>

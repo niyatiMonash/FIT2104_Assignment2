@@ -56,13 +56,17 @@ $query = "SELECT client_id, client_email, client_fname from client where client_
 $result = mysqli_query($conn, $query);
 
 ?>
+<h2>Send Email</h2>
+<br/>
+<br/>
 
 <div class="container-fluid">
     <?php
     if (!isset($_POST["check"])) {
         ?>
+        <h4>Select Clients:</h4>
         <form method="post" action="send-email.php">
-            <table>
+            <table cellpadding="8">
                 <?php
                 while ($row = $result->fetch_array()) {
                     ?>
@@ -77,10 +81,13 @@ $result = mysqli_query($conn, $query);
                 }
                 ?>
             </table>
+        <br/>
+            <br/>
+
             <table>
                 Subject: <input type="text" name="subject" class="form-control" required
                                 onInvalid="this.setCustomValidity('Please enter the subject.')"
-                                onInput="this.setCustomValidity('')"> <br/>
+                                onInput="this.setCustomValidity('')"> <br/><br/>
                 Message: <input type="text" name="message" class="form-control" required
                                    onInvalid="this.setCustomValidity('Please enter your message.')"
                                    onInput="this.setCustomValidity('')"><br/>

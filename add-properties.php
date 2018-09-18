@@ -16,7 +16,7 @@ $results = mysqli_query($conn, $query2);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,6 +68,9 @@ $results = mysqli_query($conn, $query2);
         </div>
     </div>
 </nav>
+<div class="alert alert-info" role="alert">
+    Please enter property details
+</div>
 <div class="container-fluid">
     <div class="grid second-nav">
         <div class="column-xs-12">
@@ -147,7 +150,7 @@ $results = mysqli_query($conn, $query2);
             <input type="file" name="fileToUpload" id="fileToUpload">
             <div id="thumbnail"></div>
         </div>
-        <button type="submit" Value="Submit" class="btn btn-primary">Submit</button>
+        <button type="submit" Value="Submit" class="btn btn-primary">Add Property</button>
         <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
     </form>
 

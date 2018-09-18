@@ -53,7 +53,9 @@
         </div>
     </div>
 </nav>
-
+<div class="alert alert-info" role="alert">
+    Please enter feature details
+</div>
 <form method="post" Action="feature.php">
     <div class="form-group">
         <p>Add a property feature </p>
@@ -62,8 +64,8 @@
                          onInput="this.setCustomValidity('')">
     </div>
 
-    <input type="Submit" Value="Submit">
-    <input type="Reset" Value="Clear Form Fields">
+    <input type="Submit" Value="Add Feature" class="btn btn-primary">
+    <input type="Reset" Value="Clear Form Fields"class="btn btn-secondary">
 </form>
 </body>
 <!-- Footer to be used in all main pages-->

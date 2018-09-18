@@ -9,10 +9,7 @@ include("session.php");
 //connection statement
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM property p 
-          join client c on p.seller_id=c.client_id 
-          join type t on p.property_type=t.type_id WHERE p.property_id =" . $_GET["property_id"];
-
+$query = "SELECT * FROM property p join client c on p.seller_id=c.client_id join type t on p.property_type=t.type_id WHERE p.property_id =" . $_GET["property_id"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 $query2 ="Select * from authenticate";
@@ -106,8 +103,6 @@ if (empty($_POST["check"])) {
         <p> <h4><u>Contact Agent:</u></h4></p><br/>
         <h4><?php echo $rows["given_name"];?> <?php echo $rows["family_name"];?></h4></br>
         <button class="btn btn-info btn-lg">Email Agent</button>
-
-
 
     </div>
 
@@ -234,7 +229,7 @@ if (empty($_POST["check"])) {
     </div>
 </div>
 </div>
-<button class="btn btn-outline-primary">
+<button class="btn btn-outline-primary" >
     <a href='display-source.php?filename=view-property.php'>Property Feature</a><br/>
 </button>
 </body>

@@ -63,32 +63,39 @@ if (empty($_POST["check"])) {
         </div>
     </div>
 </nav>
-<div class="container-fluid">
-    <div class="grid second-nav">
-        <div class="column-xs-12">
-            <nav>
-                <ol class="breadcrumb-list">
-                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
-                    <li class="breadcrumb-item">Amend Multiple Property Price</a></li>
-                </ol>
-            </nav>
-        </div>
+<h2>Property Prices</h2>
+<div class="grid second-nav">
+    <div class="column-xs-12">
+        <nav>
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                <li class="breadcrumb-item">Amend Multiple Property Price</a></li>
+            </ol>
+        </nav>
     </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Property ID</th>
-            <th scope="col">Address</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Listing Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <form method="post" action="multiple-properties.php">
-            <?php
-            while ($row = $result->fetch_assoc()) {
-                ?>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Property ID</th>
+        <th scope="col">Address</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Listing Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form method="post" action="multiple-properties.php">
+        <?php
+        while ($row = $result->fetch_assoc()) {
+            ?>
 
+            <tr>
+                <td><?php echo $row["property_id"] ?></td>
+                <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
+                <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
+                <td><input type="text" size="20" name="<?php echo $row["property_id"]; ?>"
+                           value="$<?php echo $row["listing_price"]; ?>"></td>
+            </tr>
                 <tr>
                     <td><?php echo $row["property_id"] ?></td>
                     <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
@@ -97,19 +104,19 @@ if (empty($_POST["check"])) {
                                value="<?php echo $row["listing_price"]; ?>"></td>
                 </tr>
 
-                <?php
-            } ?>
-        </tbody>
-    </table>
-    <input type="submit" value="Update" class="btn btn-primary"/>
-    </form>
-    <?php } else {
-        ?>
-        <input type="button" value="Return to List" OnClick="window.location='multiple-properties.php'"><br/>
-        <?php
-        foreach ($_POST["check"] as $property_id) {
-            $query2 = "UPDATE property set listing_price = $_POST[$property_id] WHERE property_id = $property_id";
-            $conn->query($query2);
+            <?php
+        } ?>
+    </tbody>
+</table>
+<input type="submit" value="Update Prices" class="btn btn-primary"/>
+</form>
+<?php } else {
+    ?>
+    <input type="button" value="Return to List" OnClick="window.location='multiple-properties.php'"><br/>
+    <?php
+    foreach ($_POST["check"] as $property_id) {
+        $query2 = "UPDATE property set listing_price = $_POST[$property_id] WHERE property_id = $property_id";
+        $conn->query($query2);
 
             echo "Property number '$property_id' has been successfully updated<br/>";
 

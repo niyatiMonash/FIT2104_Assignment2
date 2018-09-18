@@ -73,28 +73,27 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 
-
-    <a role="button" href="pdf-client.php" class="btn btn-outline-secondary float-right">Export to .pdf file</a>
-    <a role="button" href="add-clients.html" class="btn btn-outline-primary float-right">Add Clients</a>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Last Name</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Street</th>
-            <th scope="col">Suburb</th>
-            <th scope="col">State</th>
-            <th scope="col">Postal Code</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Delete Row</th>
-            <th scope="col">Update Row</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        while ($row = $result->fetch_array()) {
-            ?>
+<a role="button" href="add-clients.php" class="btn btn-outline-primary">Add Clients</a>
+<a role="button" href="pdf-client.php" class="btn btn-outline-primary">Export to .pdf file</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Street</th>
+        <th scope="col">Suburb</th>
+        <th scope="col">State</th>
+        <th scope="col">Postal Code</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Delete Row</th>
+        <th scope="col">Update Row</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    while ($row = $result->fetch_array()) {
+        ?>
 
             <tr>
                 <td><?php echo $row["client_lname"]; ?></td>

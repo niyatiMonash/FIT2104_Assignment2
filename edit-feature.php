@@ -60,7 +60,7 @@ $result = mysqli_query($conn, $query);
 </nav>
 <h2>Property Features</h2>
 
-<a role="button" href="add-feature.html" class="btn btn-outline-primary">Add Feature</a>
+<a role="button" href="add-feature.php" class="btn btn-outline-primary">Add Feature</a>
 
 <table class="table table-striped">
     <thead>

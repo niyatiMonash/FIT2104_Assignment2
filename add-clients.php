@@ -110,7 +110,7 @@
         <div class="form-group">
             <p> Subscribe to our mailing list?</p>
             <div class="form-check form-check-inline">
-                <input type="radio" name="client_mailinglist" value="Y" checked class="form-check-input">
+                <input type="radio" name="client_mailinglist" value="Y" checked class="form-check-input" >
                 <label class="form-check-label">Yes</label>
             </div>
             <div class="form-check form-check-inline">
@@ -119,7 +119,7 @@
             </div>
         </div>
 
-        <button type="Submit" Value="Submit" class="btn btn-primary">Submit</button>
+        <button type="Submit" Value="Submit" class="btn btn-primary">Add Client</button>
         <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
     </form>
 </div>

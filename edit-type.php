@@ -61,7 +61,7 @@ $result = mysqli_query($conn, $query);
 
 <h2>Property Types</h2>
 
-<a role="button" href="add-type.html" class="btn btn-outline-primary">Add Type</a>
+<a role="button" href="add-type.php" class="btn btn-outline-primary">Add Type</a>
 
 <table class="table table-striped">
     <thead>
