@@ -36,6 +36,9 @@
                     <a class="nav-link" href="send-email.php">Send Email</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="property-search.php">Search Property</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
@@ -51,6 +54,7 @@
  * Time: 11:58 AM
  */
 include("connection.php");
+include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT client_id, client_email, client_fname from client where client_mailinglist='Y'";
 $result = mysqli_query($conn, $query);

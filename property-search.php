@@ -1,3 +1,7 @@
+
+<?php
+include("session.php");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -43,7 +47,10 @@
                     <a class="nav-link" href="send-email.php">Send Email</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="property-search.php">Search Property</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Logout.php">Logout</a>
                 </li>
             </ul>
         </div>
