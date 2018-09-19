@@ -170,6 +170,22 @@ OnClick='window.location=\"edit-properties.php\"'>";
                            value="<?php echo $row["property_pc"]; ?>">
                 </div>
                 <div class="form-group">
+                    <label>Select Property Type:</label><br/>
+                    <select name="property_type" class="form-control">
+                        <option value="">Select Type</option>
+                        <?php
+                        while ($row2 = $results->fetch_array()) {
+                            ?>
+                            <option name="property_type"
+                                    value="<?php echo $row2["type_id"]; ?>"><?php echo $row2["type_name"]; ?>
+
+                            </option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label>Listing Date:</label>
                     <input type="date" name="listing_date" size="30" class="form-control"
                            value="<?php echo $row["listing_date"]; ?>">
@@ -182,20 +198,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
                            value="<?php echo $row["listing_price"]; ?>">
                     </input>
                 </div>
-                <div class="form-group">
-                    <label>Select Property Type:</label>
-                    <select>
-                        <?php
-                        while ($row2 = $results->fetch_array()) {
-                            ?>
-                            <option name="property_type"
-                                    value="<?php echo $row2["type_id"]; ?>"><?php echo $row2["type_name"]; ?>
-                            </option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
+
                 <input type="submit" value="Update Property" class="btn btn-primary" onclick="val()">
                 <input type="button" value="Return to List" class="btn btn-secondary"
                        OnClick="window.location='edit-properties.php'">

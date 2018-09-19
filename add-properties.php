@@ -107,7 +107,7 @@ $results = mysqli_query($conn, $query2);
         <div>
 
             Select Seller<br/>
-            <select name="seller_id" >
+            <select name="seller_id" class="form-control">
                 <option value="">Select Seller</option>
                 <?php
                 while ($row = $results->fetch_array()) {
@@ -138,7 +138,7 @@ $results = mysqli_query($conn, $query2);
         <div>
 
             Select Property Type<br/>
-            <select name="property_type">
+            <select name="property_type" class="form-control">
                 <option value="">Select Type </option>
                 <?php
                 while ($row = $result->fetch_array()) {
