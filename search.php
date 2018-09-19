@@ -60,6 +60,7 @@ if (mysqli_num_rows($result) > 0) {
         </td>
         <?php
     }
+    echo $output;
 } else {
     echo "No results found";
 }
