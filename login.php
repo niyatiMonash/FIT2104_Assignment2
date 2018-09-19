@@ -71,10 +71,6 @@
                 }
             }
             ?>
-
-
-            <div style="font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?> </div>
-            <input type="button" value="Go Back"/>
         </div>
 
     </div>
