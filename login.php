@@ -31,8 +31,12 @@
         <div style="margin:30px" align="center">
 
             <form action="" method="post">
-                <label>Username : </label><input type="text" name="uname" class="box"/><br/><br/>
-                <label>Password : </label><input type="password" name="pword" class="box"/><br/><br/>
+                <label>Username : </label><input type="text" name="uname" class="box" required
+                                                 onInvalid="this.setCustomValidity('Please enter your username.')"
+                                                 onInput="this.setCustomValidity('')"/><br/><br/>
+                <label>Password : </label><input type="password" name="pword" class="box" required
+                                                 onInvalid="this.setCustomValidity('Please enter your password.')"
+                                                 onInput="this.setCustomValidity('')"/><br/><br/>
                 <input type="submit" value=" Submit "/><br/>
             </form>
 
