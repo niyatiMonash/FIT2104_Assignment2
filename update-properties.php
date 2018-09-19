@@ -158,31 +158,34 @@ OnClick='window.location=\"edit-properties.php\"'>";
                     <input type="text" name="property_pc" size="30" class="form-control"
                            value="<?php echo $row["property_pc"]; ?>">
                 </div>
-                <div>
+                <div class="form-group">
+                    <label>Listing Date:</label>
+                    <input type="date" name="listing_date" size="30" class="form-control"
+                           value="<?php echo $row["listing_date"]; ?>">
+                    </input>
+
+                </div>
+                <div class="form-group">
+                    <label>Listing Price:</label>
+                    <input type="number" name="listing_price" size="30" class="form-control"
+                           value="<?php echo $row["listing_price"]; ?>">
+                    </input>
+                </div>
+                <div class="form-group">
                     <label>Select Property Type:</label>
-                    <select class="form-control">
+                    <select>
                         <?php
-                        while ($row = $results->fetch_array()) {
+                        while ($row2 = $results->fetch_array()) {
                             ?>
                             <option name="property_type"
-                                    value="<?php echo $row["type_id"]; ?>"><?php echo $row["type_name"];
-                                ?>
+                                    value="<?php echo $row2["type_id"]; ?>"><?php echo $row2["type_name"]; ?>
                             </option>
                             <?php
                         }
                         ?>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Listing Date:</label>
-                    <input type="date" name="listing_date" size="30" class="form-control"
-                           value="<?php echo $row["listing_date"]; ?>">
-                </div>
-                <div class="form-group">
-                    <label>Listing Price:</label>
-                    <input type="number" name="listing_price" size="30" class="form-control"
-                           value="<?php echo $row["listing_price"]; ?>">
-                </div>
+
                 <input type="submit" value="Update Property" class="btn btn-primary">
                 <input type="button" value="Return to List" class="btn btn-secondary"
                        OnClick="window.location='edit-properties.php'">
