@@ -9,6 +9,7 @@ include("connection.php");
 $conn = new mysqli($servername, $username, $password, $dbname);
 $output = '';
 
+
 if (isset($_POST["query"])) {
     $search = mysqli_real_escape_string($conn, $_POST["query"]);
     $sql = "select * from property p join type t on p.property_type = t.type_id 

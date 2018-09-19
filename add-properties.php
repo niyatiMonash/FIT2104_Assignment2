@@ -71,6 +71,22 @@ $results = mysqli_query($conn, $query2);
         </div>
     </div>
 </nav>
+<script type="text/javascript">
+    function val() {
+        if (form.seller_id.selectedIndex == 0){
+            alert('Please select a Seller');
+            form.seller_id.focus();
+            return false;
+        }
+        if (form.property_type.selectedIndex==0) {
+            alert('Please select a Property Type');
+            form.seller_id.focus();
+            return false;
+
+        }
+        return true;
+    }
+</script>
 <div class="alert alert-info" role="alert">
     Please enter property details
 </div>
@@ -86,13 +102,13 @@ $results = mysqli_query($conn, $query2);
             </nav>
         </div>
     </div>
-    <form method="POST" Action="properties.php" enctype="multipart/form-data" >
+    <form name="form" method="POST" Action="properties.php" enctype="multipart/form-data" >
         <p>Please enter your property details below </p>
         <div>
 
             Select Seller<br/>
-            <select name="seller_id">
-                <option>Select Seller</option>
+            <select name="seller_id" >
+                <option value="">Select Seller</option>
                 <?php
                 while ($row = $results->fetch_array()) {
                     ?>
@@ -123,7 +139,7 @@ $results = mysqli_query($conn, $query2);
 
             Select Property Type<br/>
             <select name="property_type">
-                <option>Select Property Type</option>
+                <option value="">Select Type </option>
                 <?php
                 while ($row = $result->fetch_array()) {
                     ?>
@@ -153,7 +169,7 @@ $results = mysqli_query($conn, $query2);
             <input type="file" name="fileToUpload" id="fileToUpload">
             <div id="thumbnail"></div>
         </div>
-        <button type="submit" Value="Submit" class="btn btn-primary">Add Property</button>
+        <button type="submit" Value="Submit" class="btn btn-primary" onclick="return val();">Add Property</button>
         <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
     </form>
 
