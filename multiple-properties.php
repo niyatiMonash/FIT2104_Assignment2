@@ -121,10 +121,11 @@ if (empty($_POST["check"])) {
     ?>
 
 </div>
+
+</body>
 <button class="btn btn-outline-primary">
     <a href='display-source.php?filename=multiple-properties.php'>Multiple Property</a><br/>
 </button>
-</body>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">

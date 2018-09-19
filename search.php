@@ -20,7 +20,9 @@ if (isset($_POST["query"])) {
     $sql = "select * from property p join type t on p.property_type = t.type_id 
             order by property_id";
 }
+
 $result = mysqli_query($conn, $sql);
+
 if (mysqli_num_rows($result) > 0) {
     ?>
 

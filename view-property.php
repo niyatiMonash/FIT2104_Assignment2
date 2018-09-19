@@ -6,15 +6,14 @@
  * Time: 10:05 AM
  */
 include("session.php");
-//connection statement
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM property p join client c on p.seller_id=c.client_id join type t on p.property_type=t.type_id WHERE p.property_id =" . $_GET["property_id"];
+$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id";
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 $query2 = "Select * from authenticate";
-$results = $conn->query($query2);
-$rows = $results->fetch_assoc();
+$result2 = $conn->query($query2);
+$row2 = $result2->fetch_assoc();
 
 if (empty($_POST["check"])) {
 ?>
@@ -107,7 +106,7 @@ if (empty($_POST["check"])) {
         <div class="col-sm" align="center">
             <!--        class="agent-details"-->
             <p> <h4><u>Contact Agent:</u></h4></p><br/>
-            <h4><?php echo $rows["given_name"]; ?><?php echo $rows["family_name"]; ?></h4></br>
+            <h4><?php echo $row2["given_name"]; ?><?php echo $row2["family_name"]; ?></h4></br>
             <button class="btn btn-info btn-lg">Email Agent</button>
 
         </div>
@@ -137,28 +136,27 @@ if (empty($_POST["check"])) {
                 </thead>
                 <tbody>
                 <?php
-                $query2 = "SELECT * FROM feature ORDER BY feature_name";
+                $query3 = "SELECT * FROM feature ORDER BY feature_name";
+                $result3 = $conn->query($query3);
 
-                $result = $conn->query($query2);
-                while ($row = $result->fetch_assoc()) {
-                    $query3 = "SELECT * FROM property_feature 
-                               WHERE property_id =" . $_GET["property_id"] . " AND feature_id =" . $row["feature_id"];
-                    $result2 = $conn->query($query3);
-                    $pf = $result2->fetch_assoc();
+                while ( $row3 = $result3->fetch_assoc()) {
+                    $query4 = "SELECT * FROM property_feature WHERE property_id =" . $_GET["property_id"] . " AND feature_id =" . $row3["feature_id"];
+                    $result4 = $conn->query($query4);
+                    $pf = $result4->fetch_assoc();
                     ?>
-                    <td><?php echo $row["feature_name"] ?></td>
+                    <td><?php echo $row3["feature_name"] ?></td>
                     <td><input type="text" name="feature_desc" class="form-control"
                                value="<?php echo $pf["feature_desc"] ?>"</td>
                     <?php
                     if (isset($pf["feature_desc"])) {
                         ?>
-                        <td align="center"><input type="checkbox" name="check" checked
+                        <td align="center"><input type="checkbox" name="check[]" checked
                                                   value="<?php echo $row["property_id"]; ?>"></td>
 
                         <?php
                     } else {
                         ?>
-                        <td align="center"><input type="checkbox" name="check"
+                        <td align="center"><input type="checkbox" name="check[]"
                                                   value="<?php echo $row["property_id"]; ?>"></td>
                         <?php
                     }
@@ -170,20 +168,23 @@ if (empty($_POST["check"])) {
                 </tbody>
             </table>
             </br>
-            <input type="submit" value="Update" class="btn btn-primary"/>
-            <!--            <input type="button" value="Delete" class="btn btn-primary" OnClick="confirm_delete();">-->
+            <input type="submit" value="Update Feature/s" class="btn btn-primary"/>
         </form>
         <?php
-        } else
+        } else {
             foreach ($_POST["check"] as $feature_id) {
-                $query2 = "UPDATE property_feature set feature_id = $_POST[feature_id] WHERE feature_id = $feature_id";
-                $conn->query($query2);
+                $query5 = "UPDATE property_feature set feature_desc='$_POST[feature_desc]' WHERE feature_id = $feature_id";
+                $conn->query($query5);
 
-                echo "Feature number '$feature_id' has been successfully updated<br/>";
+
 
             }
+            echo "Property number '$feature_id' has successfully updated features<br/>";?>
+            <input type="button" value="Return to List" class="btn btn-secondary" OnClick="window.location='view-property.php'"><br/>
+        <?php }
         ?>
     </div>
+
     <h4>Similar Properties:</h4>
     <div class="row">
 
@@ -234,9 +235,8 @@ if (empty($_POST["check"])) {
         </div>
     </div>
     <button class="btn btn-outline-primary">
-        <a href='display-source.php?filename=view-property.php'>Property Feature</a><br/>
+        <a href='display-source.php?filename=view-property.php'>View Property</a><br/>
     </button>
-</div>
 </br>
 </div>
 
