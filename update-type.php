@@ -5,6 +5,10 @@
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 
 <body>
@@ -117,7 +121,18 @@ break;
 case "Update": ?>
 
      <form method="post" action="update-type.php?type_id=<?php echo $_GET["type_id"]; ?>&Action=ConfirmUpdate">
-         <h1>Property Type details amendment</h1><br/>
+         <h2>Update Property Type</h2>
+         <div class="grid second-nav">
+             <div class="column-xs-12">
+                 <nav>
+                     <ol class="breadcrumb-list">
+                         <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                         <li class="breadcrumb-item"><a href="edit-type.php">Property Type</a></li>
+                         <li class="breadcrumb-item active">Update Property Type</li>
+                     </ol>
+                 </nav>
+             </div>
+         </div>
          <table align="center" cellpadding="3">
              <div>
                  Type ID:

@@ -19,8 +19,9 @@ $result = mysqli_query($conn, $query);
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
-</head>
-
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body class="container-fluid">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -64,7 +65,18 @@ $result = mysqli_query($conn, $query);
 
 <h2>Property Types</h2>
 
-<a role="button" href="add-type.php" class="btn btn-outline-primary">Add Type</a>
+<div class="grid second-nav">
+    <div class="column-xs-12">
+        <nav>
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                <li class="breadcrumb-item">Property Types</a></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<a role="button" href="add-type.php" class="btn btn-outline-primary float-right">Add Type</a>
 
 <table class="table table-striped">
     <thead>

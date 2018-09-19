@@ -19,6 +19,10 @@ $result = mysqli_query($conn, $query);
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 
 </head>
@@ -63,7 +67,17 @@ $result = mysqli_query($conn, $query);
 </nav>
 <h2>Property Features</h2>
 
-<a role="button" href="add-feature.php" class="btn btn-outline-primary">Add Feature</a>
+<div class="grid second-nav">
+    <div class="column-xs-12">
+        <nav>
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                <li class="breadcrumb-item active">Property Feature</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<a role="button" href="add-feature.php" class="btn btn-outline-primary float-right">Add Feature</a>
 
 <table class="table table-striped">
     <thead>

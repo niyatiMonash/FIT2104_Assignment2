@@ -15,6 +15,10 @@
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -59,7 +63,18 @@
     Please enter type details
 </div>
 <div class="container-fluid">
-    <p>Add a property type </p>
+    <h2>Add a property type </h2>
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="edit-type.php">Property Type</a></li>
+                    <li class="breadcrumb-item active">Add Property Type</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <form method="post" Action="types.php">
         <div class="form-row">
             <div class="form-group col-md-6">

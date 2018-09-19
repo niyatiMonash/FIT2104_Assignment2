@@ -5,6 +5,9 @@
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -60,11 +63,18 @@ $query = "SELECT client_id, client_email, client_fname from client where client_
 $result = mysqli_query($conn, $query);
 
 ?>
-<h2>Send Email</h2>
-<br/>
-<br/>
-
 <div class="container-fluid">
+    <h2>Send Email</h2>
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item">Send Email</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <?php
     if (!isset($_POST["check"])) {
         ?>
@@ -77,15 +87,13 @@ $result = mysqli_query($conn, $query);
                     <tr>
                         <td>
                             <input type="checkbox" name="check[]" value="<?php echo $row["client_email"]; ?>">
-                            <?php echo $row["client_email"]; ?><br/>
-
+                            <?php echo $row["client_email"]; ?>
                         </td>
                     </tr>
                     <?php
                 }
                 ?>
             </table>
-        <br/>
             <br/>
 
             <table>
@@ -93,8 +101,8 @@ $result = mysqli_query($conn, $query);
                                 onInvalid="this.setCustomValidity('Please enter the subject.')"
                                 onInput="this.setCustomValidity('')"> <br/><br/>
                 Message: <input type="text" name="message" class="form-control" required
-                                   onInvalid="this.setCustomValidity('Please enter your message.')"
-                                   onInput="this.setCustomValidity('')"><br/>
+                                onInvalid="this.setCustomValidity('Please enter your message.')"
+                                onInput="this.setCustomValidity('')"><br/>
                 <td>
                     <button type="submit" value="Send Email" class="btn btn-primary">Send Email</button>
                     <button type="reset" value="clear" class="btn btn-secondary">Clear</button>
@@ -112,7 +120,7 @@ $result = mysqli_query($conn, $query);
                 $msg = $_POST["message"];
                 $subject = $_POST["subject"];
                 if (mail($to, $subject, $msg, $from)) {
-                    echo '<div class="alert alert-success">Email has been sent to </div>';
+                    echo '<div class="alert alert-success">Email has been sent </div>';
                 } else {
                     echo '<div class="alert alert-danger">Sorry there was an error sending your Mail. Please try again later</div>';
                 }

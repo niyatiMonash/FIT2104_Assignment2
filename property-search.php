@@ -7,6 +7,7 @@ include("session.php");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <style>
     <?php include('stylesheets/property-search.css'); ?>
+    <?php include('stylesheets/bread-crumbs.css'); ?>
 </style>
 <head>
     <title>Search</title>
@@ -58,6 +59,16 @@ include("session.php");
 </nav>
 <div class="container-fluid">
     <h2> Search Properties</h2>
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item">Property Search</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <form action="search.php" method="POST">
         <div class="input-group mb-3">
 

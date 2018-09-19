@@ -5,6 +5,10 @@
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -116,7 +120,18 @@ OnClick='window.location=\"edit-feature.php\"'>";
 
     case "Update": ?>
         <form method="post" action="update-feature.php?feature_id=<?php echo $_GET["feature_id"]; ?>&Action=ConfirmUpdate">
-            <h1>Property Feature Amendment</h1><br/>
+            <h2>Update Property Feature</h2>
+            <div class="grid second-nav">
+                <div class="column-xs-12">
+                    <nav>
+                        <ol class="breadcrumb-list">
+                            <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="edit-feature.php">Property Feature</a></li>
+                            <li class="breadcrumb-item active">Update Property Feature</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
             <table align="center" cellpadding="3">
                 <div>
                     Feature Id:
