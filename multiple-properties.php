@@ -91,14 +91,6 @@ if (empty($_POST["check"])) {
         <?php
         while ($row = $result->fetch_assoc()) {
             ?>
-
-            <tr>
-                <td><?php echo $row["property_id"] ?></td>
-                <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
-                <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
-                <td><input type="text" size="20" name="<?php echo $row["property_id"]; ?>"
-                           value="$<?php echo $row["listing_price"]; ?>"></td>
-            </tr>
                 <tr>
                     <td><?php echo $row["property_id"] ?></td>
                     <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
@@ -127,10 +119,11 @@ if (empty($_POST["check"])) {
     }
 
     ?>
-    <button class="btn btn-outline-primary">
-        <a href='display-source.php?filename=multiple-properties.php'>Multiple Property</a><br/>
-    </button>
+
 </div>
+<button class="btn btn-outline-primary">
+    <a href='display-source.php?filename=multiple-properties.php'>Multiple Property</a><br/>
+</button>
 </body>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
