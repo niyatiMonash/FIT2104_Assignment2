@@ -49,6 +49,17 @@
         </div>
     </div>
 </nav>
+<script type="text/javascript">
+    function val() {
+        if (form.property_type.selectedIndex==0) {
+            alert('Please select a Property Type');
+            form.seller_id.focus();
+            return false;
+
+        }
+        return true;
+    }
+</script>
 <div class="container-fluid">
     <div class="grid second-nav">
         <div class="column-xs-12">
@@ -130,7 +141,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
     break;
 
     case "Update": ?>
-        <form method="post"
+        <form name="form" method="post"
               action="update-properties.php?property_id=<?php echo $_GET["property_id"]; ?>&Action=ConfirmUpdate">
             <h1>Property Amendment</h1><br/>
             <table>
@@ -185,8 +196,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
                         ?>
                     </select>
                 </div>
-
-                <input type="submit" value="Update Property" class="btn btn-primary">
+                <input type="submit" value="Update Property" class="btn btn-primary" onclick="val()">
                 <input type="button" value="Return to List" class="btn btn-secondary"
                        OnClick="window.location='edit-properties.php'">
             </table>
