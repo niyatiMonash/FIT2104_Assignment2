@@ -73,8 +73,8 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 
-<a role="button" href="add-clients.php" class="btn btn-outline-primary">Add Clients</a>
-<a role="button" href="pdf-client.php" class="btn btn-outline-primary">Export to .pdf file</a>
+<a role="button" href="add-clients.php" class="btn btn-outline-primary float-right">Add Clients</a>
+<a role="button" href="pdf-client.php" class="btn btn-outline-primary float-right">Export to .pdf file</a>
 <table class="table table-striped">
     <thead>
     <tr>

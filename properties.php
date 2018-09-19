@@ -1,3 +1,16 @@
+<html>
+<head>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/modern-business.css" rel="stylesheet">
+
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
+</head>
+
 <?php
 /**
  * Created by PhpStorm.
@@ -78,6 +91,8 @@ if (empty($_POST["property_street"])) {
 
 }
 ?>
-<input type="button" value="Return to List"
+<input type="button" value="Return to List" class="btn btn-secondary"
        OnClick="window.location='edit-properties.php'">
 
+
+</html>

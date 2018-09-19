@@ -92,6 +92,7 @@
     $results = $conn->query($query2);
 
 
+
     switch ($_GET["Action"]) {
     case "Delete":
         ?>
@@ -197,6 +198,11 @@ OnClick='window.location=\"edit-properties.php\"'>";
                     <input type="number" name="listing_price" size="30" class="form-control"
                            value="<?php echo $row["listing_price"]; ?>">
                     </input>
+                </div>
+                <div class="form-group">
+                    Select image to upload:
+                    <input type="file" name="fileToUpload" id="fileToUpload" value="<?php echo $row["image_name"];?>>
+                    <div id="thumbnail"></div>
                 </div>
 
                 <input type="submit" value="Update Property" class="btn btn-primary" onclick="val()">
