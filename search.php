@@ -21,11 +21,20 @@ $output = '';
 //
 //}
 if (isset($_POST["query"])) {
-
     $search = mysqli_real_escape_string($conn, $_POST["query"]);
-    $sql = "select * from property p join type t on p.property_type = t.type_id 
-            where p.property_suburb like '%$search%' or 
-            t.type_name like '%$search%'";
+
+    if($_POST["selection"] == "suburb"){
+        $sql = "select * from property p join type t on p.property_type = t.type_id 
+                where p.property_suburb like '%$search%'";
+    }
+    elseif($_POST["selection"] == "type"){
+        $sql = "select * from property p join type t on p.property_type = t.type_id 
+                where t.type_name like '%$search%'";
+    }
+    else{
+        $sql = "select * from property p join type t on p.property_type = t.type_id 
+            order by property_id";
+    }
 
 } else {
     $sql = "select * from property p join type t on p.property_type = t.type_id 

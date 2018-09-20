@@ -109,26 +109,28 @@ include("session.php");
 
         load_data();
 
-        function load_data(query) {
+        function load_data(query, selection) {
             $.ajax({
                 url: "search.php",
                 method: "POST",
-                data: {query: query},
+                data: {query: query, selection: selection},
                 success: function (data) {
                     $('#result').html(data);
                 }
             });
         }
+       var selected =  document.querySelector('input[name="selection"]:checked').value;
 
         $('#search_text').keyup(function () {
             var search = $(this).val();
             if (search != '') {
-                load_data(search);
+                load_data(search, selected);
             }
             else {
                 load_data();
             }
         });
+
     });
 </script>
 </html>

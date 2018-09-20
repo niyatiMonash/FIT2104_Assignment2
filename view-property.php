@@ -85,9 +85,9 @@ if (empty($_POST["check"])) {
         </div>
     </div>
     <!--    display property specific details-->
-    <div>
+    <div class="text-center">
         <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-             class="img-fluid rounded " width="100%" height="50%">
+             class="img-fluid rounded">
     </div>
     </br>
     </br>
