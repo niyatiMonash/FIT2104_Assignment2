@@ -71,13 +71,24 @@ include("session.php");
     </div>
     <form action="search.php" method="POST">
         <div class="input-group mb-3">
-
             <input type="text" name="query" id="search_text" class="form-control"
                    placeholder="Search properties based on suburb and property type"
                    aria-label="Search properties based on suburb and property type" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </div>
+        </div>
+        <div class="form-group">
+            <p> Search By:</p>
+            <div class="form-check form-check-inline">
+                <input type="radio" name="selection" value="suburb" checked class="form-check-input" >
+                <label class="form-check-label">Suburb</label>
+            </div>
+            <div class="form-check form-check-inline" >
+                <input  type="radio" name="selection" value="type" class="form-check-input">
+                <label class="form-check-label">Property Type</label>
+            </div>
+
         </div>
     </form>
     <div id="result"></div>
