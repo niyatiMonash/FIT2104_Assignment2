@@ -134,7 +134,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
         break;
 
     case "Update": ?>
-    <form name="form" method="post"
+    <form name="form" method="post" enctype="multipart/form-data"
           action="update-properties.php?property_id=<?php echo $_GET["property_id"]; ?>&Action=ConfirmUpdate">
         <h1>Property Amendment</h1><br/>
         <table>
@@ -165,7 +165,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
             <div class="form-group">
                 <label>Select Property Type:</label><br/>
                 <select name="property_type" class="form-control">
-                    <option value="<?php echo $row2["property_id"]; ?>"><?php echo $row2["type_name"]; ?></option>
+                    <option value="<?php echo $row2["type_id"]; ?>"><?php echo $row2["type_name"]; ?></option>
                     <?php
                     while ($row3 = $result3->fetch_array()) {
                         ?>
@@ -192,9 +192,15 @@ OnClick='window.location=\"edit-properties.php\"'>";
                 </input>
             </div>
             <div class="form-group">
+                <figure class="figure">
+                    <img src="property_images/<?php echo $row["image_name"]; ?>" class="figure-img img-fluid rounded"
+                         alt="property-image">
+                    <figcaption class="figure-caption"><?php echo $row["image_name"]; ?></figcaption>
+                </figure>
+            </div>
+            <div class="form-group">
                 Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload" value="<?php echo $row["image_name"]; ?>>
-                    <div id=" thumbnail">
+                <input type="file" name="fileToUpload" id="fileToUpload" value="<?php echo $row["image_name"]; ?>">
             </div>
 </div>
 
@@ -207,13 +213,55 @@ OnClick='window.location=\"edit-properties.php\"'>";
 break;
 
 case "ConfirmUpdate":
-    $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
+    $target_dir = "property_images/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $upload_ok = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    if (isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $upload_ok = 1;
+        } else {
+            echo "File is not an image.";
+            $upload_ok = 0;
+        }
+    }
+
+    // Check file size
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $upload_ok = 0;
+    }
+
+    // Allow certain file formats
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif") {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    // Check if $upload_ok is set to 0 by an error
+    if ($upload_ok == 0) {
+        echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            $fileName = $_FILES["fileToUpload"]["name"];
+            $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
                 property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', property_type='$_POST[property_type]',
-                listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]'
+                listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]', image_name='$fileName'
                 WHERE property_id =" . $_GET["property_id"];
-    $result = $conn->query($query);
-    header("Location: edit-properties.php");
-    break;
+            $result = $conn->query($query);
+            echo $query;
+//            header("Location: edit-properties.php");
+//            break;
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+
+
 }
 ?>
 <!-- Footer to be used in all main pages-->
