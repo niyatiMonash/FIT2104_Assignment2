@@ -119,10 +119,11 @@ include("session.php");
                 }
             });
         }
-       var selected =  document.querySelector('input[name="selection"]:checked').value;
+
 
         $('#search_text').keyup(function () {
             var search = $(this).val();
+            var selected =  document.querySelector('input[name="selection"]:checked').value;
             if (search != '') {
                 load_data(search, selected);
             }
