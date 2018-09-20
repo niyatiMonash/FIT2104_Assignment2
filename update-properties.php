@@ -49,17 +49,7 @@
         </div>
     </div>
 </nav>
-<script type="text/javascript">
-    function val() {
-        if (form.property_type.selectedIndex == 0) {
-            alert('Please select a Property Type');
-            form.seller_id.focus();
-            return false;
 
-        }
-        return true;
-    }
-</script>
 <div class="container-fluid">
     <div class="grid second-nav">
         <div class="column-xs-12">
@@ -86,12 +76,12 @@
     include("connection.php");
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     $query = "SELECT * FROM property WHERE property_id =" . $_GET["property_id"];
-    $query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type";
+    $query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type where property_id =" . $_GET["property_id"];
     $query3 = "Select * from type";
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
     $results = $conn->query($query2);
-    $row2 = $results->fetch_array();
+    $row2 = $results->fetch_assoc();
     $result3 = $conn->query($query3);
 
 
@@ -175,7 +165,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
             <div class="form-group">
                 <label>Select Property Type:</label><br/>
                 <select name="property_type" class="form-control">
-                    <option value="<?php echo $row["property_id"]; ?>"><?php echo $row2["type_name"]; ?></option>
+                    <option value="<?php echo $row2["property_id"]; ?>"><?php echo $row2["type_name"]; ?></option>
                     <?php
                     while ($row3 = $result3->fetch_array()) {
                         ?>
