@@ -9,19 +9,12 @@ include("connection.php");
 $conn = new mysqli($servername, $username, $password, $dbname);
 $output = '';
 
-//if (isset($_POST["selection"])) {
-//    $field = mysqli_real_escape_string($_POST['selection']);
-//    $value = mysqli_real_escape_string($_POST['query']);
-//    $sql = "select * from property p join type t on p.property_type = t.type_id
-//            where p.property_suburb like '%$field%' or
-//            t.type_name like '%$field%'";
-//    $dbresult=mysqli_query($sql,$conn);
-//
-//echo $dbresult;
-//
-//}
+
+
 if (isset($_POST["query"])) {
     $search = mysqli_real_escape_string($conn, $_POST["query"]);
+
+    if(!isset($_POST["selection"]) && $_POST["selection"]  == "type") echo "selected";
 
     if($_POST["selection"] == "suburb"){
         $sql = "select * from property p join type t on p.property_type = t.type_id 
