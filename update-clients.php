@@ -46,141 +46,159 @@
     </div>
 </nav>
 <div class="container-fluid">
-<?php
-/**
- * Created by PhpStorm.
- * User: niyatisrinivasan
- * Date: 30/8/18
- * Time: 9:18 PM
- */
-ob_start();
-include("session.php");
-//connection statement
-include("connection.php");
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-$query="SELECT * FROM client WHERE client_id =".$_GET["client_id"];
-$result = $conn->query($query);
-$row = $result->fetch_assoc();
+    <?php
+    /**
+     * Created by PhpStorm.
+     * User: niyatisrinivasan
+     * Date: 30/8/18
+     * Time: 9:18 PM
+     */
+    ob_start();
+    include("session.php");
+    //connection statement
+    include("connection.php");
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    $query = "SELECT * FROM client WHERE client_id =" . $_GET["client_id"];
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
 
 
-switch($_GET["Action"]){
+    switch ($_GET["Action"]) {
     case "Delete":
-?>
+        ?>
 
-    Confirm deletion of the customer record <br />
-<table>
-    <tr>
-        <td><b>Client no:</b></td>
-        <td><?php echo $row["client_id"]; ?></td>
-    </tr>
-    <tr>
-        <td><b>Name:</b></td>
-        <td><?php echo $row["client_lname"]. " ".$row["client_fname"]; ?></td> </tr>
-</table>
-<br/>
-    <table>
-        <tr>
-            <td>
-                <input type="button" value="Confirm" class="btn btn-primary" OnClick="confirm_delete();"></td>
-            <td>
-                <input type="button" value="Cancel" class="btn btn-secondary" OnClick="window.location='edit-clients.php'">
-            </td>
-        </tr>
-    </table>
+        Confirm deletion of the customer record <br/>
+        <table>
+            <tr>
+                <td><b>Client no:</b></td>
+                <td><?php echo $row["client_id"]; ?></td>
+            </tr>
+            <tr>
+                <td><b>Name:</b></td>
+                <td><?php echo $row["client_lname"] . " " . $row["client_fname"]; ?></td>
+            </tr>
+        </table>
+    <br/>
+        <table>
+            <tr>
+                <td>
+                    <input type="button" value="Confirm" class="btn btn-primary" OnClick="confirm_delete();"></td>
+                <td>
+                    <input type="button" value="Cancel" class="btn btn-secondary"
+                           OnClick="window.location='edit-clients.php'">
+                </td>
+            </tr>
+        </table>
 
-        <script language = "javascript">
-            function confirm_delete()
-            {
-                window.location='update-clients.php?client_id= <?php echo $_GET["client_id"];?> &Action=ConfirmDelete';
+        <script language="javascript">
+            function confirm_delete() {
+                window.location = 'update-clients.php?client_id= <?php echo $_GET["client_id"];?> &Action=ConfirmDelete';
             }
         </script>
-<?php
-break;
-
-case "ConfirmDelete":
-$query="DELETE FROM client WHERE client_id =".$_GET["client_id"];
-if($conn->query($query))
-{
-    ?>
-    The following client record has been successfully deleted<br />
-<?php echo "Client no.".$row["client_id"] ." ".$row["client_lname"]." ". $row["client_fname"];
-}
-else{
-    echo "Error deleting customer record";
-}
-echo "<input type='button' value='Return to List'
-OnClick='window.location=\"edit-clients.php\"'>";
-break;
-
-case "Update": ?>
-    <form method="post" action="update-clients.php?client_id=<?php echo $_GET["client_id"]; ?>&Action=ConfirmUpdate">
-        <h1>Customer details amendment</h1><br/>
-        <table align="center" cellpadding="3">
-            <div>
-                Client Id:
-                <?php echo $row["client_id"]; ?>
-            </div>
-            <div class="form-group">
-                <label>First Name:</label>
-                <input type="text" name="client_fname" size="30" class="form-control"
-                       value="<?php echo $row["client_fname"]; ?>">
-            </div>
-            <div class="form-group">
-                <label>Last Name:</label>
-                <input type="text" name="client_lname" size="30" class="form-control"
-                       value="<?php echo $row["client_lname"]; ?>">
-            </div>
-
-            <div class="form-group">
-                <label>Street:</label>
-                <input type="text" name="client_street" size="30" class="form-control" value="<?php echo $row["client_street"]; ?>">
-            </div>
-            <div class="form-group">
-                <label>Suburb:</label>
-                <input type="text" name="client_suburb" size="30" class="form-control" value="<?php echo $row["client_suburb"]; ?>">
-            </div>
-            <div class="form-group">
-                <label>State:</label>
-                <input type="text" name="client_state" size="30" class="form-control" value="<?php echo $row["client_state"]; ?>">
-            </div>
-            <div class="form-group">
-                <label>Postcode:</label>
-                <input type="text" name="client_pc" size="30" class="form-control" value="<?php echo $row["client_pc"]; ?>">
-            </div>
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="text" name="client_email" size="30" class="form-control" value="<?php echo $row["client_email"]; ?>">
-            </div>
-            <div class="form-group">
-                <label>Mobile:</label>
-                <input type="text" name="client_mobile" size="30" class="form-control" value="<?php echo $row["client_mobile"]; ?>">
-            </div>
-            <input type="submit" value="Update Customer" class="btn btn-primary">
-            <input type="button" value="Return to List" class="btn btn-secondary" OnClick="window.location='edit-clients.php'">
-        </table>
-    </form>
     <?php
+    break;
+
+    case "ConfirmDelete":
+    $query = "DELETE FROM client WHERE client_id =" . $_GET["client_id"];
+    if ($conn->query($query))
+    {
+    ?>
+        The following client record has been successfully deleted<br/>
+    <?php echo "Client no." . $row["client_id"] . " " . $row["client_lname"] . " " . $row["client_fname"];
+    }
+    else {
+        echo "Error deleting customer record";
+    }
+    echo "<input type='button' value='Return to List'
+OnClick='window.location=\"edit-clients.php\"'>";
+    break;
+
+    case "Update": ?>
+        <form method="post"
+              action="update-clients.php?client_id=<?php echo $_GET["client_id"]; ?>&Action=ConfirmUpdate">
+            <h1>Customer details amendment</h1><br/>
+            <table align="center" cellpadding="3">
+                <div>
+                    Client Id:
+                    <?php echo $row["client_id"]; ?>
+                </div>
+                <div class="row">
+                <div class="form-group col">
+                    <label>First Name:</label>
+                    <input type="text" name="client_fname" size="30" class="form-control"
+                           value="<?php echo $row["client_fname"]; ?>">
+                </div>
+                <div class="form-group col">
+                    <label>Last Name:</label>
+                    <input type="text" name="client_lname" size="30" class="form-control"
+                           value="<?php echo $row["client_lname"]; ?>">
+                </div>
+                </div>
+                <div class="row">
+                <div class="form-group col">
+                    <label>Street:</label>
+                    <input type="text" name="client_street" size="30" class="form-control"
+                           value="<?php echo $row["client_street"]; ?>">
+                </div>
+                </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label>Suburb:</label>
+                    <input type="text" name="client_suburb" size="30" class="form-control"
+                           value="<?php echo $row["client_suburb"]; ?>">
+                </div>
+
+
+                    <div class="form-group col-2">
+                        <label>State:</label>
+                        <input type="text" name="client_state" size="30" class="form-control"
+                               value="<?php echo $row["client_state"]; ?>">
+                    </div>
+                    <div class="form-group col-2">
+                        <label>Postcode:</label>
+                        <input type="text" name="client_pc" size="30" class="form-control"
+                               value="<?php echo $row["client_pc"]; ?>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label>Email:</label>
+                        <input type="text" name="client_email" size="30" class="form-control"
+                               value="<?php echo $row["client_email"]; ?>">
+                    </div>
+                    <div class="form-group col">
+                        <label>Mobile:</label>
+                        <input type="text" name="client_mobile" size="30" class="form-control"
+                               value="<?php echo $row["client_mobile"]; ?>">
+                    </div>
+                </div>
+                    <input type="submit" value="Update Customer" class="btn btn-primary">
+                    <input type="button" value="Return to List" class="btn btn-secondary"
+                           OnClick="window.location='edit-clients.php'">
+            </table>
+        </form>
+        <?php
         break;
 
-    case "ConfirmUpdate":
-        $query="UPDATE client set client_fname='$_POST[client_fname]',client_lname='$_POST[client_lname]', client_street='$_POST[client_street]', 
+        case "ConfirmUpdate":
+            $query = "UPDATE client set client_fname='$_POST[client_fname]',client_lname='$_POST[client_lname]', client_street='$_POST[client_street]', 
 client_suburb='$_POST[client_suburb]', client_state='$_POST[client_state]', client_pc='$_POST[client_pc]', client_email='$_POST[client_email]', client_mobile='$_POST[client_mobile]'
-                WHERE client_id =".$_GET["client_id"];
-        $result= $conn->query($query);
-        header("Location: edit-clients.php");
-        break;
-}
-?>
-<!-- Footer to be used in all main pages-->
-<footer class="py-5 bg-danger">
-    <div class="container-fluid">
-        <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
-    </div>
-</footer>
+                WHERE client_id =" . $_GET["client_id"];
+            $result = $conn->query($query);
+            header("Location: edit-clients.php");
+            break;
+    }
+    ?>
+    <!-- Footer to be used in all main pages-->
+    <footer class="py-5 bg-danger">
+        <div class="container-fluid">
+            <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
+        </div>
+    </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
