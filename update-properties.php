@@ -76,7 +76,7 @@
     include("connection.php");
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     $query = "SELECT * FROM property WHERE property_id =" . $_GET["property_id"];
-    $query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type where property_id =" . $_GET["property_id"];
+    $query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type where property_id =".$_GET["property_id"];
     $query3 = "Select * from type";
     $result = $conn->query($query);
     $row = $result->fetch_assoc();

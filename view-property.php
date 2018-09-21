@@ -8,15 +8,14 @@
 include("session.php");
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "Select * from property p join type t on p.property_type=t.type_id where property_id=".$_GET["property_id"];
-//$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id";
+$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id";
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 $query2 = "Select * from authenticate";
 $result2 = $conn->query($query2);
 $row2 = $result2->fetch_assoc();
 
-
+if (empty($_POST["check"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,8 +93,6 @@ $row2 = $result2->fetch_assoc();
     </br>
     <div class="row">
         <div class="col-sm">
-            <h4><u>Property Type:</u></h4>
-            <p><?php echo $row["type_name"]; ?></p>
             <!--        class="property-details"-->
             <h4><u>Address:</u></h4>
             <p>
@@ -120,7 +117,7 @@ $row2 = $result2->fetch_assoc();
             <h4><u>Price:</u></h4>
             <p>
             <h1>$<?php echo $row["listing_price"]; ?></h1> </p></br>
-            <p><h5><u>Date listed:</u> <?php echo date("d/m/Y",strtotime($row["listing_date"])); ?></h5></p>
+            <p><h5><u>Date listed:</u> <?php echo $row["listing_date"]; ?></h5></p>
 
         </div>
     </div>
@@ -128,7 +125,7 @@ $row2 = $result2->fetch_assoc();
     </br>
     <div class="property-features">
         <h4><u>Property Features:</u></h4>
-        <form method="post" action="view-property.php">
+        <form method="post" action="view-property.php?property_id=<?php echo $_GET["property_id"]; ?>">
             <table border="1" cellpadding="10">
                 <thead>
                 <tr>
@@ -141,56 +138,50 @@ $row2 = $result2->fetch_assoc();
                 <?php
                 $query3 = "SELECT * FROM feature ORDER BY feature_name";
                 $result3 = $conn->query($query3);
+                $property_id = $_GET["property_id"];
 
-
-                while ($row3 = $result3->fetch_assoc()) {
-                    $query4 = "SELECT feature_desc FROM property_feature WHERE property_id =".$_GET["property_id"]." AND feature_id =" . $row3["feature_id"];
+                while ( $row3 = $result3->fetch_assoc()) {
+                    $query4 = "SELECT * FROM property_feature WHERE property_id =".$property_id." AND feature_id =".$row3["feature_id"];
                     $result4 = $conn->query($query4);
                     $pf = $result4->fetch_assoc();
                     ?>
+                    <tr>
                     <td><?php echo $row3["feature_name"] ?></td>
                     <td><input type="text" name="feature_desc" class="form-control"
                                value="<?php echo $pf["feature_desc"] ?>"</td>
                     <?php
-                    if (isset($pf["feature_desc"])) {
-                        ?>
-                        <td align="center"><input type="checkbox" name="check[]" checked
-                                                  value="<?php echo $row["property_id"]; ?>"></td>
+                        if($pf["feature_desc"] == ''){
+                            ?>
+                            <td align="center"><input type="checkbox" name="check[]" value="<?php echo $row3["feature_id"]; ?>"></td>
+                            <?php
+                        }else{
+                            ?>
+                            <td align="center"><input type="checkbox" name="check[]" checked value="<?php echo $row3["feature_id"]; ?>"></td>
                         <?php
-                    } else {
-                        ?>
-                        <td align="center"><input type="checkbox" name="check[]"
-                                                  value="<?php echo $row["property_id"]; ?>"></td>
-                        <?php
-                    }
-                }
-
-                ?>
-
-
+                            }
+                } ?></tr>
                 </tbody>
             </table>
             </br>
             <input type="submit" value="Update Feature/s" class="btn btn-primary"/>
-            <?php
+        </form>
+        <?php
+        } else {
             if (isset($_POST["submit"])) {
-                $query5 = "Delete * from property_feature WHERE property_id =". $_GET["property_id"];
-                $conn->query($query5);
+                $query5 = "delete * from property_feature where property_id =".$_GET["property_id"];
+                $result5 = $conn->query($query5);
+                foreach ($_POST["check"] as $feature_id) {
+                    $query6 = "Insert into property_feature set feature_desc='$_POST[feature_desc]' WHERE feature_id = $feature_id";
+                    $conn->query($query6);
+                    echo "Property number '$feature_id' has successfully updated features<br/>";
+                }
 
-                $featuredesc = "SELECT feature_desc FROM property_feature WHERE property_id =" . $_GET["property_id"] . " AND feature_id =" . $row3["feature_id"];
-                $x = $conn->query($featuredesc);
-                $y = $x->fetch_array();
-                $featureid = "SELECT feature_id FROM property_feature WHERE property_id =" . $_GET["property_id"] . " AND feature_id =" . $row3["feature_id"];
-                $a = $conn->query($featureid);
-                $b = $a->fetch_array();
-                $query6 = "insert into property_feature values ('$_GET[property_id]', '$b[feature_id]', '$y[feature_desc]' )";
-                $conn->query($query6);
-                echo $query6;
             }
 
             ?>
-        </form>
-
+            <input type="button" value="Return to List" class="btn btn-secondary" OnClick="window.location='view-property.php'"><br/>
+        <?php }
+        ?>
     </div>
 
     <h4>Similar Properties:</h4>
@@ -245,7 +236,7 @@ $row2 = $result2->fetch_assoc();
     <button class="btn btn-outline-primary">
         <a href='display-source.php?filename=view-property.php'>View Property</a><br/>
     </button>
-    </br>
+</br>
 </div>
 
 </body>
