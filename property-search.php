@@ -73,8 +73,8 @@ include("session.php");
     <form action="search.php" method="POST">
         <div class="input-group mb-3">
             <input type="text" name="query" id="search_text" class="form-control"
-                   placeholder="Search properties based on suburb and property type"
-                   aria-label="Search properties based on suburb and property type" aria-describedby="basic-addon2">
+                   placeholder="Search properties based on suburb or property type"
+                   aria-label="Search properties based on suburb or property type" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </div>
