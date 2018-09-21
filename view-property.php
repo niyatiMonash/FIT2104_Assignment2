@@ -120,7 +120,7 @@ $row2 = $result2->fetch_assoc();
             <h4><u>Price:</u></h4>
             <p>
             <h1>$<?php echo $row["listing_price"]; ?></h1> </p></br>
-            <p><h5><u>Date listed:</u> <?php echo $row["listing_date"]; ?></h5></p>
+            <p><h5><u>Date listed:</u> <?php echo date("d/m/Y",strtotime($row["listing_date"])); ?></h5></p>
 
         </div>
     </div>

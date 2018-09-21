@@ -109,9 +109,9 @@ $result = mysqli_query($conn, $query);
             <td><?php echo $row["property_street"]."<br/> ".$row["property_suburb"]." ".$row["property_state"]. "<br/>".$row["property_pc"];?></td>
             <td><?php echo $row["type_name"]; ?></td>
             <td><?php echo $row["property_desc"]; ?></td>
-            <td><?php echo $row["listing_date"]; ?></td>
+            <td><?php echo date("d/m/Y",strtotime($row["listing_date"])); ?></td>
             <td>$<?php echo $row["listing_price"]; ?></td>
-            <td><?php echo $row["sale_date"]; ?></td>
+            <td><?php echo date("d/m/Y",strtotime($row["sale_date"])); ?></td>
             <td><?php echo $row["sale_price"]; ?></td>
             <td><?php echo $row["image_name"]; ?></td>
             <td>
