@@ -78,29 +78,33 @@
 </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label> Last Name </label> <input type="text" name="client_lname" class="form-control" required
-                                                  onInvalid="this.setCustomValidity('Please enter your last name.')"
-                                                  onInput="this.setCustomValidity('')">
-            </div>
-            <div class="form-group col-md-6">
                 <label>First Name </label> <input type="text" name="client_fname" class="form-control" required
                                                   onInvalid="this.setCustomValidity('Please enter your first name.')"
                                                   onInput="this.setCustomValidity('')">
             </div>
-
+            <div class="form-group col-md-6">
+                <label> Last Name </label> <input type="text" name="client_lname" class="form-control" required
+                                                  onInvalid="this.setCustomValidity('Please enter your last name.')"
+                                                  onInput="this.setCustomValidity('')">
+            </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-6">
                 <label>Street </label> <input type="text" name="client_street" class="form-control">
             </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-6">
                 <label>Suburb </label> <input type="text" name="client_suburb" class="form-control">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-2">
                 <label>State </label> <input type="text" name="client_state" class="form-control">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-2">
                 <label>Postal Code </label> <input type="text" name="client_pc" class="form-control">
             </div>
-
+            </div>
+        <div class="row">
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Email </label> <input type="text" name="client_email" class="form-control"
                                                                id="inputEmail4" placeholder="Email">

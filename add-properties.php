@@ -73,12 +73,12 @@ $results = mysqli_query($conn, $query2);
 </nav>
 <script type="text/javascript">
     function val() {
-        if (form.seller_id.selectedIndex == 0){
+        if (form.seller_id.selectedIndex == 0) {
             alert('Please select a Seller');
             form.seller_id.focus();
             return false;
         }
-        if (form.property_type.selectedIndex==0) {
+        if (form.property_type.selectedIndex == 0) {
             alert('Please select a Property Type');
             form.seller_id.focus();
             return false;
@@ -102,17 +102,19 @@ $results = mysqli_query($conn, $query2);
             </nav>
         </div>
     </div>
-    <form name="form" method="POST" Action="properties.php" enctype="multipart/form-data" >
+    <form name="form" method="POST" Action="properties.php" enctype="multipart/form-data">
         <p>Please enter your property details below </p>
-        <div>
 
-            Select Seller<br/>
-            <select name="seller_id" class="form-control">
+
+        Select Seller<br/>
+        <div class="form-row">
+            <select name="seller_id" class="form-control col-4">
                 <option value="">Select Seller</option>
                 <?php
                 while ($row = $results->fetch_array()) {
                     ?>
-                    <option value="<?php echo $row["client_id"]; ?>"><?php echo $row["client_fname"]." ".$row["client_lname"];
+                    <option value="<?php echo $row["client_id"]; ?>"
+                            class="col-4"><?php echo $row["client_fname"] . " " . $row["client_lname"];
                         ?>
                     </option>
                     <?php
@@ -121,25 +123,36 @@ $results = mysqli_query($conn, $query2);
             </select>
 
         </div>
-        <div class="form-group">
-            Street <input type="text" name="property_street" class="form-control" required
-                          onInvalid="this.setCustomValidity('Please enter your street.')"
-                          onInput="this.setCustomValidity('')">
-            Suburb <input type="text" name="property_suburb" class="form-control" required
-                          onInvalid="this.setCustomValidity('Please enter your suburb.')"
-                          onInput="this.setCustomValidity('')">
-            State <input type="text" name="property_state" class="form-control" required
-                         onInvalid="this.setCustomValidity('Please enter your state.')"
-                         onInput="this.setCustomValidity('')">
-            Postal Code <input type="text" name="property_pc" class="form-control" required
-                               onInvalid="this.setCustomValidity('Please enter your postcode.')"
-                               onInput="this.setCustomValidity('')">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                Street <input type="text" name="property_street" class="form-control" required
+                              onInvalid="this.setCustomValidity('Please enter your street.')"
+                              onInput="this.setCustomValidity('')">
+            </div>
         </div>
-        <div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                Suburb <input type="text" name="property_suburb" class="form-control" required
+                              onInvalid="this.setCustomValidity('Please enter your suburb.')"
+                              onInput="this.setCustomValidity('')">
+            </div>
+            <div class="form-group col-md-2">
+                State <input type="text" name="property_state" class="form-control" required
+                             onInvalid="this.setCustomValidity('Please enter your state.')"
+                             onInput="this.setCustomValidity('')">
+            </div>
+            <div class="form-group col-md-2">
+                Postal Code <input type="text" name="property_pc" class="form-control" required
+                                   onInvalid="this.setCustomValidity('Please enter your postcode.')"
+                                   onInput="this.setCustomValidity('')">
+            </div>
+        </div>
 
-            Select Property Type<br/>
-            <select name="property_type" class="form-control">
-                <option value="">Select Type </option>
+
+        Select Property Type<br/>
+        <div class="form-row">
+            <select name="property_type" class="form-control col-md-4">
+                <option value="">Select Type</option>
                 <?php
                 while ($row = $result->fetch_array()) {
                     ?>
@@ -155,15 +168,41 @@ $results = mysqli_query($conn, $query2);
             </select>
 
         </div>
-        <div class="form-group">
-            Property Description <textarea name="property_desc" class="form-control"> </textarea>
-            Listing Date <input type="date" name="listing_date" class="form-control" required
-                                onInvalid="this.setCustomValidity('Please enter the listing date for the property.')"
-                                onInput="this.setCustomValidity('')">
-            Listing Price <input type="number" name="listing_price" class="form-control" required
-                                 onInvalid="this.setCustomValidity('Please enter the listing price for the property.')"
-                                 onInput="this.setCustomValidity('')">
+        Property Description
+        <div class="form-row">
+            <textarea name="property_desc" class="form-control col-6"> </textarea>
+
+
         </div>
+
+        <div class="form-row">
+            <div class="form-group col-2">
+            Listing Date <br/>
+            <input type="date" name="listing_date" class="form-control" required
+                   onInvalid="this.setCustomValidity('Please enter the listing date for the property.')"
+                   onInput="this.setCustomValidity('')">
+            </div>
+            <div class="form-group col-2">
+            Listing Price <br/>
+            <input type="number" name="listing_price" class="form-control" required
+                   onInvalid="this.setCustomValidity('Please enter the listing price for the property.')"
+                   onInput="this.setCustomValidity('')">
+            </div>
+        </div>
+<!--        <div class="row">-->
+<!--            <div class="form-group col-2">-->
+<!--                <label>Sale Date:</label>-->
+<!--                <input type="date" name="sale_date" class="form-control">-->
+<!---->
+<!---->
+<!--            </div>-->
+<!---->
+<!--            <div class="form-group col-2">-->
+<!--                <label>Sale Price:</label>-->
+<!--                <input type="number" name="sale_price" class="form-control">-->
+<!--            </div>-->
+<!--        </div>-->
+
         <div class="form-group">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
