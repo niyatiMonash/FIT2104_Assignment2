@@ -87,9 +87,6 @@ $results = mysqli_query($conn, $query2);
         return true;
     }
 </script>
-<div class="alert alert-info" role="alert">
-    Please enter property details
-</div>
 <div class="container-fluid">
     <div class="grid second-nav">
         <div class="column-xs-12">
@@ -101,6 +98,10 @@ $results = mysqli_query($conn, $query2);
                 </ol>
             </nav>
         </div>
+    </div>
+    <h1 align="center">Add New Property</h1>
+    <div class="alert alert-info" role="alert">
+        Please enter property details
     </div>
     <form name="form" method="POST" Action="properties.php" enctype="multipart/form-data">
         <p>Please enter your property details below </p>

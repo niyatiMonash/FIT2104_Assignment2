@@ -136,7 +136,7 @@ OnClick='window.location=\"edit-properties.php\"'>";
     case "Update": ?>
         <form name="form" method="post" enctype="multipart/form-data"
               action="update-properties.php?property_id=<?php echo $_GET["property_id"]; ?>&Action=ConfirmUpdate">
-            <h1>Property Amendment</h1><br/>
+            <h1 align="center">Update Property</h1><br/>
             <table>
                 <div>
                     Property Id

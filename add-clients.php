@@ -72,6 +72,7 @@
             </nav>
         </div>
     </div>
+    <h1 align="center">Add New Client</h1>
     <form method="post" Action="clients.php">
         <div class="alert alert-info" role="alert">
     Please enter client details

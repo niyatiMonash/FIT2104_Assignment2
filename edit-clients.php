@@ -64,7 +64,6 @@ $result = mysqli_query($conn, $query);
     </div>
 </nav>
 <div class="container-fluid">
-    <h2>Clients</h2>
     <div class="grid second-nav">
         <div class="column-xs-12">
             <nav>
@@ -75,7 +74,7 @@ $result = mysqli_query($conn, $query);
             </nav>
         </div>
     </div>
-
+    <h1 align="center">Clients</h1>
 <a role="button" href="add-clients.php" class="btn btn-outline-primary float-right">Add Clients</a>
 <a role="button" href="pdf-client.php" class="btn btn-outline-primary float-right">Export to .pdf file</a>
 <table class="table table-striped">
@@ -83,10 +82,7 @@ $result = mysqli_query($conn, $query);
     <tr>
         <th scope="col">Last Name</th>
         <th scope="col">First Name</th>
-        <th scope="col">Street</th>
-        <th scope="col">Suburb</th>
-        <th scope="col">State</th>
-        <th scope="col">Postal Code</th>
+        <th scope="col">Address</th>
         <th scope="col">Email</th>
         <th scope="col">Mobile</th>
         <th scope="col">Delete Row</th>
@@ -101,10 +97,7 @@ $result = mysqli_query($conn, $query);
             <tr>
                 <td><?php echo $row["client_lname"]; ?></td>
                 <td><?php echo $row["client_fname"]; ?></td>
-                <td><?php echo $row["client_street"]; ?></td>
-                <td><?php echo $row["client_suburb"]; ?></td>
-                <td><?php echo $row["client_state"]; ?></td>
-                <td><?php echo $row["client_pc"]; ?></td>
+                <td><?php echo $row["client_street"]."<br/> ".$row["client_suburb"]." ".$row["client_state"]. "<br/>".$row["client_pc"];?></td>
                 <td><?php echo $row["client_email"]; ?></td>
                 <td><?php echo $row["client_mobile"]; ?></td>
                 <td>

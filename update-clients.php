@@ -5,6 +5,9 @@
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -46,6 +49,18 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="edit-clients.php">Clients</a></li>
+                    <li class="breadcrumb-item active">Update Client</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <h1 align="center">Update Client</h1>
     <?php
     /**
      * Created by PhpStorm.
@@ -116,7 +131,6 @@ OnClick='window.location=\"edit-clients.php\"'>";
     case "Update": ?>
         <form method="post"
               action="update-clients.php?client_id=<?php echo $_GET["client_id"]; ?>&Action=ConfirmUpdate">
-            <h1>Customer details amendment</h1><br/>
             <table align="center" cellpadding="3">
                 <div>
                     Client Id:

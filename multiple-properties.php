@@ -66,7 +66,6 @@ if (empty($_POST["check"])) {
         </div>
     </div>
 </nav>
-<h2>Property Prices</h2>
 <div class="grid second-nav">
     <div class="column-xs-12">
         <nav>
@@ -77,6 +76,7 @@ if (empty($_POST["check"])) {
         </nav>
     </div>
 </div>
+<h1 align="center">Property Prices</h1>
 <table class="table table-striped">
     <thead>
     <tr>

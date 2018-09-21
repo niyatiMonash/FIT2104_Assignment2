@@ -16,8 +16,11 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
-<body class="container-fluid">
+<body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
@@ -56,20 +59,35 @@
         </div>
     </div>
 </nav>
-<div class="alert alert-info" role="alert">
-    Please enter feature details
-</div>
-<form method="post" Action="feature.php">
-    <div class="form-group">
-        <p>Add a property feature </p>
-        Type Name <input type="text" name="feature_name" class="form-control" required
-                         onInvalid="this.setCustomValidity('Please enter the property feature.')"
-                         onInput="this.setCustomValidity('')">
+<div class="container-fluid">
+    <div class="grid second-nav">
+        <div class="column-xs-12">
+            <nav>
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="edit-feature.php">Feature</a></li>
+                    <li class="breadcrumb-item active">Add Feature</li>
+                </ol>
+            </nav>
+        </div>
     </div>
+    <h1 align="center">Add New Feature</h1>
+    <div class="alert alert-info" role="alert">
+        Please enter feature details
+    </div>
+    <form method="post" Action="feature.php">
+        <div class="form-group">
+            <p>Add a property feature </p>
+            Type Name <input type="text" name="feature_name" class="form-control" required
+                             onInvalid="this.setCustomValidity('Please enter the property feature.')"
+                             onInput="this.setCustomValidity('')">
+        </div>
 
-    <input type="Submit" Value="Add Feature" class="btn btn-primary">
-    <input type="Reset" Value="Clear Form Fields"class="btn btn-secondary">
-</form>
+        <input type="Submit" Value="Add Feature" class="btn btn-primary">
+        <input type="Reset" Value="Clear Form Fields" class="btn btn-secondary">
+    </form>
+
+</div>
 </body>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">

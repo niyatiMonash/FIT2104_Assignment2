@@ -64,7 +64,7 @@ $result = mysqli_query($conn, $query);
 
 ?>
 <div class="container-fluid">
-    <h2>Send Email</h2>
+
     <div class="grid second-nav">
         <div class="column-xs-12">
             <nav>
@@ -75,10 +75,11 @@ $result = mysqli_query($conn, $query);
             </nav>
         </div>
     </div>
+    <h1 align="center">Send Email</h1>
     <?php
     if (!isset($_POST["check"])) {
         ?>
-        <h4>Select Clients:</h4>
+        <h5>To:</h5>
         <form method="post" action="send-email.php">
             <table cellpadding="8">
                 <?php

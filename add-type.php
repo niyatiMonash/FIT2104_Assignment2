@@ -59,11 +59,7 @@
         </div>
     </div>
 </nav>
-<div class="alert alert-info" role="alert">
-    Please enter type details
-</div>
 <div class="container-fluid">
-    <h2>Add a property type </h2>
     <div class="grid second-nav">
         <div class="column-xs-12">
             <nav>
@@ -74,6 +70,10 @@
                 </ol>
             </nav>
         </div>
+    </div>
+    <h1 align="center">Add New Property Type</h1>
+    <div class="alert alert-info" role="alert">
+        Please enter type details
     </div>
     <form method="post" Action="types.php">
         <div class="form-row">

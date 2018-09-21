@@ -82,6 +82,9 @@ if (isset($_POST["create_pdf"])) {
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
+    <style>
+        <?php include('stylesheets/bread-crumbs.css'); ?>
+    </style>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -122,9 +125,19 @@ if (isset($_POST["create_pdf"])) {
         </div>
     </div>
 </nav>
-<br/> <br/>
+<div class="grid second-nav">
+    <div class="column-xs-12">
+        <nav>
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="edit-clients.php">Clients</a></li>
+                <li class="breadcrumb-item active">PDF Client</li>
+            </ol>
+        </nav>
+    </div>
+</div>
 <div>
-    <h3 align="center">Clients</h3><br/>
+    <h1 align="center">Preview</h1><br/>
     <div>
         <table border="1" align="center">
             <tr>

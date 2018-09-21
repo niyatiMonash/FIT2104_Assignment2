@@ -62,9 +62,6 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 </nav>
-
-<h2>Property Types</h2>
-
 <div class="grid second-nav">
     <div class="column-xs-12">
         <nav>
@@ -75,6 +72,7 @@ $result = mysqli_query($conn, $query);
         </nav>
     </div>
 </div>
+<h1 align="center">Property Types</h1>
 
 <a role="button" href="add-type.php" class="btn btn-outline-primary float-right">Add Type</a>
 

@@ -58,7 +58,7 @@ include("session.php");
     </div>
 </nav>
 <div class="container-fluid">
-    <h2> Search Properties</h2>
+
     <div class="grid second-nav">
         <div class="column-xs-12">
             <nav>
@@ -69,6 +69,7 @@ include("session.php");
             </nav>
         </div>
     </div>
+    <h1 align="center"> Search Properties</h1>
     <form action="search.php" method="POST">
         <div class="input-group mb-3">
             <input type="text" name="query" id="search_text" class="form-control"

@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 </nav>
-<h2>Properties</h2>
+
 <div class="grid second-nav">
     <div class="column-xs-12">
         <nav>
@@ -78,7 +78,7 @@ $result = mysqli_query($conn, $query);
         </nav>
     </div>
 </div>
-
+<h1 align="center">Properties</h1>
 <a role="button" href="add-properties.php" class="btn btn-outline-primary float-right">Add Property</a>
 <table class="table table-striped">
     <thead>

@@ -121,7 +121,6 @@ break;
 case "Update": ?>
 
      <form method="post" action="update-type.php?type_id=<?php echo $_GET["type_id"]; ?>&Action=ConfirmUpdate">
-         <h2>Update Property Type</h2>
          <div class="grid second-nav">
              <div class="column-xs-12">
                  <nav>
@@ -133,6 +132,7 @@ case "Update": ?>
                  </nav>
              </div>
          </div>
+         <h1 align="center">Update Property Type</h1>
          <table align="center" cellpadding="3">
              <div>
                  Type ID:

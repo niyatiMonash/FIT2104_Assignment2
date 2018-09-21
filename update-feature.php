@@ -120,7 +120,6 @@ OnClick='window.location=\"edit-feature.php\"'>";
 
     case "Update": ?>
         <form method="post" action="update-feature.php?feature_id=<?php echo $_GET["feature_id"]; ?>&Action=ConfirmUpdate">
-            <h2>Update Property Feature</h2>
             <div class="grid second-nav">
                 <div class="column-xs-12">
                     <nav>
@@ -132,6 +131,7 @@ OnClick='window.location=\"edit-feature.php\"'>";
                     </nav>
                 </div>
             </div>
+            <h1 align="center">Update Property Feature</h1>
             <table align="center" cellpadding="3">
                 <div>
                     Feature Id:
