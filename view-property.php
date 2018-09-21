@@ -8,14 +8,15 @@
 include("session.php");
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id";
+$query = "Select * from property p join type t on p.property_type=t.type_id where property_id=".$_GET["property_id"];
+//$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id";
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 $query2 = "Select * from authenticate";
 $result2 = $conn->query($query2);
 $row2 = $result2->fetch_assoc();
 
-if (empty($_POST["check"])) {
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +94,8 @@ if (empty($_POST["check"])) {
     </br>
     <div class="row">
         <div class="col-sm">
+            <h4><u>Property Type:</u></h4>
+            <p><?php echo $row["type_name"]; ?></p>
             <!--        class="property-details"-->
             <h4><u>Address:</u></h4>
             <p>
@@ -139,8 +142,9 @@ if (empty($_POST["check"])) {
                 $query3 = "SELECT * FROM feature ORDER BY feature_name";
                 $result3 = $conn->query($query3);
 
-                while ( $row3 = $result3->fetch_assoc()) {
-                    $query4 = "SELECT * FROM property_feature WHERE property_id =" . $_GET["property_id"] . " AND feature_id =" . $row3["feature_id"];
+
+                while ($row3 = $result3->fetch_assoc()) {
+                    $query4 = "SELECT feature_desc FROM property_feature WHERE property_id =".$_GET["property_id"]." AND feature_id =" . $row3["feature_id"];
                     $result4 = $conn->query($query4);
                     $pf = $result4->fetch_assoc();
                     ?>
@@ -152,7 +156,6 @@ if (empty($_POST["check"])) {
                         ?>
                         <td align="center"><input type="checkbox" name="check[]" checked
                                                   value="<?php echo $row["property_id"]; ?>"></td>
-
                         <?php
                     } else {
                         ?>
@@ -160,29 +163,34 @@ if (empty($_POST["check"])) {
                                                   value="<?php echo $row["property_id"]; ?>"></td>
                         <?php
                     }
-                    ?>
-                    </tr>
+                }
 
-                    <?php
-                } ?>
+                ?>
+
+
                 </tbody>
             </table>
             </br>
             <input type="submit" value="Update Feature/s" class="btn btn-primary"/>
-        </form>
-        <?php
-        } else {
-            foreach ($_POST["check"] as $feature_id) {
-                $query5 = "UPDATE property_feature set feature_desc='$_POST[feature_desc]' WHERE feature_id = $feature_id";
+            <?php
+            if (isset($_POST["submit"])) {
+                $query5 = "Delete * from property_feature WHERE property_id =". $_GET["property_id"];
                 $conn->query($query5);
 
-
-
+                $featuredesc = "SELECT feature_desc FROM property_feature WHERE property_id =" . $_GET["property_id"] . " AND feature_id =" . $row3["feature_id"];
+                $x = $conn->query($featuredesc);
+                $y = $x->fetch_array();
+                $featureid = "SELECT feature_id FROM property_feature WHERE property_id =" . $_GET["property_id"] . " AND feature_id =" . $row3["feature_id"];
+                $a = $conn->query($featureid);
+                $b = $a->fetch_array();
+                $query6 = "insert into property_feature values ('$_GET[property_id]', '$b[feature_id]', '$y[feature_desc]' )";
+                $conn->query($query6);
+                echo $query6;
             }
-            echo "Property number '$feature_id' has successfully updated features<br/>";?>
-            <input type="button" value="Return to List" class="btn btn-secondary" OnClick="window.location='view-property.php'"><br/>
-        <?php }
-        ?>
+
+            ?>
+        </form>
+
     </div>
 
     <h4>Similar Properties:</h4>
@@ -237,7 +245,7 @@ if (empty($_POST["check"])) {
     <button class="btn btn-outline-primary">
         <a href='display-source.php?filename=view-property.php'>View Property</a><br/>
     </button>
-</br>
+    </br>
 </div>
 
 </body>
