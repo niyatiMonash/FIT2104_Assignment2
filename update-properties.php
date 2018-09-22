@@ -130,7 +130,7 @@
             echo "Error deleting customer record";
         }
         echo "<input type='button' value='Return to List'
-OnClick='window.location=\"edit-properties.php\"'>";
+        OnClick='window.location=\"edit-properties.php\"'>";
         break;
 
     case "Update": ?>
@@ -358,7 +358,7 @@ case "ConfirmUpdate":
 
             $result = $conn->query($query);
             echo $query;
-//                    header("Location: edit-properties.php");
+                    header("Location: edit-properties.php");
         } else {
             if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
@@ -383,7 +383,7 @@ case "ConfirmUpdate":
             }
             $result = $conn->query($query);
             echo $query;
-//                    header("Location: edit-properties.php");
+                    header("Location: edit-properties.php");
         }
     }
 
