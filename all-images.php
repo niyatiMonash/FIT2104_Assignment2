@@ -23,7 +23,7 @@ $row = $result->fetch_array();
 
     <!-- Custom styles for this template -->
     <link href="stylesheets/modern-business.css" rel="stylesheet">
-    <title>Add Properties</title>
+    <title>Images</title>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
@@ -64,78 +64,93 @@ $row = $result->fetch_array();
         </div>
     </div>
 </nav>
-<h1 align="center">List of Images</h1>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">Image No.</th>
-        <th scope="col">Image</th>
-        <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <form method="post" action="multiple-properties.php">
-        <?php
-        while ($row = $result->fetch_array()) {
-            ?>
-            <tr>
-                <td>Belongs to property No.<?php echo $row["property_id"] ?></td>
-                <td><img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-                         class="img-thumbnail rounded "></td>
-                <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
-            </tr>
+<?php
+if (empty($_POST["check"])) {
 
-            <?php
-        } ?>
-    </tbody>
-</table>
-<input type="submit" value="Update Prices" class="btn btn-primary"/>
-</form>
+while ($row = $result->fetch_array()) {
+    $imagename = $row["image_name"];
+    echo $imagename;
+}
+
+
+$directory = "property_images/";
+$images = glob("{$directory}*.png, {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg");
+echo $images;
+
+foreach($images as $image) {
+echo '<img src="'.$image.'" /><br />';
+}
+?>
 <div class="container-fluid">
-    <table border="1">
+    <h1 align="center">List of Images</h1>
+    <table class="table table-striped">
+        <thead>
         <tr>
-            <th>No.</th>
-            <th>Image</th>
+            <th scope="col">Property No.</th>
+            <th scope="col">Image</th>
+            <th scope="col">Delete</th>
         </tr>
-        <tr>
-            <td><?php
-                while ($row = $result->fetch_array()) {
+        </thead>
+        <tbody>
+        <form method="post" action="all-images.php">
+            <?php
+            while ($row = $result->fetch_array()) {
                 ?>
-                <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-                     class="img-thumbnail rounded "></td>
-        </tr>
+                <tr>
+                    <td>Belongs to property No.<?php echo $row["property_id"] ?></td>
+                    <td><img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
+                             class="img-thumbnail rounded "></td>
+                    <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
+                </tr>
 
-
-
-
+                <?php
+            } ?>
+        </tbody>
     </table>
-
-        <div>
-            <p>This image belongs to <?php echo $row["property_id"] ?></p>
-            <input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>">
-        </div>
-
-        <?php
-    }?>
-        <button class="btn btn-outline-danger" name="delete">delete image</button>
+    <br/>
+    <input type="submit" value="Delete Images" class="btn btn-primary"/>
+    </form>
     <?php
-    if (!empty($_POST['check'])) {
+    } else {
+        ?>
+        <input type="button" value="Return to List" OnClick="window.location='all-images.php'"
+               class="btn btn-secondary"><br/>
+        <?php
         // Loop to store and display values of individual checked checkbox.
         foreach ($_POST['check'] as $selectedPropertyId) {
-            if (count($selectedPropertyId) > 0) {
-//                $query2 = "SELECT image_name from property where property_id =" . $selectedPropertyId;
-//                code to delete image to be here
-//                delete image name from property table
-//                delete image from property_images/ folder as well
-//                unlink()
-                echo '<div class="alert alert-success">Image has successfully been deleted </div>';
-            } else {
-                echo '<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again later</div>';
-            }
+        if (count($selectedPropertyId) > 0) {
+            $query2 = "SELECT image_name from property where property_id =" . $selectedPropertyId;
+            $conn->query($query2);
+            //   code to delete image to be here
+            //  delete image name from property table
+            // delete image from property_images/ folder as well
+            unlink();
+            echo '<div class="alert alert-success">Image has successfully been deleted </div>';
+        } else {
+            echo '<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again later</div>';
+        }
+        }
+        foreach ($_POST["check"] as $property_id) {
+            $query2 = "UPDATE property set listing_price = $_POST[$property_id] WHERE property_id = $property_id";
+
+
+            echo "Property number '$property_id' has been successfully updated<br/>";
+
         }
     }
     ?>
-</div>
 
+</div>
 </body>
+<br/>
+<!-- Footer to be used in all main pages-->
+<footer class="py-5 bg-danger">
+    <div class="container-fluid">
+        <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>

@@ -107,7 +107,7 @@ if (empty($_POST["check"])) {
 </form>
 <?php } else {
     ?>
-    <input type="button" value="Return to List" OnClick="window.location='multiple-properties.php'"><br/>
+    <input type="button" value="Return to List" OnClick="window.location='multiple-properties.php'" class="btn btn-secondary"><br/>
     <?php
     foreach ($_POST["check"] as $property_id) {
         $query2 = "UPDATE property set listing_price = $_POST[$property_id] WHERE property_id = $property_id";
