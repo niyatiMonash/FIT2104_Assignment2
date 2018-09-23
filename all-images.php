@@ -88,7 +88,7 @@ if (empty($_POST["check"])) {
                     <td>Belongs to property No.<?php echo $row["property_id"] ?></td>
                     <td><img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
                              class="img-thumbnail rounded "></td>
-                    <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
+                    <td><input type="checkbox" name="check[]" value="<?php echo $row["image_name"]; ?>"></td>
                 </tr>
 
                 <?php
@@ -107,27 +107,27 @@ if (empty($_POST["check"])) {
         // Loop to store and display values of individual checked checkbox.
         foreach ($_POST['check'] as $selectedPropertyId) {
         if (count($selectedPropertyId) > 0) {
-            $query2 = "SELECT image_name from property where property_id =" . $selectedPropertyId;
-            $conn->query($query2);
+            $image_id = trim(isset($_POST["$selectedPropertyId"]));
+            $image_url = "/property_images/{$image_id}";
+            if(file_exists($image_url)){
+                unlink($image_url);
+                echo '<div class="alert alert-success">Image has successfully been deleted </div>';
+            } else {
+                die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again later</div>');
+
+            }
+//            $query2 = "SELECT image_name from property where property_id =" . $selectedPropertyId;
+//            $conn->query($query2);
             //   code to delete image to be here
             //  delete image name from property table
             // delete image from property_images/ folder as well
-            unlink();
-            echo '<div class="alert alert-success">Image has successfully been deleted </div>';
-        } else {
-            echo '<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again later</div>';
-        }
-        }
-        foreach ($_POST["check"] as $property_id) {
-            $query2 = "UPDATE property set listing_price = $_POST[$property_id] WHERE property_id = $property_id";
+//            unlink();
 
-
-            echo "Property number '$property_id' has been successfully updated<br/>";
-
-        }
+        }}
     }
     ?>
-<!--    while ($row = $result->fetch_array()) {-->
+
+    <!--    while ($row = $result->fetch_array()) {-->
 <!--    $imagename = $row["image_name"];-->
 <!--    echo $imagename;-->
 <!--    }-->
