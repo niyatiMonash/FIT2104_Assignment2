@@ -67,6 +67,7 @@ $row = $result->fetch_array();
 <?php
 if (empty($_POST["check"])) {
 
+
 //$directory = "FIT2104//29765706/ass2/property_images";
 //$images = glob("$directory/*.{jpg,png,gif}", GLOB_BRACE);
 ////             {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg\")
@@ -99,6 +100,7 @@ if (empty($_POST["check"])) {
                 </tr>
 
                 <?php
+
             } ?>
 
         </tbody>
@@ -108,44 +110,42 @@ if (empty($_POST["check"])) {
     </form>
     <?php
     } else {
-        ?>
-        <input type="button" value="Return to List" OnClick="window.location='all-images.php'"
-               class="btn btn-secondary"><br/>
-        <?php
-        // Loop to store and display values of individual checked checkbox.
-        foreach ($_POST['check'] as $selectedPropertyId) {
-        if (count($selectedPropertyId) > 0) {
-            $image_id = trim(isset($_POST["$selectedPropertyId"]));
-            $image_url = "/property_images/{$image_id}";
-            if(file_exists($image_url)){
-                //   code to delete image to be here
-                //  delete image name from property table
-                $query2 = "UPDATE property SET image_name = NULL WHERE image_name = '$selectedPropertyId'";
-                // delete image from property_images/ folder as well
-                unlink($image_url);
-                echo '<div class="alert alert-success">Image has successfully been deleted </div>';
-            } else {
-                die( '<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');
 
+        if (!empty($_POST["check"])) {
+            ?>
+            <input type="button" value="Return to List" OnClick="window.location='all-images.php'"
+                   class="btn btn-secondary"><br/>
+            <?php
+            // Loop to store and display values of individual checked checkbox.
+            foreach ($_POST['check'] as $selectedPropertyId) {
+                if (count($selectedPropertyId) > 0) {
+                    $image_id = trim(isset($_POST["$selectedPropertyId"]));
+                    $image_url = "/property_images/{$image_id}";
+                    if (file_exists($image_url)) {
+                        //   code to delete image to be here
+                        //  delete image name from property table
+                        $query2 = "UPDATE property SET image_name = NULL WHERE image_name = '$selectedPropertyId'";
+                        // delete image from property_images/ folder as well
+                        unlink($image_url);
+                        echo '<div class="alert alert-success">Image has successfully been deleted </div>';
+                    } else {
+                        die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');
+
+                    }
+
+                }
             }
-
-        } else {
-            echo "Must select at least one image to delete";
-        }
         }
     }
     ?>
 
-
-
-
-<br/>
-<!-- Footer to be used in all main pages-->
-<footer class="py-5 bg-danger">
-    <div class="container-fluid">
-        <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
-    </div>
-</footer>
+    <br/>
+    <!-- Footer to be used in all main pages-->
+    <footer class="py-5 bg-danger">
+        <div class="container-fluid">
+            <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
+        </div>
+    </footer>
 </div>
 </body>
 <!-- Bootstrap core JavaScript -->
