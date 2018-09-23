@@ -67,19 +67,7 @@ $row = $result->fetch_array();
 <?php
 if (empty($_POST["check"])) {
 
-while ($row = $result->fetch_array()) {
-    $imagename = $row["image_name"];
-    echo $imagename;
-}
 
-
-$directory = "property_images/";
-$images = glob("{$directory}*.png, {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg");
-echo $images;
-
-foreach($images as $image) {
-echo '<img src="'.$image.'" /><br />';
-}
 ?>
 <div class="container-fluid">
     <h1 align="center">List of Images</h1>
@@ -139,7 +127,19 @@ echo '<img src="'.$image.'" /><br />';
         }
     }
     ?>
-
+<!--    while ($row = $result->fetch_array()) {-->
+<!--    $imagename = $row["image_name"];-->
+<!--    echo $imagename;-->
+<!--    }-->
+<!---->
+<!---->
+<!--    $directory = "property_images/";-->
+<!--    $images = glob("{$directory}*.png, {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg");-->
+<!--    echo $images;-->
+<!---->
+<!--    foreach($images as $image) {-->
+<!--    echo '<img src="'.$image.'" /><br />';-->
+<!--    }-->
 </div>
 </body>
 <br/>
