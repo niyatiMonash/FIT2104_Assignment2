@@ -67,8 +67,15 @@ $row = $result->fetch_array();
 <?php
 if (empty($_POST["check"])) {
 
-
+//$directory = "FIT2104//29765706/ass2/property_images";
+//$images = glob("$directory/*.{jpg,png,gif}", GLOB_BRACE);
+////             {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg\")
+//
+//foreach($images as $image) {
+//    echo '<img src="'.$image.'" /><br />';
+//}
 ?>
+
 <div class="container-fluid">
     <h1 align="center">List of Images</h1>
     <table class="table table-striped">
@@ -93,6 +100,7 @@ if (empty($_POST["check"])) {
 
                 <?php
             } ?>
+
         </tbody>
     </table>
     <br/>
@@ -110,38 +118,27 @@ if (empty($_POST["check"])) {
             $image_id = trim(isset($_POST["$selectedPropertyId"]));
             $image_url = "/property_images/{$image_id}";
             if(file_exists($image_url)){
+                //   code to delete image to be here
+                //  delete image name from property table
+                $query2 = "UPDATE property SET image_name = NULL WHERE image_name = '$selectedPropertyId'";
+                // delete image from property_images/ folder as well
                 unlink($image_url);
                 echo '<div class="alert alert-success">Image has successfully been deleted </div>';
             } else {
-                die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again later</div>');
+                die( '<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');
 
             }
-//            $query2 = "SELECT image_name from property where property_id =" . $selectedPropertyId;
-//            $conn->query($query2);
-            //   code to delete image to be here
-            //  delete image name from property table
-            // delete image from property_images/ folder as well
-//            unlink();
 
-        }}
+        } else {
+            echo "Must select at least one image to delete";
+        }
+        }
     }
     ?>
 
-    <!--    while ($row = $result->fetch_array()) {-->
-<!--    $imagename = $row["image_name"];-->
-<!--    echo $imagename;-->
-<!--    }-->
-<!---->
-<!---->
-<!--    $directory = "property_images/";-->
-<!--    $images = glob("{$directory}*.png, {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg");-->
-<!--    echo $images;-->
-<!---->
-<!--    foreach($images as $image) {-->
-<!--    echo '<img src="'.$image.'" /><br />';-->
-<!--    }-->
-</div>
-</body>
+
+
+
 <br/>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
@@ -149,7 +146,8 @@ if (empty($_POST["check"])) {
         <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
     </div>
 </footer>
-
+</div>
+</body>
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
