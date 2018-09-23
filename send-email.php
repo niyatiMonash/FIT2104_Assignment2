@@ -131,6 +131,10 @@ $result = mysqli_query($conn, $query);
     }
     ?>
 </div>
+<br/>
+<button class="btn btn-outline-primary">
+    <a href='display-source.php?filename=send-email.php'>Send Email</a><br/>
+</button>
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>

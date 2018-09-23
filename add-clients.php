@@ -131,7 +131,9 @@
         <button type="Reset" Value="Clear Form Fields" class="btn btn-secondary">Reset Values</button>
     </form>
 </div>
-
+<button class="btn btn-outline-primary">
+    <a href='display-source.php?filename=add-clients.php'>Add Client</a><br/>
+</button>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">

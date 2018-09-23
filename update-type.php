@@ -159,7 +159,9 @@ header("Location: edit-type.php");
 break;
 }
 ?>
-
+    <button class="btn btn-outline-primary">
+        <a href='display-source.php?filename=update-type.php'>Update/Delete Type</a><br/>
+    </button>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">

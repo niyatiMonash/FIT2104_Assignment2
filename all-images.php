@@ -10,7 +10,7 @@ include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT image_name, property_id FROM property";
 $result = mysqli_query($conn, $query);
-
+$row = $result->fetch_array();
 ?>
 
 <!DOCTYPE html>
@@ -64,19 +64,61 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 </nav>
+<h1 align="center">List of Images</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Image No.</th>
+        <th scope="col">Image</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form method="post" action="multiple-properties.php">
+        <?php
+        while ($row = $result->fetch_array()) {
+            ?>
+            <tr>
+                <td>Belongs to property No.<?php echo $row["property_id"] ?></td>
+                <td><img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
+                         class="img-thumbnail rounded "></td>
+                <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
+            </tr>
+
+            <?php
+        } ?>
+    </tbody>
+</table>
+<input type="submit" value="Update Prices" class="btn btn-primary"/>
+</form>
 <div class="container-fluid">
-    <?php
-    while ($row = $result->fetch_array()) {
-        ?>
-        <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-             class="img-thumbnail rounded ">
+    <table border="1">
+        <tr>
+            <th>No.</th>
+            <th>Image</th>
+        </tr>
+        <tr>
+            <td><?php
+                while ($row = $result->fetch_array()) {
+                ?>
+                <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
+                     class="img-thumbnail rounded "></td>
+        </tr>
+
+
+
+
+    </table>
+
         <div>
             <p>This image belongs to <?php echo $row["property_id"] ?></p>
             <input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>">
         </div>
-        <button class="btn btn-outline-danger" name="delete">delete image</button>
+
         <?php
-    }
+    }?>
+        <button class="btn btn-outline-danger" name="delete">delete image</button>
+    <?php
     if (!empty($_POST['check'])) {
         // Loop to store and display values of individual checked checkbox.
         foreach ($_POST['check'] as $selectedPropertyId) {

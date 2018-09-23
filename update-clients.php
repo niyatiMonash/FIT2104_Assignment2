@@ -203,6 +203,9 @@ client_suburb='$_POST[client_suburb]', client_state='$_POST[client_state]', clie
             break;
     }
     ?>
+    <button class="btn btn-outline-primary">
+        <a href='display-source.php?filename=update-clients.php'>Update/Delete Client</a><br/>
+    </button>
     <!-- Footer to be used in all main pages-->
     <footer class="py-5 bg-danger">
         <div class="container-fluid">

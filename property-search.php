@@ -95,6 +95,9 @@ include("session.php");
     <div id="result"></div>
 </div>
 </body>
+<button class="btn btn-outline-primary">
+    <a href='display-source.php?filename=property-search.php'>Property Search</a><br/>
+</button>
 <!-- Footer to be used in all main pages-->
 <footer class="py-5 bg-danger">
     <div class="container-fluid">
@@ -135,4 +138,5 @@ include("session.php");
 
     });
 </script>
+
 </html>
