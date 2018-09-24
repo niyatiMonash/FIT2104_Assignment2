@@ -71,14 +71,17 @@
 
                     header("location: welcome.php"); //TODO: change location to be the place they previously clicked.
                 } else {
-                    $error = "Your Login Name or Password is invalid";
+                    $showError = "Your Login Name or Password is invalid";
+                    echo $showError;
                 }
             }
             ?>
         </div>
-
     </div>
-
+    <br>
+    <button class="btn btn-outline-primary">
+        <a href='documentation.php'>Documentation</a><br/>
+    </button>
 </div>
 
 </body>

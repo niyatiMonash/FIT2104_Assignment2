@@ -85,7 +85,7 @@ $row2 = $result2->fetch_assoc();
     </div>
     <!--    display property specific details-->
     <div class="text-center">
-        <img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
+        <img src="property_images/<?php echo $row["image_name"];?>" alt="property-image"
              class="img-fluid rounded">
     </div>
     </br>
@@ -111,7 +111,6 @@ $row2 = $result2->fetch_assoc();
         </div>
 
         <div class="col-sm" align="center">
-
             <!--        class="property-listing"-->
             <h4><u>Price:</u></h4>
             <p>

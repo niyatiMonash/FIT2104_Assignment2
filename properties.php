@@ -18,6 +18,7 @@
  * Date: 29/8/18
  * Time: 11:34 AM
  */
+include("session.php");
 $target_dir = "property_images/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $upload_ok = 1;

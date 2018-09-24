@@ -10,11 +10,3 @@ $servername = "130.194.7.82";
 $username = "s29765706";
 $password = "monash00";
 $dbname = "s29765706";
-
-//$conn = mysqli_connect($servername, $username, $password, $dbname);
-//
-//    if (!$conn) {
-//        die("Connection failed: " . mysqli_connect_error());
-//    }
-// add comment testing
-//add my comment
