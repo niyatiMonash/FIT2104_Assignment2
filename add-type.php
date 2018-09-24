@@ -5,7 +5,9 @@
  * Date: 17/9/18
  * Time: 10:08 PM
  */
-?><!DOCTYPE html>
+include("session.php");
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

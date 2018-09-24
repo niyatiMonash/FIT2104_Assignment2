@@ -5,6 +5,7 @@
  * Date: 7/9/18
  * Time: 8:27 AM
  */
+include("session.php");
 include("connection.php");
 $conn = new mysqli($servername, $username, $password, $dbname);
 $output = '';

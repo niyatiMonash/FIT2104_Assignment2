@@ -48,6 +48,7 @@ elseif (empty($_POST["client_mailinglist"]))
 
 else {
     include("connection.php");
+    include("session.php");
     $conn = new mysqli($servername, $username, $password, $dbname)
     or die("Couldn't log on to database");
     $query = "INSERT INTO client (client_lname, client_fname, client_street, client_suburb, client_state, client_pc, client_email, client_mobile, client_mailinglist)

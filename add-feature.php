@@ -5,6 +5,7 @@
  * Date: 17/9/18
  * Time: 10:09 PM
  */
+include("session.php");
 ?>
 
 <!DOCTYPE html>
