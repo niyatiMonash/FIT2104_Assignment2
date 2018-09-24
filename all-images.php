@@ -68,7 +68,7 @@ $row = $result->fetch_array();
 if (empty($_POST["check"])) {
 
 
-//$directory = "FIT2104//29765706/ass2/property_images";
+//$directory = "property_images/";
 //$images = glob("$directory/*.{jpg,png,gif}", GLOB_BRACE);
 ////             {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg\")
 //
@@ -111,7 +111,6 @@ if (empty($_POST["check"])) {
     <?php
     } else {
 
-        if (!empty($_POST["check"])) {
             ?>
             <input type="button" value="Return to List" OnClick="window.location='all-images.php'"
                    class="btn btn-secondary"><br/>
@@ -126,17 +125,18 @@ if (empty($_POST["check"])) {
                         //  delete image name from property table
                         $query2 = "UPDATE property SET image_name = NULL WHERE image_name = '$selectedPropertyId'";
                         // delete image from property_images/ folder as well
+                        chmod($image_url,777);
                         unlink($image_url);
                         echo '<div class="alert alert-success">Image has successfully been deleted </div>';
                     } else {
                         die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');
-
                     }
-
                 }
+                else {
+                    die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');}
             }
         }
-    }
+
     ?>
 
     <br/>
