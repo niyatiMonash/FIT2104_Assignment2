@@ -8,7 +8,7 @@
 include("session.php");
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id";
+$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id where property_id =" . $_GET["property_id"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 $query2 = "Select * from authenticate";
