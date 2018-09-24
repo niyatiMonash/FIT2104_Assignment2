@@ -78,7 +78,10 @@
         </div>
 
     </div>
-
+    <br>
+    <button class="btn btn-outline-primary">
+        <a href='display-source.php?filename=documentation.php'>Documentation</a><br/>
+    </button>
 </div>
 
 </body>
