@@ -120,7 +120,7 @@ if (empty($_POST["check"])) {
             foreach ($_POST['check'] as $selectedPropertyId) {
                 if (count($selectedPropertyId) > 0) {
                     $image_id = trim(isset($_POST["$selectedPropertyId"]));
-                    $image_url = "/property_images/{$image_id}";
+                    $image_url = "property_images/{$image_id}";
                     if (file_exists($image_url)) {
                         //   code to delete image to be here
                         //  delete image name from property table
