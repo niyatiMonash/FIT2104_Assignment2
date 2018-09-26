@@ -65,9 +65,9 @@ if (mysqli_num_rows($result) > 0) {
         <td><?php echo $row["type_name"]; ?></td>
         <td><?php echo $row["property_desc"]; ?></td>
         <td><?php echo date("d/m/Y",strtotime($row["listing_date"])); ?></td>
-        <td><?php echo $row["listing_price"]; ?></td>
+        <td>$<?php echo $row["listing_price"]; ?></td>
         <td><?php echo date("d/m/Y",strtotime($row["sale_date"])); ?></td>
-        <td><?php echo $row["sale_price"]; ?></td>
+        <td>$<?php echo $row["sale_price"]; ?></td>
         <td><?php echo $row["image_name"]; ?></td>
         <td>
             <a href="view-property.php?property_id= <?php echo $row["property_id"]; ?> &Action=Get">View</a>
