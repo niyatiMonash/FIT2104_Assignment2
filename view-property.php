@@ -106,7 +106,7 @@ $row2 = $result2->fetch_assoc();
             <!--        class="agent-details"-->
             <p> <h4><u>Contact Agent:</u></h4></p><br/>
             <h4><?php echo $row2["given_name"]; ?><?php echo $row2["family_name"]; ?></h4></br>
-            <button class="btn btn-info btn-lg">Email Agent</button>
+            <button class="btn btn-outline-secondary btn-lg"><a href="mailto:enquiry@ruthlessrealestate.com?Subject=Property%20Enquiry" target="_top"> Email Agent</a></button>
 
         </div>
 

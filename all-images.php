@@ -8,9 +8,8 @@
 include("connection.php");
 include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT image_name, property_id FROM property";
+$query = "SELECT image_name, property_id FROM property where image_name != 'NULL'";
 $result = mysqli_query($conn, $query);
-$row = $result->fetch_array();
 ?>
 
 <!DOCTYPE html>
@@ -118,22 +117,23 @@ if (empty($_POST["check"])) {
             // Loop to store and display values of individual checked checkbox.
             foreach ($_POST['check'] as $selectedPropertyId) {
                 if (count($selectedPropertyId) > 0) {
-                    $image_id = trim(isset($_POST["$selectedPropertyId"]));
-                    $image_url = "property_images/{$image_id}";
+                    $image_url = "property_images/$selectedPropertyId";
                     if (file_exists($image_url)) {
                         //   code to delete image to be here
                         //  delete image name from property table
                         $query2 = "UPDATE property SET image_name = NULL WHERE image_name = '$selectedPropertyId'";
+
                         // delete image from property_images/ folder as well
-                        chmod($image_url,777);
-                        unlink($image_url);
+                        chmod($image_url, 0644);
+                        unlink("property_images/$selectedPropertyId");
+                        $conn->query($query2);
                         echo '<div class="alert alert-success">Image has successfully been deleted </div>';
                     } else {
                         die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');
                     }
                 }
                 else {
-                    die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');}
+                    die('<div class="alert alert-danger">Sorry there was an error deleting  the image. Please try again.</div>');}
             }
         }
 
