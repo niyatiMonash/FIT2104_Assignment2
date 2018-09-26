@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     ?>
-
+    <a role="button" href="add-properties.php" class="btn btn-outline-primary float-right">Add Property</a>
     <div class="table-responsive">
     <table class="table table-striped">
     <thead>
