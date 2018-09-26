@@ -25,7 +25,7 @@
                     <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edit-properties.php">Properties</a>
+                    <a class="nav-link" href="property-search.php">Properties</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="multiple-properties.php">Property Prices</a>
@@ -56,7 +56,7 @@
             <nav>
                 <ol class="breadcrumb-list">
                     <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="edit-properties.php">Properties</a></li>
+                    <li class="breadcrumb-item"><a href="property-search.php">Properties</a></li>
                     <li class="breadcrumb-item active">Update Property</li>
                 </ol>
             </nav>

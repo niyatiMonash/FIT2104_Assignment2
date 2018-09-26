@@ -47,7 +47,7 @@ $results = mysqli_query($conn, $query2);
                     <a class="nav-link" href="edit-clients.php">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edit-properties.php">Properties</a>
+                    <a class="nav-link" href="property-search.php">Properties</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="multiple-properties.php">Property Prices</a>

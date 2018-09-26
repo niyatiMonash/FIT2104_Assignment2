@@ -51,6 +51,8 @@ if (mysqli_num_rows($result) > 0) {
         <th scope="col">Sale Price</th>
         <th scope="col">Image Name</th>
         <th scope="col">View Property</th>
+        <th scope="col">Delete Property</th>
+        <th scope="col">Update Property</th>
 
     </tr>
     </thead>
@@ -71,6 +73,12 @@ if (mysqli_num_rows($result) > 0) {
         <td><?php echo $row["image_name"]; ?></td>
         <td>
             <a href="view-property.php?property_id= <?php echo $row["property_id"]; ?> &Action=Get">View</a>
+        </td>
+        <td>
+            <a href="update-properties.php?property_id= <?php echo $row["property_id"]; ?> &Action=Delete">Delete</a>
+        </td>
+        <td>
+            <a href="update-properties.php?property_id= <?php echo $row["property_id"]; ?> &Action=Update">Update</a>
         </td>
         <?php
     }

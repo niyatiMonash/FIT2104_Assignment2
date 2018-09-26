@@ -11,7 +11,9 @@
 <h2> Assignment 2, Application Development and Implementation. </h2>
 
 <h3> Niyati Srinivasan 29765706 & Stephanie Tran 27805247
-    Supervisor: Janet Fraser</h3>
+     Supervisor: Janet Fraser
+     Date of Submission: 5th October 2018
+</h3>
 
 <p><u> To login: </u></p>
 <p><b>Username</b>: niyatiS</p>
