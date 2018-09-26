@@ -14,7 +14,9 @@ $row = $result->fetch_assoc();
 $query2 = "Select * from authenticate";
 $result2 = $conn->query($query2);
 $row2 = $result2->fetch_assoc();
-
+$query3 = "select * from property_feature p join feature f on p.feature_id=f.feature_id where property_id =" . $_GET["property_id"];
+$result3 = $conn->query($query3);
+$row3 = $result3->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,6 +100,8 @@ $row2 = $result2->fetch_assoc();
             </h3></p>
             <h4><u>Description:</u></h4>
             <p>  <h5><?php echo $row["property_desc"]; ?></h5> </p>
+            <h4><u>Property Features:</u></h4>
+            <p>  <h5><?php echo $row3["feature_name"]; ?>: <?php echo $row3["feature_desc"]; ?></h5> </p>
         </div>
 
         <div class="col-sm" align="center">
