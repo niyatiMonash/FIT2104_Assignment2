@@ -30,6 +30,12 @@
 <p><b>Username</b>: s29765706</p>
 <p><b>Password</b>: mymonashuniversity </p>
 
-<button class="btn btn-outline-primary">
+<button class="btn btn-outline-primary btn-lg">
     <a href='display-source.php?filename=script.sql'>SQL Script</a><br/>
 </button>
+</br>
+
+<button class="btn btn-outline-primary btn-lg">
+    <a href='https://docs.google.com/document/d/1qtvXRpxt-AU869of0RP_9YYpTPyECCdh4hvO8vR0-FU/edit?usp=sharing'>Assignment Task Allocation</a><br/>
+</button>
+<!---->
