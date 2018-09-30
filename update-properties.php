@@ -381,7 +381,7 @@ case "ConfirmUpdate":
             }
             $result = $conn->query($query);
             echo $query;
-                    header("Location: edit-properties.php");
+                    header("Location: property-search.php");
         }
     }
 
