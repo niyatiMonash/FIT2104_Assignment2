@@ -76,9 +76,9 @@ if (empty($_POST["property_street"])) {
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $fileName = $_FILES["fileToUpload"]["name"];
-            $query = "INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, property_desc, image_name)
+            $query = "INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, sale_date, sale_price, property_desc, image_name)
             VALUES('$_POST[property_street]', '$_POST[property_suburb]', '$_POST[property_state]', '$_POST[property_pc]', '$_POST[property_type]','$_POST[seller_id]',
-            '$_POST[listing_date]', '$_POST[listing_price]', '$_POST[property_desc]', '$fileName')";
+            '$_POST[listing_date]', '$_POST[listing_price]', '$_POST[sale_date]', '$_POST[sale_price]', '$_POST[property_desc]', '$fileName')";
 
             $conn->query($query);
 
@@ -93,7 +93,7 @@ if (empty($_POST["property_street"])) {
 }
 ?>
 <input type="button" value="Return to List" class="btn btn-secondary"
-       OnClick="window.location='edit-properties.php'">
+       OnClick="window.location='property-search.php'">
 
 
 </html>

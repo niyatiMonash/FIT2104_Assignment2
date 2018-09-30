@@ -105,7 +105,7 @@
                     <input type="button" value="Confirm" class="btn btn-primary" OnClick="confirm_delete();"></td>
                 <td>
                     <input type="button" value="Cancel" class="btn btn-secondary"
-                           OnClick="window.location='edit-properties.php'">
+                           OnClick="window.location='property-search.php'">
                 </td>
             </tr>
         </table>
@@ -128,7 +128,7 @@
             echo "Error deleting customer record";
         }
         echo "<input type='button' value='Return to List'
-        OnClick='window.location=\"edit-properties.php\"'>";
+        OnClick='window.location=\"property-search.php\"'>";
         break;
 
     case "Update": ?>
@@ -278,7 +278,7 @@
 </div>
 <input type="submit" value="Update Property" class="btn btn-primary" onclick="val()">
 <input type="button" value="Return to List" class="btn btn-secondary"
-       OnClick="window.location='edit-properties.php'">
+       OnClick="window.location='property-search.php'">
 </form>
 <?php
 break;
@@ -356,7 +356,7 @@ case "ConfirmUpdate":
 
             $result = $conn->query($query);
             echo $query;
-                    header("Location: edit-properties.php");
+                    header("Location: property-search.php");
         } else {
             if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',

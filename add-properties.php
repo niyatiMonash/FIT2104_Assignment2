@@ -188,19 +188,19 @@ $results = mysqli_query($conn, $query2);
                    onInput="this.setCustomValidity('')">
             </div>
         </div>
-<!--        <div class="row">-->
-<!--            <div class="form-group col-2">-->
-<!--                <label>Sale Date:</label>-->
-<!--                <input type="date" name="sale_date" class="form-control">-->
-<!---->
-<!---->
-<!--            </div>-->
-<!---->
-<!--            <div class="form-group col-2">-->
-<!--                <label>Sale Price:</label>-->
-<!--                <input type="number" name="sale_price" class="form-control">-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="row">
+            <div class="form-group col-2">
+                <label>Sale Date:</label>
+                <input type="date" name="sale_date" class="form-control">
+
+
+            </div>
+
+            <div class="form-group col-2">
+                <label>Sale Price:</label>
+                <input type="number" name="sale_price" class="form-control">
+            </div>
+        </div>
 
         <div class="form-group">
             Select image to upload:
