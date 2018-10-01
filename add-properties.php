@@ -91,7 +91,7 @@ $results = mysqli_query($conn, $query2);
             <nav>
                 <ol class="breadcrumb-list">
                     <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="property-search.php">Properties</a></li>
+                    <li class="breadcrumb-item"><a href="property-search.php">PROPERTY SEARCH</a></li>
                     <li class="breadcrumb-item active">Add Property</li>
                 </ol>
             </nav>
