@@ -77,7 +77,7 @@ $row3 = $result3->fetch_assoc();
             <nav>
                 <ol class="breadcrumb-list">
                     <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="edit-properties.php">Properties</a></li>
+                    <li class="breadcrumb-item"><a href="property-search.php">Properties</a></li>
                     <li class="breadcrumb-item active"><?php echo $row["property_street"] ?> </li>
                 </ol>
             </nav>
