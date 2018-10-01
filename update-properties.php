@@ -250,13 +250,11 @@
             <tr>
                 <td><?php echo $row3["feature_name"] ?></td>
                 <td><input type="text" name="feature_desc" class="form-control"
-                           value="<?php echo $pf["feature_desc"] ?>" >
-                </td>
+                           value="<?php echo $pf["feature_desc"] ?>" ></td>
                 <?php if ($pf["feature_desc"] == '') {
-
                     ?>
                     <td align="center">
-                        <input type="checkbox" name="check[]" value="<?php echo $row3["feature_id"]; ?>">
+                        <input type="checkbox" name="check[]" value="<?php echo $row3["feature_id"]; ?> ">
                     </td>
                     <?php
 
@@ -268,7 +266,6 @@
                     </td>
                     <?php
                 } ?>
-
             </tr>
             <?php
         } ?>
@@ -280,6 +277,7 @@
 <input type="button" value="Return to List" class="btn btn-secondary"
        OnClick="window.location='property-search.php'">
 </form>
+
 <?php
 break;
 
