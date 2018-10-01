@@ -73,23 +73,33 @@ if (empty($_POST["property_street"])) {
     if ($upload_ok == 0) {
         echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $fileName = $_FILES["fileToUpload"]["name"];
+    }
+    else{
+        $fileName = $_FILES["fileToUpload"]["name"];
+        if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
             $query = "INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, sale_date, sale_price, property_desc, image_name)
             VALUES('$_POST[property_street]', '$_POST[property_suburb]', '$_POST[property_state]', '$_POST[property_pc]', '$_POST[property_type]','$_POST[seller_id]',
-            '$_POST[listing_date]', '$_POST[listing_price]', '$_POST[sale_date]', '$_POST[sale_price]', '$_POST[property_desc]', '$fileName')";
+            '$_POST[listing_date]', '$_POST[listing_price]', NULL, NULL, '$_POST[property_desc]', '$fileName')";
+        } elseif ($_POST["sale_date"] == '') {
+            $query = "INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, sale_date, sale_price, property_desc, image_name)
+            VALUES('$_POST[property_street]', '$_POST[property_suburb]', '$_POST[property_state]', '$_POST[property_pc]', '$_POST[property_type]','$_POST[seller_id]',
+            '$_POST[listing_date]', '$_POST[listing_price]', NULL, '$_POST[sale_price]', '$_POST[property_desc]', '$fileName')";
 
-            $conn->query($query);
-
-            echo "Successfully Added Property";
-            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+        } elseif ($_POST["sale_price"] == '') {
+            $query = "INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, sale_date, sale_price, property_desc, image_name)
+            VALUES('$_POST[property_street]', '$_POST[property_suburb]', '$_POST[property_state]', '$_POST[property_pc]', '$_POST[property_type]','$_POST[seller_id]',
+            '$_POST[listing_date]', '$_POST[listing_price]', '$_POST[sale_date]', NULL, '$_POST[property_desc]', '$fileName')";
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            $query = $query = "INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, sale_date, sale_price, property_desc, image_name)
+            VALUES('$_POST[property_street]', '$_POST[property_suburb]', '$_POST[property_state]', '$_POST[property_pc]', '$_POST[property_type]','$_POST[seller_id]',
+            '$_POST[listing_date]', '$_POST[listing_price]', '$_POST[sale_date]', '$_POST[sale_price]', '$_POST[property_desc]', '$fileName')";
         }
+
+        $result = $conn->query($query);
+        echo "Successfully Added Property";
+        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+
     }
-
-
 }
 ?>
 <input type="button" value="Return to List" class="btn btn-secondary"

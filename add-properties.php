@@ -10,7 +10,7 @@ include("connection.php");
 include("session.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT * FROM type ORDER BY type_name";
-$query2 = "SELECT * FROM client order by client_fname, client_lname";
+$query2 = "SELECT * FROM client ORDER BY client_fname, client_lname";
 $result = mysqli_query($conn, $query);
 $results = mysqli_query($conn, $query2);
 ?>
