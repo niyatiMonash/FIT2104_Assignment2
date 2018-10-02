@@ -19,6 +19,7 @@ $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
 $login_session = $row['uname'];
 
 if (!isset($_SESSION['login_user'])) {
-    header("location:login.php");
+    $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
+    header('location: login.php');
+    exit;
 }
-?>

@@ -56,7 +56,9 @@ if (empty($_POST["check"])) {
                 <li class="nav-item">
                     <a class="nav-link" href="send-email.php">Send Email</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="documentation.php">Documentation</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
                 </li>

@@ -68,8 +68,12 @@
 
                 if ($count == 1) {
                     $_SESSION['login_user'] = $myusername;
-
-                    header("location: welcome.php"); //TODO: change location to be the place they previously clicked.
+                    $redirect_url = (isset($_SESSION['redirect_url'])) ? $_SESSION['redirect_url'] : '/';
+                    if($redirect_url == '/'){
+                        header("location: welcome.php");
+                    }else{
+                        header("location: $redirect_url", true, 303);
+                    }
                 } else {
                     $showError = "Your Login Name or Password is invalid";
                     echo $showError;
