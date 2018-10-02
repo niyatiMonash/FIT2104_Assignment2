@@ -65,41 +65,56 @@ $result = mysqli_query($conn, $query);
 </nav>
 <?php
 if (empty($_POST["check"])) {
-
-
-//$directory = "property_images/";
-//$images = glob("$directory/*.{jpg,png,gif}", GLOB_BRACE);
-////             {$directory}*.jpeg, {$directory}*..gif, {$directory}*.svg\")
-//
-//foreach($images as $image) {
-//    echo '<img src="'.$image.'" /><br />';
-//}
 ?>
+
+<?php $images = glob("property_images/*.{jpg,jpeg,png,gif}", GLOB_BRACE); ?>
 
 <div class="container-fluid">
     <h1 align="center">List of Images</h1>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">Property No.</th>
             <th scope="col">Image</th>
+            <th scope="col">Image Name</th>
             <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
         <form method="post" action="all-images.php">
             <?php
-            while ($row = $result->fetch_array()) {
-                ?>
-                <tr>
-                    <td>Belongs to property No.<?php echo $row["property_id"] ?></td>
-                    <td><img src="property_images/<?php echo $row["image_name"]; ?>" alt="property-image"
-                             class="img-thumbnail rounded "></td>
-                    <td><input type="checkbox" name="check[]" value="<?php echo $row["image_name"]; ?>"></td>
-                </tr>
+            if (count($images)) {
+                natcasesort($images);
+                foreach ($images as $image) {
+                    ?>
+                    <tr>
+                        <td><img src="<?php echo $image ?>" alt="property-image"
+                                 class="img-thumbnail rounded "></td>
+                        <td><?php echo basename($image) ?></td>
+                        <td><input type="checkbox" name="check[]" value="<?php echo basename($image) ?>"></td>
+                    </tr>
 
-                <?php
+                    <?php
+                }
+            } else {
+                echo "Sorry, no images to display!";
+            }
 
+            } else {
+                // Loop to store and display values of individual checked checkbox.
+                foreach ($_POST['check'] as $selectedPropertyId) {
+                    if (count($selectedPropertyId) > 0) {
+                        $image_url = "property_images/$selectedPropertyId";
+                        if (file_exists($image_url)) {
+                            chmod($image_url, 0644);
+                            unlink("property_images/$selectedPropertyId");
+                            echo '<div class="alert alert-success">Image has successfully been deleted </div>';
+                        } else {
+                            die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');
+                        }
+                    } else {
+                        die('<div class="alert alert-danger">Sorry there was an error deleting  the image. Please try again.</div>');
+                    }
+                }
             } ?>
 
         </tbody>
@@ -107,46 +122,17 @@ if (empty($_POST["check"])) {
     <br/>
     <input type="submit" value="Delete Images" class="btn btn-primary"/>
     </form>
-    <?php
-    } else {
-
-            ?>
-            <input type="button" value="Return to List" OnClick="window.location='all-images.php'"
-                   class="btn btn-secondary"><br/>
-            <?php
-            // Loop to store and display values of individual checked checkbox.
-            foreach ($_POST['check'] as $selectedPropertyId) {
-                if (count($selectedPropertyId) > 0) {
-                    $image_url = "property_images/$selectedPropertyId";
-                    if (file_exists($image_url)) {
-                        //   code to delete image to be here
-                        //  delete image name from property table
-                        $query2 = "UPDATE property SET image_name = NULL WHERE image_name = '$selectedPropertyId'";
-
-                        // delete image from property_images/ folder as well
-                        chmod($image_url, 0644);
-                        unlink("property_images/$selectedPropertyId");
-                        $conn->query($query2);
-                        echo '<div class="alert alert-success">Image has successfully been deleted </div>';
-                    } else {
-                        die('<div class="alert alert-danger">Sorry there was an error deleting the image. Please try again.</div>');
-                    }
-                }
-                else {
-                    die('<div class="alert alert-danger">Sorry there was an error deleting  the image. Please try again.</div>');}
-            }
-        }
-
-    ?>
-
-    <br/>
-    <!-- Footer to be used in all main pages-->
-    <footer class="py-5 bg-danger">
-        <div class="container-fluid">
-            <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
-        </div>
-    </footer>
+    <input type="button" value="Return to List" OnClick="window.location='all-images.php'"
+           class="btn btn-secondary"><br/>
 </div>
+<br/>
+<!-- Footer to be used in all main pages-->
+<footer class="py-5 bg-danger">
+    <div class="container-fluid">
+        <p class="m-0 text-center text-white">Copyright &copy; Ruthless Real Estate 2018</p>
+    </div>
+</footer>
+
 </body>
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
