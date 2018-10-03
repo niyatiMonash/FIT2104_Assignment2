@@ -6,16 +6,13 @@
  * Time: 11:14 AM
  */
 
-if (empty($_POST["feature_name"]))
-{
+if (empty($_POST["feature_name"])) {
     echo "Unable to add this feature, either it already exists or not able to accept. ";
-}
-else
-{
+} else {
     include("connection.php");
     $conn = new mysqli($servername, $username, $password, $dbname)
     or die("Couldn't log on to database");
-    $query="INSERT INTO feature (feature_name)
+    $query = "INSERT INTO feature (feature_name)
             VALUES('$_POST[feature_name]')";
 
     $conn->query($query);

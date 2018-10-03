@@ -91,13 +91,13 @@ if (empty($_POST["check"])) {
         <?php
         while ($row = $result->fetch_assoc()) {
             ?>
-                <tr>
-                    <td><?php echo $row["property_id"] ?></td>
-                    <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
-                    <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
-                    <td><input type="text" size="20" name="<?php echo $row["property_id"]; ?>"
-                               value="<?php echo $row["listing_price"]; ?>"></td>
-                </tr>
+            <tr>
+                <td><?php echo $row["property_id"] ?></td>
+                <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
+                <td><input type="checkbox" name="check[]" value="<?php echo $row["property_id"]; ?>"></td>
+                <td><input type="text" size="20" name="<?php echo $row["property_id"]; ?>"
+                           value="<?php echo $row["listing_price"]; ?>"></td>
+            </tr>
 
             <?php
         } ?>
@@ -107,18 +107,19 @@ if (empty($_POST["check"])) {
 </form>
 <?php } else {
     ?>
-    <input type="button" value="Return to List" OnClick="window.location='multiple-properties.php'" class="btn btn-secondary"><br/>
+    <input type="button" value="Return to List" OnClick="window.location='multiple-properties.php'"
+           class="btn btn-secondary"><br/>
     <?php
     foreach ($_POST["check"] as $property_id) {
         $query2 = "UPDATE property set listing_price = $_POST[$property_id] WHERE property_id = $property_id";
         $conn->query($query2);
 
-            echo "Property number '$property_id' has been successfully updated<br/>";
+        echo "Property number '$property_id' has been successfully updated<br/>";
 
-        }
     }
+}
 
-    ?>
+?>
 
 </div>
 

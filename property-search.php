@@ -1,4 +1,3 @@
-
 <?php
 include("session.php");
 ?>
@@ -82,11 +81,11 @@ include("session.php");
         <div class="form-group">
             <p> Search By:</p>
             <div class="form-check form-check-inline">
-                <input type="radio" name="selection" value="suburb" checked class="form-check-input" >
+                <input type="radio" name="selection" value="suburb" checked class="form-check-input">
                 <label class="form-check-label">Suburb</label>
             </div>
-            <div class="form-check form-check-inline" >
-                <input  type="radio" name="selection" value="type" class="form-check-input">
+            <div class="form-check form-check-inline">
+                <input type="radio" name="selection" value="type" class="form-check-input">
                 <label class="form-check-label">Property Type</label>
             </div>
 
@@ -127,7 +126,7 @@ include("session.php");
 
         $('#search_text').keyup(function () {
             var search = $(this).val();
-            var selected =  document.querySelector('input[name="selection"]:checked').value;
+            var selected = document.querySelector('input[name="selection"]:checked').value;
             if (search != '') {
                 load_data(search, selected);
             }

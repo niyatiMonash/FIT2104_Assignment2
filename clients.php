@@ -13,40 +13,23 @@
 </head>
 
 <?php
-if (empty($_POST["client_lname"]))
-{
+if (empty($_POST["client_lname"])) {
     echo "Need to enter required fields";
-}
-elseif (empty($_POST["client_fname"]))
-{
+} elseif (empty($_POST["client_fname"])) {
     echo "Need to enter required fields";
-}
-elseif (empty($_POST["client_street"]))
-{
+} elseif (empty($_POST["client_street"])) {
     echo "Need to enter required fields";
-}
-elseif (empty($_POST["client_suburb"]))
-{
+} elseif (empty($_POST["client_suburb"])) {
     echo "Need to enter required fields";
-}
-elseif (empty($_POST["client_state"]))
-{
+} elseif (empty($_POST["client_state"])) {
     echo "Need to enter required fields";
-}
-elseif (empty($_POST["client_email"]))
-{
+} elseif (empty($_POST["client_email"])) {
     echo "Need to enter required fields";
-}
-elseif (empty($_POST["client_mobile"]))
-{
+} elseif (empty($_POST["client_mobile"])) {
     echo "Need to enter required fields";
-}
-elseif (empty($_POST["client_mailinglist"]))
-{
+} elseif (empty($_POST["client_mailinglist"])) {
     echo "Need to enter required fields";
-}
-
-else {
+} else {
     include("connection.php");
     include("session.php");
     $conn = new mysqli($servername, $username, $password, $dbname)

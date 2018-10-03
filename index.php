@@ -74,7 +74,8 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="stockImages/architecture-beautiful-exterior-106399.jpg" alt="First slide">
+                <img class="d-block w-100" src="stockImages/architecture-beautiful-exterior-106399.jpg"
+                     alt="First slide">
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="stockImages/architecture-brick-building-209315.jpg" alt="Second slide">
@@ -83,7 +84,8 @@
                 <img class="d-block w-100" src="stockImages/architecture-building-facade-164516.jpg" alt="Third slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="stockImages/architecture-bungalow-country-463996.jpg" alt="Fourth slide">
+                <img class="d-block w-100" src="stockImages/architecture-bungalow-country-463996.jpg"
+                     alt="Fourth slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -95,7 +97,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-<!--3 content section-->
+    <!--3 content section-->
     <div class="row three-section-content">
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card">
@@ -104,7 +106,10 @@
                     <h4 class="card-title">
                         <a href="#">Top 10 best interior designs of 2018</a>
                     </h4>
-                    <p class="card-text">A new year means a new start, so why not begin in the home? When it comes to the fixtures, art, and materials that are trending in 2018, there are no better experts to ask, than the designers, architects, decorators, and artists working with these very items today. </p>
+                    <p class="card-text">A new year means a new start, so why not begin in the home? When it comes to
+                        the fixtures, art, and materials that are trending in 2018, there are no better experts to ask,
+                        than the designers, architects, decorators, and artists working with these very items
+                        today. </p>
                 </div>
             </div>
         </div>
@@ -115,7 +120,10 @@
                     <h4 class="card-title">
                         <a href="#">Creating an Australian Dream</a>
                     </h4>
-                    <p class="card-text">The origin of the Australian Dream dates back to the period of reconstruction following World War II. The dream flowered in the 1950s and 1960s due chiefly to the expansion of Australian manufacturing, low unemployment rates, the baby boom and the removal of rent controls.</p>
+                    <p class="card-text">The origin of the Australian Dream dates back to the period of reconstruction
+                        following World War II. The dream flowered in the 1950s and 1960s due chiefly to the expansion
+                        of Australian manufacturing, low unemployment rates, the baby boom and the removal of rent
+                        controls.</p>
                 </div>
             </div>
         </div>
@@ -126,7 +134,10 @@
                     <h4 class="card-title">
                         <a href="#">Why Melbourne is the best place to live in</a>
                     </h4>
-                    <p class="card-text">Whether it's relaxing, dining, people watching or shopping, Melbourne seems to have it all in a colorful and artistic heritage environment. Melbourne has a diverse environment with people coming from all walks of life. In no particular order, here are 50 reasons Melbourne fans think it's the best place in the world to live. </p>
+                    <p class="card-text">Whether it's relaxing, dining, people watching or shopping, Melbourne seems to
+                        have it all in a colorful and artistic heritage environment. Melbourne has a diverse environment
+                        with people coming from all walks of life. In no particular order, here are 50 reasons Melbourne
+                        fans think it's the best place in the world to live. </p>
                 </div>
             </div>
         </div>

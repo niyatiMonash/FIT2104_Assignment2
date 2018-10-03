@@ -76,29 +76,29 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
     <h1 align="center">Clients</h1>
-<a role="button" href="add-clients.php" class="btn btn-outline-primary float-right">Add Clients</a>
-<a role="button" href="pdf-client.php" class="btn btn-outline-primary float-right">Export to .pdf file</a>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">Last Name</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Email</th>
-        <th scope="col">Mobile</th>
-        <th scope="col">Delete Row</th>
-        <th scope="col">Update Row</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    while ($row = $result->fetch_array()) {
-        ?>
+    <a role="button" href="add-clients.php" class="btn btn-outline-primary float-right">Add Clients</a>
+    <a role="button" href="pdf-client.php" class="btn btn-outline-primary float-right">Export to .pdf file</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Delete Row</th>
+            <th scope="col">Update Row</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        while ($row = $result->fetch_array()) {
+            ?>
 
             <tr>
                 <td><?php echo $row["client_lname"]; ?></td>
                 <td><?php echo $row["client_fname"]; ?></td>
-                <td><?php echo $row["client_street"]."<br/> ".$row["client_suburb"]." ".$row["client_state"]. "<br/>".$row["client_pc"];?></td>
+                <td><?php echo $row["client_street"] . "<br/> " . $row["client_suburb"] . " " . $row["client_state"] . "<br/>" . $row["client_pc"]; ?></td>
                 <td><?php echo $row["client_email"]; ?></td>
                 <td><?php echo $row["client_mobile"]; ?></td>
                 <td>

@@ -72,9 +72,8 @@ if (empty($_POST["property_street"])) {
     // Check if $upload_ok is set to 0 by an error
     if ($upload_ok == 0) {
         echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-    }
-    else{
+        // if everything is ok, try to upload file
+    } else {
         $fileName = $_FILES["fileToUpload"]["name"];
         if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
             $query = "INSERT INTO property (property_street, property_suburb, property_state, property_pc, property_type, seller_id, listing_date, listing_price, sale_date, sale_price, property_desc, image_name)

@@ -10,3 +10,4 @@ $servername = "130.194.7.82";
 $username = "s29765706";
 $password = "monash00";
 $dbname = "s29765706";
+?>

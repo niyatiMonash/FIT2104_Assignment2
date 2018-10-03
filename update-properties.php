@@ -138,104 +138,105 @@
     <form name="form" method="post" enctype="multipart/form-data"
           action="update-properties.php?property_id=<?php echo $_GET["property_id"]; ?>&Action=ConfirmUpdate">
         <h1 align="center">Update Property</h1><br/>
-            <div>
-                Property Id
-                <?php echo $row["property_id"]; ?>
-            </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label>Street:</label>
-                    <input type="text" name="property_street" size="30" class="form-control"
-                           value="<?php echo $row["property_street"]; ?>">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label>Suburb:</label>
-                    <input type="text" name="property_suburb" size="30" class="form-control"
-                           value="<?php echo $row["property_suburb"]; ?>">
-                </div>
-                <div class="form-group col-3">
-                    <label>State:</label>
-                    <input type="text" name="property_state" size="30" class="form-control"
-                           value="<?php echo $row["property_state"]; ?>">
-                </div>
-                <div class="form-group col-3">
-                    <label>Postcode:</label>
-                    <input type="text" name="property_pc" size="30" class="form-control"
-                           value="<?php echo $row["property_pc"]; ?>">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-4">
-                    <label>Select Property Type:</label><br/>
-                    <select name="property_type" class="form-control">
-                        <option value="<?php echo $row2["type_id"]; ?>"><?php echo $row2["type_name"]; ?></option>
-                        <?php
-                        while ($row3 = $result3->fetch_array()) {
-                            ?>
-                            <option name="property_type"
-                                    value="<?php echo $row3["type_id"]; ?>"><?php echo $row3["type_name"]; ?>
-
-                            </option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-<div class="row">
-        <div class="form-group col-6">
-            <label>Property Description:</label><br/>
-            <textarea name="property_desc" rows="5" cols="40" class="form-control col-6" ><?php echo $row["property_desc"]; ?></textarea>
-
-
+        <div>
+            Property Id
+            <?php echo $row["property_id"]; ?>
         </div>
-</div>
-            <div class="row">
-                <div class="form-group col-2">
-                    <label>Sale Date:</label>
-                    <input type="date" name="sale_date" class="form-control"
-                           value="<?php echo $row["sale_date"]; ?>">
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Street:</label>
+                <input type="text" name="property_street" size="30" class="form-control"
+                       value="<?php echo $row["property_street"]; ?>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Suburb:</label>
+                <input type="text" name="property_suburb" size="30" class="form-control"
+                       value="<?php echo $row["property_suburb"]; ?>">
+            </div>
+            <div class="form-group col-3">
+                <label>State:</label>
+                <input type="text" name="property_state" size="30" class="form-control"
+                       value="<?php echo $row["property_state"]; ?>">
+            </div>
+            <div class="form-group col-3">
+                <label>Postcode:</label>
+                <input type="text" name="property_pc" size="30" class="form-control"
+                       value="<?php echo $row["property_pc"]; ?>">
+            </div>
+        </div>
 
-                </div>
+        <div class="row">
+            <div class="form-group col-4">
+                <label>Select Property Type:</label><br/>
+                <select name="property_type" class="form-control">
+                    <option value="<?php echo $row2["type_id"]; ?>"><?php echo $row2["type_name"]; ?></option>
+                    <?php
+                    while ($row3 = $result3->fetch_array()) {
+                        ?>
+                        <option name="property_type"
+                                value="<?php echo $row3["type_id"]; ?>"><?php echo $row3["type_name"]; ?>
 
-                <div class="form-group col-2">
-                    <label>Sale Price:</label>
-                    <input type="number" name="sale_price" class="form-control"
-                           value="<?php echo $row["sale_price"]; ?>">
-                    </input>
-                </div>
+                        </option>
+                        <?php
+                    }
+                    ?>
+                </select>
             </div>
-            <div class="row">
-                <div class="form-group col-2">
-                    <label>Listing Date:</label>
-                    <input type="date" name="listing_date" size="30" class="form-control"
-                           value="<?php echo $row["listing_date"]; ?>">
-                    </input>
+        </div>
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Property Description:</label><br/>
+                <textarea name="property_desc" rows="5" cols="40"
+                          class="form-control col-6"><?php echo $row["property_desc"]; ?></textarea>
 
-                </div>
-                <div class="form-group col-2">
-                    <label>Listing Price:</label>
-                    <input type="number" name="listing_price" size="30" class="form-control"
-                           value="<?php echo $row["listing_price"]; ?>">
-                    </input>
-                </div>
+
             </div>
-            <div class="form-group">
-                <figure class="figure">
-                    <img src="property_images/<?php echo $row["image_name"]; ?>"
-                         class="figure-img img-fluid rounded"
-                         alt="property-image">
-                    <figcaption class="figure-caption"><?php echo $row["image_name"]; ?></figcaption>
-                </figure>
+        </div>
+        <div class="row">
+            <div class="form-group col-2">
+                <label>Sale Date:</label>
+                <input type="date" name="sale_date" class="form-control"
+                       value="<?php echo $row["sale_date"]; ?>">
+
             </div>
-            <div class="form-group">
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload"
-                       value="<?php echo $row["image_name"]; ?>">
+
+            <div class="form-group col-2">
+                <label>Sale Price:</label>
+                <input type="number" name="sale_price" class="form-control"
+                       value="<?php echo $row["sale_price"]; ?>">
+                </input>
             </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-2">
+                <label>Listing Date:</label>
+                <input type="date" name="listing_date" size="30" class="form-control"
+                       value="<?php echo $row["listing_date"]; ?>">
+                </input>
+
+            </div>
+            <div class="form-group col-2">
+                <label>Listing Price:</label>
+                <input type="number" name="listing_price" size="30" class="form-control"
+                       value="<?php echo $row["listing_price"]; ?>">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <figure class="figure">
+                <img src="property_images/<?php echo $row["image_name"]; ?>"
+                     class="figure-img img-fluid rounded"
+                     alt="property-image">
+                <figcaption class="figure-caption"><?php echo $row["image_name"]; ?></figcaption>
+            </figure>
+        </div>
+        <div class="form-group">
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload"
+                   value="<?php echo $row["image_name"]; ?>">
+        </div>
 </div>
 <div class="property-features">
     <h4><u>Property Features:</u></h4>
@@ -253,14 +254,14 @@
         $result3 = $conn->query($query3);
 
         while ($row3 = $result3->fetch_assoc()) {
-            $query4 = "SELECT * FROM property_feature WHERE feature_id =".$row3["feature_id"];
+            $query4 = "SELECT * FROM property_feature WHERE feature_id =" . $row3["feature_id"];
             $result4 = $conn->query($query4);
             $pf = $result4->fetch_assoc();
             ?>
             <tr>
                 <td><?php echo $row3["feature_name"] ?></td>
                 <td><input type="text" name="feature_desc" class="form-control"
-                           value="<?php echo $pf["feature_desc"] ?>" ></td>
+                           value="<?php echo $pf["feature_desc"] ?>"></td>
                 <?php if ($pf["feature_desc"] == '') {
                     ?>
                     <td align="center">
@@ -364,7 +365,7 @@ case "ConfirmUpdate":
 
             $result = $conn->query($query);
             echo $query;
-                    header("Location: property-search.php");
+            header("Location: property-search.php");
         } else {
             if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
@@ -389,7 +390,7 @@ case "ConfirmUpdate":
             }
             $result = $conn->query($query);
             echo $query;
-                    header("Location: property-search.php");
+            header("Location: property-search.php");
         }
     }
 

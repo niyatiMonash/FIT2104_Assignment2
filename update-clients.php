@@ -137,30 +137,30 @@ OnClick='window.location=\"edit-clients.php\"'>";
                     <?php echo $row["client_id"]; ?>
                 </div>
                 <div class="row">
-                <div class="form-group col">
-                    <label>First Name:</label>
-                    <input type="text" name="client_fname" size="30" class="form-control"
-                           value="<?php echo $row["client_fname"]; ?>">
-                </div>
-                <div class="form-group col">
-                    <label>Last Name:</label>
-                    <input type="text" name="client_lname" size="30" class="form-control"
-                           value="<?php echo $row["client_lname"]; ?>">
-                </div>
+                    <div class="form-group col">
+                        <label>First Name:</label>
+                        <input type="text" name="client_fname" size="30" class="form-control"
+                               value="<?php echo $row["client_fname"]; ?>">
+                    </div>
+                    <div class="form-group col">
+                        <label>Last Name:</label>
+                        <input type="text" name="client_lname" size="30" class="form-control"
+                               value="<?php echo $row["client_lname"]; ?>">
+                    </div>
                 </div>
                 <div class="row">
-                <div class="form-group col">
-                    <label>Street:</label>
-                    <input type="text" name="client_street" size="30" class="form-control"
-                           value="<?php echo $row["client_street"]; ?>">
+                    <div class="form-group col">
+                        <label>Street:</label>
+                        <input type="text" name="client_street" size="30" class="form-control"
+                               value="<?php echo $row["client_street"]; ?>">
+                    </div>
                 </div>
-                </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label>Suburb:</label>
-                    <input type="text" name="client_suburb" size="30" class="form-control"
-                           value="<?php echo $row["client_suburb"]; ?>">
-                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label>Suburb:</label>
+                        <input type="text" name="client_suburb" size="30" class="form-control"
+                               value="<?php echo $row["client_suburb"]; ?>">
+                    </div>
 
 
                     <div class="form-group col-2">
@@ -186,9 +186,9 @@ OnClick='window.location=\"edit-clients.php\"'>";
                                value="<?php echo $row["client_mobile"]; ?>">
                     </div>
                 </div>
-                    <input type="submit" value="Update Customer" class="btn btn-primary">
-                    <input type="button" value="Return to List" class="btn btn-secondary"
-                           OnClick="window.location='edit-clients.php'">
+                <input type="submit" value="Update Customer" class="btn btn-primary">
+                <input type="button" value="Return to List" class="btn btn-secondary"
+                       OnClick="window.location='edit-clients.php'">
             </table>
         </form>
         <?php

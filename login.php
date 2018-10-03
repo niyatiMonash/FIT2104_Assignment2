@@ -69,9 +69,9 @@
                 if ($count == 1) {
                     $_SESSION['login_user'] = $myusername;
                     $redirect_url = (isset($_SESSION['redirect_url'])) ? $_SESSION['redirect_url'] : '/';
-                    if($redirect_url == '/'){
+                    if ($redirect_url == '/') {
                         header("location: index.php");
-                    }else{
+                    } else {
                         header("location: $redirect_url", true, 303);
                     }
                 } else {

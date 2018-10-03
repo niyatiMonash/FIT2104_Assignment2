@@ -11,19 +11,16 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $output = '';
 
 
-
 if (isset($_POST["query"])) {
     $search = mysqli_real_escape_string($conn, $_POST["query"]);
 
-    if($_POST["selection"] == "suburb"){
+    if ($_POST["selection"] == "suburb") {
         $sql = "select * from property p join type t on p.property_type = t.type_id 
                 where p.property_suburb like '%$search%'";
-    }
-    elseif($_POST["selection"] == "type"){
+    } elseif ($_POST["selection"] == "type") {
         $sql = "select * from property p join type t on p.property_type = t.type_id 
                 where t.type_name like '%$search%'";
-    }
-    else{
+    } else {
         $sql = "select * from property p join type t on p.property_type = t.type_id 
             order by property_id";
     }
@@ -66,9 +63,9 @@ if (mysqli_num_rows($result) > 0) {
         <td><?php echo $row["property_street"] . "<br/> " . $row["property_suburb"] . " " . $row["property_state"] . "<br/>" . $row["property_pc"]; ?></td>
         <td><?php echo $row["type_name"]; ?></td>
         <td><?php echo $row["property_desc"]; ?></td>
-        <td><?php echo date("d/m/Y",strtotime($row["listing_date"])); ?></td>
+        <td><?php echo date("d/m/Y", strtotime($row["listing_date"])); ?></td>
         <td>$<?php echo $row["listing_price"]; ?></td>
-        <td><?php echo date("d/m/Y",strtotime($row["sale_date"])); ?></td>
+        <td><?php echo date("d/m/Y", strtotime($row["sale_date"])); ?></td>
         <td>$<?php echo $row["sale_price"]; ?></td>
         <td><?php echo $row["image_name"]; ?></td>
         <td>
