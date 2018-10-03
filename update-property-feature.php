@@ -91,7 +91,8 @@ if (isset($_POST["submit"])) {
     if (!empty($_POST['check'])) {
         $query5 = "DELETE FROM property_feature where property_id =" . $_GET["property_id"];
         $conn->query($query5);
-        foreach ($_POST["check"] as $feature_id) {
+        $checkboxes = isset($_POST['check']) ? $_POST['check'] : array();
+        foreach ($checkboxes as $feature_id) {
             $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)
                            VALUES ('$_GET[property_id]', '$feature_id', '$_POST[feature_desc]')";
             echo $query6;
