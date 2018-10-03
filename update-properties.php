@@ -288,6 +288,7 @@
         </div>
 </div>
 <input type="submit" value="Update Property" class="btn btn-primary" onclick="val()">
+<a href="update-property-feature.php?property_id= <?php echo $row["property_id"]; ?> ">Update Property Feature!!!</a>
 <input type="button" value="Return to List" class="btn btn-secondary"
        OnClick="window.location='property-search.php'">
 </form>
@@ -368,7 +369,7 @@ case "ConfirmUpdate":
             }
 
             $result = $conn->query($query);
-//            header("Location: property-search.php");
+            header("Location: property-search.php");
         } else {
             if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
@@ -392,7 +393,7 @@ case "ConfirmUpdate":
                 WHERE property_id =" . $_GET["property_id"];
             }
             $result = $conn->query($query);
-//          header("Location: property-search.php");
+          header("Location: property-search.php");
         }
     }
 
