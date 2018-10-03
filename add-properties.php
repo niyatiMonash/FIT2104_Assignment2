@@ -35,7 +35,7 @@ $results = mysqli_query($conn, $query2);
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
+        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -92,7 +92,7 @@ $results = mysqli_query($conn, $query2);
         <div class="column-xs-12">
             <nav>
                 <ol class="breadcrumb-list">
-                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="property-search.php">PROPERTY SEARCH</a></li>
                     <li class="breadcrumb-item active">Add Property</li>
                 </ol>

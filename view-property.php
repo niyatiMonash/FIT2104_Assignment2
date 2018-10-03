@@ -37,7 +37,7 @@ $row3 = $result3->fetch_assoc();
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="welcome.php">Ruthless Real Estate</a>
+        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -79,7 +79,7 @@ $row3 = $result3->fetch_assoc();
         <div class="column-xs-12">
             <nav>
                 <ol class="breadcrumb-list">
-                    <li class="breadcrumb-item"><a href="welcome.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="property-search.php">Properties</a></li>
                     <li class="breadcrumb-item active"><?php echo $row["property_street"] ?> </li>
                 </ol>
@@ -104,7 +104,7 @@ $row3 = $result3->fetch_assoc();
             <h4><u>Description:</u></h4>
             <p>  <h5><?php echo $row["property_desc"]; ?></h5> </p>
             <h4><u>Property Features:</u></h4>
-            <p>  <h5><?php echo $row3["feature_name"]; ?>: <?php echo $row3["feature_desc"]; ?></h5> </p>
+            <p> <h5><?php echo $row3["feature_name"]; ?><?php echo $row3["feature_desc"]; ?></h5> </p>
         </div>
 
         <div class="col-sm" align="center">
