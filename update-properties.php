@@ -188,7 +188,7 @@
 <div class="row">
         <div class="form-group col-6">
             <label>Property Description:</label><br/>
-            <textarea name="property_desc" class="form-control col-6" value="<?php echo $row["property_desc"]; ?>"><?php echo $row["property_desc"]; ?></textarea>
+            <textarea name="property_desc" rows="5" cols="40" class="form-control col-6" ><?php echo $row["property_desc"]; ?></textarea>
 
 
         </div>
