@@ -76,8 +76,8 @@
     include("session.php");
     include("connection.php");
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $query = "SELECT * FROM property WHERE property_id =" . $_GET["property_id"];
-    $query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type where property_id =" . $_GET["property_id"];
+    $query = "SELECT * FROM property WHERE property_id =".$_GET["property_id"];
+    $query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type where property_id =".$_GET["property_id"];
     $query3 = "Select * from type";
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
@@ -122,7 +122,7 @@
         break;
 
     case "ConfirmDelete":
-        $query = "DELETE FROM property WHERE property_id =" . $_GET["property_id"];
+        $query = "DELETE FROM property WHERE property_id =".$_GET["property_id"];
         if ($conn->query($query)) {
             ?>
             The following property record has been successfully deleted<br/>
@@ -237,52 +237,55 @@
             <input type="file" name="fileToUpload" id="fileToUpload"
                    value="<?php echo $row["image_name"]; ?>">
         </div>
-</div>
-<div class="property-features">
-    <h4><u>Property Features:</u></h4>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th scope="col">Feature Name</th>
-            <th scope="col">Feature Description</th>
-            <th scope="col">CheckBox</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        $query3 = "SELECT * FROM feature ORDER BY feature_name";
-        $result3 = $conn->query($query3);
 
-        while ($row3 = $result3->fetch_assoc()) {
-            $query4 = "SELECT * FROM property_feature WHERE feature_id =" . $row3["feature_id"];
-            $result4 = $conn->query($query4);
-            $pf = $result4->fetch_assoc();
-            ?>
-            <tr>
-                <td><?php echo $row3["feature_name"] ?></td>
-                <td><input type="text" name="feature_desc" class="form-control"
-                           value="<?php echo $pf["feature_desc"] ?>"></td>
-                <?php if ($pf["feature_desc"] == '') {
-                    ?>
-                    <td align="center">
-                        <input type="checkbox" name="check[]" value="<?php echo $row3["feature_id"]; ?> ">
-                    </td>
-                    <?php
+        <div class="property-features">
+            <h4><u>Property Features:</u></h4>
+            <table border="1" cellpadding="10">
+                <thead>
+                <tr>
+                    <th scope="col">Feature Name</th>
+                    <th scope="col">Feature Description</th>
+                    <th scope="col">CheckBox</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $query3 = "SELECT * FROM feature ORDER BY feature_name";
+                $result3 = $conn->query($query3);
 
-                } else {
+                while ($row3 = $result3->fetch_assoc()) {
+                    $feature_idd = $row3["feature_id"];
+                    $query4 = "SELECT * FROM property_feature WHERE feature_id = '$feature_idd' AND property_id =".$_GET["property_id"];
+                    $result4 = $conn->query($query4);
+                    $pf = $result4->fetch_assoc();
                     ?>
-                    <td align="center">
-                        <input type="checkbox" name="check[]" checked
-                               value="<?php echo $row3["feature_id"]; ?>">
-                    </td>
+                    <tr>
+                        <td><?php echo $row3["feature_name"] ?></td>
+                        <td><input type="text" name="feature_desc" class="form-control"
+                                   value="<?php echo $pf["feature_desc"] ?>"></td>
+                        <?php if ($pf["feature_desc"] == '') {
+                            ?>
+                            <td align="center">
+                                <input type="checkbox" name="check[]"
+                                       value="<?php echo $row3["feature_id"]; ?> ">
+                            </td>
+                            <?php
+
+                        } else {
+                            ?>
+                            <td align="center">
+                                <input type="checkbox" name="check[]" checked
+                                       value="<?php echo $row3["feature_id"]; ?>">
+                            </td>
+                            <?php
+                        } ?>
+                    </tr>
                     <?php
                 } ?>
-            </tr>
-            <?php
-        } ?>
-        </tbody>
-    </table>
-    </br>
+                </tbody>
+            </table>
+            </br>
+        </div>
 </div>
 <input type="submit" value="Update Property" class="btn btn-primary" onclick="val()">
 <input type="button" value="Return to List" class="btn btn-secondary"
@@ -330,11 +333,12 @@ case "ConfirmUpdate":
         echo "Sorry, your file was not uploaded.";
     } else {
         if (!empty($_POST['check'])) {
-            $query5 = "DELETE FROM property_feature where property_id =" . $_GET["property_id"];
-            $result5 = $conn->query($query5);
+            $query5 = "DELETE FROM property_feature where property_id =" .$_GET["property_id"];
+            $conn->query($query5);
             foreach ($_POST["check"] as $feature_id) {
                 $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)
                            VALUES ('$_GET[property_id]', '$feature_id', '$_POST[feature_desc]')";
+                echo $query6;
                 $conn->query($query6);
             }
 
@@ -364,8 +368,7 @@ case "ConfirmUpdate":
             }
 
             $result = $conn->query($query);
-            echo $query;
-            header("Location: property-search.php");
+//            header("Location: property-search.php");
         } else {
             if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
@@ -389,8 +392,7 @@ case "ConfirmUpdate":
                 WHERE property_id =" . $_GET["property_id"];
             }
             $result = $conn->query($query);
-            echo $query;
-            header("Location: property-search.php");
+//          header("Location: property-search.php");
         }
     }
 
