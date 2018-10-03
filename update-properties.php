@@ -185,12 +185,19 @@
                     </select>
                 </div>
             </div>
+<div class="row">
+        <div class="form-group col-6">
+            <label>Property Description:</label><br/>
+            <textarea name="property_desc" class="form-control col-6" value="<?php echo $row["property_desc"]; ?>"><?php echo $row["property_desc"]; ?></textarea>
+
+
+        </div>
+</div>
             <div class="row">
                 <div class="form-group col-2">
                     <label>Sale Date:</label>
                     <input type="date" name="sale_date" class="form-control"
                            value="<?php echo $row["sale_date"]; ?>">
-                    </input>
 
                 </div>
 
@@ -335,22 +342,22 @@ case "ConfirmUpdate":
             $fileName = $_FILES["fileToUpload"]["name"];
             if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price=NULL, property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price=NULL, property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]', image_name='$fileName'
                 WHERE property_id =" . $_GET["property_id"];
             } elseif ($_POST["sale_date"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price='$_POST[sale_price]', property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price='$_POST[sale_price]', property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]', image_name='$fileName'
                 WHERE property_id =" . $_GET["property_id"];
             } elseif ($_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price=NULL, property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price=NULL, property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]', image_name='$fileName'
                 WHERE property_id =" . $_GET["property_id"];
             } else {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price='$_POST[sale_price]', property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price='$_POST[sale_price]', property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]', image_name='$fileName'
                 WHERE property_id =" . $_GET["property_id"];
             }
@@ -361,22 +368,22 @@ case "ConfirmUpdate":
         } else {
             if ($_POST["sale_date"] == '' and $_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price=NULL, property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price=NULL, property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]'
                 WHERE property_id =" . $_GET["property_id"];
             } elseif ($_POST["sale_date"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price='$_POST[sale_price]', property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date=NULL, sale_price='$_POST[sale_price]', property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]'
                 WHERE property_id =" . $_GET["property_id"];
             } elseif ($_POST["sale_price"] == '') {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price=NULL, property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price=NULL, property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]'
                 WHERE property_id =" . $_GET["property_id"];
             } else {
                 $query = "UPDATE property set property_street='$_POST[property_street]',property_suburb='$_POST[property_suburb]',
-                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price='$_POST[sale_price]', property_type='$_POST[property_type]',
+                property_state='$_POST[property_state]', property_pc='$_POST[property_pc]', sale_date='$_POST[sale_date]', sale_price='$_POST[sale_price]', property_type='$_POST[property_type]', property_desc='$_POST[property_desc]',
                 listing_date='$_POST[listing_date]', listing_price='$_POST[listing_price]'
                 WHERE property_id =" . $_GET["property_id"];
             }
