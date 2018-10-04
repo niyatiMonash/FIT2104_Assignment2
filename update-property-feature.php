@@ -16,6 +16,8 @@ $row = $result->fetch_assoc();
 $results = $conn->query($query2);
 $row2 = $results->fetch_assoc();
 $result3 = $conn->query($query3);
+
+if (empty($_POST['check'])) {
 ?>
 <html>
 <head>
@@ -82,26 +84,33 @@ $result3 = $conn->query($query3);
         </br>
     </div>
     <input type="submit" value="Update Property Feature" class="btn btn-primary" onclick="val()">
-    <input type="button" value="Return to List" class="btn btn-secondary"
-           OnClick="window.location='property-search.php'">
+
 </form>
 
 <?php
-
-    if (!empty($_POST['check'])) {
-//        $query5 = "DELETE FROM property_feature where property_id =" . $_GET["property_id"];
+} else{
+?>
+    <input type="button" value="Return to List" class="btn btn-secondary"
+           OnClick="window.location='property-search.php'">
+      <?php
+//        $query5 = "DELETE FROM property_feature WHERE property_id =" . $_GET["property_id"];
 //        $conn->query($query5);
-        $checkboxes = isset($_POST['check']) ? $_POST['check'] : array();
-        foreach ($checkboxes as $feature_id) {
-            $propertyId = $_GET["property_id"];
-            $query6 = "UPDATE property_feature set feature_desc = '$_POST[$feature_id]' WHERE property_id = '$propertyId' AND feature_id = '$feature_id'";
-//            $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)s
-//                       VALUES ('$_GET[property_id]', '$feature_id', '$_POST[$feature_id]')";
-            echo $query6;
-            $conn->query($query6);
+    $checkboxes = isset($_POST['check']) ? $_POST['check'] : array();
+    foreach ($checkboxes as $feature_id) {
+        $propertyId = $_GET["property_id"];
+        $test = $_POST[$feature_id];
+//        $query6 = "UPDATE property_feature set feature_desc = '$test' WHERE property_id = '$propertyId' AND feature_id = '$feature_id'";
+            $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)
+                       VALUES ('$propertyId', '$feature_id', '$test')";
 
-        }
+        $conn->query($query6);
+        echo $query6;
+
     }
+
+}
+
+
 
 ?>
 
