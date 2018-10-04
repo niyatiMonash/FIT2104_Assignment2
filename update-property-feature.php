@@ -55,7 +55,7 @@ $result3 = $conn->query($query3);
 
                 <tr>
                     <td><?php echo $row3["feature_name"] ?></td>
-                    <td><input type="text" name="feature_desc" class="form-control"
+                    <td><input type="text" name="<?php echo $row3["feature_id"]; ?>" class="form-control"
                                value="<?php echo $pf["feature_desc"] ?>"></td>
                     <?php if ($pf["feature_desc"] == '') {
                         ?>
@@ -81,26 +81,28 @@ $result3 = $conn->query($query3);
         </table>
         </br>
     </div>
-    <input type="submit" name="submit" value="Update Property Feature" class="btn btn-primary" onclick="val()">
+    <input type="submit" value="Update Property Feature" class="btn btn-primary" onclick="val()">
     <input type="button" value="Return to List" class="btn btn-secondary"
            OnClick="window.location='property-search.php'">
 </form>
 
 <?php
-if (isset($_POST["submit"])) {
+
     if (!empty($_POST['check'])) {
-        $query5 = "DELETE FROM property_feature where property_id =" . $_GET["property_id"];
-        $conn->query($query5);
+//        $query5 = "DELETE FROM property_feature where property_id =" . $_GET["property_id"];
+//        $conn->query($query5);
         $checkboxes = isset($_POST['check']) ? $_POST['check'] : array();
         foreach ($checkboxes as $feature_id) {
-            $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)
-                           VALUES ('$_GET[property_id]', '$feature_id', '$_POST[feature_desc]')";
+            $propertyId = $_GET["property_id"];
+            $query6 = "UPDATE property_feature set feature_desc = '$_POST[$feature_id]' WHERE property_id = '$propertyId' AND feature_id = '$feature_id'";
+//            $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)s
+//                       VALUES ('$_GET[property_id]', '$feature_id', '$_POST[$feature_id]')";
             echo $query6;
             $conn->query($query6);
-        }
 
+        }
     }
-}
+
 ?>
 
 <!-- Footer to be used in all main pages-->
