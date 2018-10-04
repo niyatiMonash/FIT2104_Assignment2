@@ -61,7 +61,7 @@ $row3 = $result3->fetch_assoc();
                     <a class="nav-link" href="edit-feature.php">Property Feature</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="all-images.php">Logout</a>
+                    <a class="nav-link" href="all-images.php">Images</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="send-email.php">Send Email</a>
