@@ -80,8 +80,8 @@
     <h3> Date of Submission: 5th October 2018 </h3>
 
     <p><u> To login: </u></p>
-    <p><b>Username</b>: niyatiS</p>
-    <p><b>Password</b>: test123 </p>
+    <p><b> Username</b>: janetF</p>
+    <p><b> Password</b>: test123 </p>
 
 
     <p><u> Database Credentials: </u></p>
@@ -91,6 +91,7 @@
     <p> $dbname = "s29765706"; </p>
 
     <p><u> To login to Triton: </u></p>
+    <p>http://triton.infotech.monash.edu.au/29765706/ass2/index.php</p>
     <p><b>Username</b>: s29765706</p>
     <p><b>Password</b>: mymonashuniversity </p>
 
