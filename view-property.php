@@ -104,7 +104,7 @@ $row3 = $result3->fetch_assoc();
             <h4><u>Description:</u></h4>
             <p>  <h5><?php echo $row["property_desc"]; ?></h5> </p>
             <h4><u>Property Features:</u></h4>
-            <p> <h5><?php echo $row3["feature_name"]; ?><?php echo $row3["feature_desc"]; ?></h5> </p>
+            <p> <h5><?php echo $row3["feature_name"]; ?>: <?php echo $row3["feature_desc"]; ?></h5> </p>
         </div>
 
         <div class="col-sm" align="center">

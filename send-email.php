@@ -35,7 +35,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="edit-feature.php">Property Feature</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item active">
                     <a class="nav-link" href="send-email.php">Send Email</a>
                 </li>
                 <li class="nav-item">

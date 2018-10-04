@@ -98,7 +98,12 @@
 
     <button class="btn btn-outline-primary">
         <a href='https://docs.google.com/document/d/1qtvXRpxt-AU869of0RP_9YYpTPyECCdh4hvO8vR0-FU/edit?usp=sharing'>Assignment
-            Task Allocation</a><br/>
+            Task Allocation</a>
+
+    </button>
+
+    <button class="btn btn-outline-primary">
+        <a href='data-in-database.php'>Data in Database</a><br/>
     </button>
 </div>
 </body>
