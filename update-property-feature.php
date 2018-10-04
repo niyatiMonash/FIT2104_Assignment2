@@ -57,21 +57,18 @@ if (empty($_POST['check'])) {
 
                 <tr>
                     <td><?php echo $row3["feature_name"] ?></td>
-                    <td><input type="text" name="<?php echo $row3["feature_id"]; ?>" class="form-control"
-                               value="<?php echo $pf["feature_desc"] ?>"></td>
+                    <td><input type="text" name="<?php echo $row3["feature_id"]; ?>" class="form-control" value="<?php echo $pf["feature_desc"] ?>"></td>
                     <?php if ($pf["feature_desc"] == '') {
                         ?>
                         <td align="center">
-                            <input type="checkbox" name="check[]"
-                                   value="<?php echo $row3["feature_id"]; ?> ">
+                            <input type="checkbox" name="check[]" value="<?php echo $row3["feature_id"]; ?> ">
                         </td>
                         <?php
 
                     } else {
                         ?>
                         <td align="center">
-                            <input type="checkbox" name="check[]" checked
-                                   value="<?php echo $row3["feature_id"]; ?>">
+                            <input type="checkbox" name="check[]" checked value="<?php echo $row3["feature_id"]; ?>">
                         </td>
                         <?php
                     } ?>
@@ -88,28 +85,26 @@ if (empty($_POST['check'])) {
 </form>
 
 <?php
-} else{
-?>
+} else {
+    ?>
     <input type="button" value="Return to List" class="btn btn-secondary"
            OnClick="window.location='property-search.php'">
-      <?php
+    <?php
 //        $query5 = "DELETE FROM property_feature WHERE property_id =" . $_GET["property_id"];
 //        $conn->query($query5);
-    $checkboxes = isset($_POST['check']) ? $_POST['check'] : array();
-    foreach ($checkboxes as $feature_id) {
-        $propertyId = $_GET["property_id"];
-        $test = $_POST[$feature_id];
+//    $checkboxes = isset($_POST['check']) ? $_POST['check'] : array();
+    foreach ($_POST['check'] as $feature_id) {
+        if (isset($_POST['check'])) {
+            $propertyId = $_GET["property_id"];
+            $test = $_POST['check'];
 //        $query6 = "UPDATE property_feature set feature_desc = '$test' WHERE property_id = '$propertyId' AND feature_id = '$feature_id'";
-            $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)
-                       VALUES ('$propertyId', '$feature_id', '$test')";
+            $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc) VALUES ('$propertyId', '$feature_id', '$test')";
+            $conn->query($query6);
+            echo $query6;
 
-        $conn->query($query6);
-        echo $query6;
-
+        }
     }
-
 }
-
 
 
 ?>
