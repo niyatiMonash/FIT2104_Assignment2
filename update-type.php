@@ -1,3 +1,20 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: niyatisrinivasan
+ * Date: 31/8/18
+ * Time: 11:01 AM
+ */
+
+ob_start();
+include("session.php");
+//connection statement
+include("connection.php");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT * FROM type WHERE type_id =" . $_GET["type_id"];
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+?>
 <html>
 <head>
     <!-- Bootstrap core CSS -->
@@ -56,22 +73,6 @@
 <div class="container-fluid">
 
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: niyatisrinivasan
-     * Date: 31/8/18
-     * Time: 11:01 AM
-     */
-
-    ob_start();
-    include("session.php");
-    //connection statement
-    include("connection.php");
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $query = "SELECT * FROM type WHERE type_id =" . $_GET["type_id"];
-    $result = $conn->query($query);
-    $row = $result->fetch_assoc();
-
     switch ($_GET["Action"]) {
     case "Delete":
         ?>
@@ -119,7 +120,7 @@
         echo "Error deleting property type record";
     }
     echo "<input type='button' value='Return to List'
-OnClick='window.location=\"edit-type.php\"'>";
+    OnClick='window.location=\"edit-type.php\"'>";
     break;
 
     case "Update": ?>

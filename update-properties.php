@@ -248,45 +248,46 @@ $result3 = $conn->query($query3);
                 </thead>
                 <tbody>
                 <?php
-                $query3 = "SELECT * FROM feature ORDER BY feature_name";
+                $query3 = "SELECT * FROM feature ORDER BY feature_name ";
                 $result3 = $conn->query($query3);
 
                 while ($row3 = $result3->fetch_assoc()) {
                     $feature_idd = $row3["feature_id"];
-                    $query4 = "SELECT * FROM property_feature WHERE feature_id = '$feature_idd' AND property_id =" . $_GET["property_id"];
+                    $query4 = "SELECT * FROM property_feature WHERE feature_id = '$feature_idd' AND property_id =".$_GET["property_id"];
                     $result4 = $conn->query($query4);
                     $pf = $result4->fetch_assoc();
                     ?>
+
                     <tr>
                         <td><?php echo $row3["feature_name"] ?></td>
-                        <td><input type="text" name="feature_desc" class="form-control"
+                        <td><input type="text" name="<?php echo $row3["feature_id"]; ?>" class="form-control"
                                    value="<?php echo $pf["feature_desc"] ?>"></td>
-                        <?php if ($pf["feature_desc"] == '') {
+
+
+                        <?php if ($pf["feature_id"] == '') {
                             ?>
                             <td align="center">
-                                <input type="checkbox" name="check[]"
-                                       value="<?php echo $row3["feature_id"]; ?> ">
+                                <input type="checkbox" name="check[]" value="<?php echo $row3["feature_id"]; ?>">
                             </td>
                             <?php
 
                         } else {
                             ?>
                             <td align="center">
-                                <input type="checkbox" name="check[]" checked
-                                       value="<?php echo $row3["feature_id"]; ?>">
+                                <input type="checkbox" name="check[]" checked value="<?php echo $row3["feature_id"]; ?>">
                             </td>
                             <?php
                         } ?>
                     </tr>
                     <?php
-                } ?>
+                }
+                ?>
                 </tbody>
             </table>
             </br>
         </div>
 </div>
 <input type="submit" value="Update Property" class="btn btn-primary" onclick="val()">
-<a href="update-property-feature.php?property_id= <?php echo $row["property_id"]; ?> ">Update Property Feature!!!</a>
 <input type="button" value="Return to List" class="btn btn-secondary"
        OnClick="window.location='property-search.php'">
 </form>
@@ -332,13 +333,16 @@ case "ConfirmUpdate":
         echo "Sorry, your file was not uploaded.";
     } else {
         if (!empty($_POST['check'])) {
-            $query5 = "DELETE FROM property_feature where property_id =" . $_GET["property_id"];
+            $query5 = "DELETE FROM property_feature WHERE property_id =" . $_GET["property_id"];
             $conn->query($query5);
-            foreach ($_POST["check"] as $feature_id) {
-                $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)
-                           VALUES ('$_GET[property_id]', '$feature_id', '$_POST[feature_desc]')";
-                echo $query6;
-                $conn->query($query6);
+            foreach ($_POST['check'] as $feature_id) {
+                if (isset($_POST['check'])) {
+                    $propertyId = $_GET["property_id"];
+                    $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc) VALUES ($propertyId, $feature_id, '$_POST[$feature_id]')";
+                    $conn->query($query6);
+                    echo $query6;
+
+                }
             }
 
         }
@@ -398,7 +402,7 @@ case "ConfirmUpdate":
 
 }
 ?>
-<br/>
+<br/><br/>
 <button class="btn btn-outline-primary">
     <a href='display-source.php?filename=update-properties.php'>Update/Delete Property</a><br/>
 </button>
