@@ -1,4 +1,22 @@
-<html>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: stephanietran
+ * Date: 5/9/18
+ * Time: 11:24 AM
+ */
+
+
+ob_start();
+include("session.php");
+//connection statement
+include("connection.php");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT * FROM feature  WHERE feature_id =" . $_GET["feature_id"];
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+
+?><html>
 <head>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,22 +73,7 @@
 <div class="container-fluid">
 
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: stephanietran
-     * Date: 5/9/18
-     * Time: 11:24 AM
-     */
 
-
-    ob_start();
-    include("session.php");
-    //connection statement
-    include("connection.php");
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $query = "SELECT * FROM feature  WHERE feature_id =" . $_GET["feature_id"];
-    $result = $conn->query($query);
-    $row = $result->fetch_assoc();
 
     switch ($_GET["Action"]) {
     case "Delete":

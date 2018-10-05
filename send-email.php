@@ -1,3 +1,17 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: stephanietran
+ * Date: 31/8/18
+ * Time: 11:58 AM
+ */
+include("connection.php");
+include("session.php");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT client_id, client_email, client_fname from client where client_mailinglist='Y'";
+$result = mysqli_query($conn, $query);
+
+?>
 <html>
 <head>
     <!-- Bootstrap core CSS -->
@@ -52,20 +66,7 @@
     </div>
 </nav>
 
-<?php
-/**
- * Created by PhpStorm.
- * User: stephanietran
- * Date: 31/8/18
- * Time: 11:58 AM
- */
-include("connection.php");
-include("session.php");
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT client_id, client_email, client_fname from client where client_mailinglist='Y'";
-$result = mysqli_query($conn, $query);
 
-?>
 <div class="container-fluid">
 
     <div class="grid second-nav">

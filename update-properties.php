@@ -1,3 +1,19 @@
+<?php
+
+ob_start();
+include("session.php");
+include("connection.php");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT * FROM property WHERE property_id =" . $_GET["property_id"];
+$query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type where property_id =" . $_GET["property_id"];
+$query3 = "Select * from type";
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+$results = $conn->query($query2);
+$row2 = $results->fetch_assoc();
+$result3 = $conn->query($query3);
+?>
+
 <html>
 <head>
     <!-- Bootstrap core CSS -->
@@ -13,7 +29,8 @@
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a><div>Welcome <?php echo $_SESSION['login_user'] ?></div>
+        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a>
+        <div>Welcome <?php echo $_SESSION['login_user'] ?></div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -75,20 +92,6 @@
      */
 
 
-    ob_start();
-    include("session.php");
-    include("connection.php");
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $query = "SELECT * FROM property WHERE property_id =".$_GET["property_id"];
-    $query2 = "SELECT * FROM type t join property p on t.type_id = p.property_type where property_id =".$_GET["property_id"];
-    $query3 = "Select * from type";
-    $result = $conn->query($query);
-    $row = $result->fetch_assoc();
-    $results = $conn->query($query2);
-    $row2 = $results->fetch_assoc();
-    $result3 = $conn->query($query3);
-
-
     switch ($_GET["Action"]) {
     case "Delete":
         ?>
@@ -125,7 +128,7 @@
         break;
 
     case "ConfirmDelete":
-        $query = "DELETE FROM property WHERE property_id =".$_GET["property_id"];
+        $query = "DELETE FROM property WHERE property_id =" . $_GET["property_id"];
         if ($conn->query($query)) {
             ?>
             The following property record has been successfully deleted<br/>
@@ -258,7 +261,7 @@
 
                 while ($row3 = $result3->fetch_assoc()) {
                     $feature_idd = $row3["feature_id"];
-                    $query4 = "SELECT * FROM property_feature WHERE feature_id = '$feature_idd' AND property_id =".$_GET["property_id"];
+                    $query4 = "SELECT * FROM property_feature WHERE feature_id = '$feature_idd' AND property_id =" . $_GET["property_id"];
                     $result4 = $conn->query($query4);
                     $pf = $result4->fetch_assoc();
                     ?>
@@ -337,7 +340,7 @@ case "ConfirmUpdate":
         echo "Sorry, your file was not uploaded.";
     } else {
         if (!empty($_POST['check'])) {
-            $query5 = "DELETE FROM property_feature where property_id =" .$_GET["property_id"];
+            $query5 = "DELETE FROM property_feature where property_id =" . $_GET["property_id"];
             $conn->query($query5);
             foreach ($_POST["check"] as $feature_id) {
                 $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc)
@@ -396,7 +399,7 @@ case "ConfirmUpdate":
                 WHERE property_id =" . $_GET["property_id"];
             }
             $result = $conn->query($query);
-          header("Location: property-search.php");
+            header("Location: property-search.php");
         }
     }
 

@@ -1,3 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: niyatisrinivasan
+ * Date: 30/8/18
+ * Time: 9:18 PM
+ */
+ob_start();
+include("session.php");
+//connection statement
+include("connection.php");
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT * FROM client WHERE client_id =" . $_GET["client_id"];
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+
+?>
+
 <html>
 <head>
     <!-- Bootstrap core CSS -->
@@ -12,7 +30,8 @@
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a><div>Welcome <?php echo $_SESSION['login_user'] ?></div>
+        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a>
+        <div>Welcome <?php echo $_SESSION['login_user'] ?></div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -65,20 +84,6 @@
     </div>
     <h1 align="center">Update Client</h1>
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: niyatisrinivasan
-     * Date: 30/8/18
-     * Time: 9:18 PM
-     */
-    ob_start();
-    include("session.php");
-    //connection statement
-    include("connection.php");
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    $query = "SELECT * FROM client WHERE client_id =" . $_GET["client_id"];
-    $result = $conn->query($query);
-    $row = $result->fetch_assoc();
 
 
     switch ($_GET["Action"]) {
