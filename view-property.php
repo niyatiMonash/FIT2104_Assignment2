@@ -8,15 +8,15 @@
 include("session.php");
 include("connection.php");
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id where property_id =" . $_GET["property_id"];
+$query = "SELECT * FROM client c join property p on c.client_id=p.seller_id join type t on p.property_type=t.type_id where property_id =".$_GET["property_id"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 $query2 = "Select * from authenticate";
 $result2 = $conn->query($query2);
 $row2 = $result2->fetch_assoc();
-$query3 = "select * from property_feature p join feature f on p.feature_id=f.feature_id where property_id =" . $_GET["property_id"];
+$query3 = "select * from property_feature p join feature f on p.feature_id=f.feature_id where property_id =".$_GET["property_id"];
 $result3 = $conn->query($query3);
-$row3 = $result3->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,8 @@ $row3 = $result3->fetch_assoc();
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a><div>Welcome <?php echo $_SESSION['login_user'] ?></div>
+        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a>
+        <div>Welcome <?php echo $_SESSION['login_user'] ?></div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -107,7 +108,11 @@ $row3 = $result3->fetch_assoc();
             <h4><u>Description:</u></h4>
             <p>  <h5><?php echo $row["property_desc"]; ?></h5> </p>
             <h4><u>Property Features:</u></h4>
-            <p> <h5><?php echo $row3["feature_name"]; ?> <?php echo $row3["feature_desc"]; ?></h5> </p>
+            <?php while ($row3 = $result3->fetch_assoc()) { ?>
+                <p> <h5><?php echo $row3["feature_name"]; ?>: <?php echo $row3["feature_desc"]; ?></h5></p>
+                <?php
+            } ?>
+
         </div>
 
         <div class="col-sm" align="center">
