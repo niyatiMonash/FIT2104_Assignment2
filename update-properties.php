@@ -120,7 +120,7 @@ $result3 = $conn->query($query3);
         break;
 
     case "ConfirmDelete":
-        $query = "DELETE FROM property WHERE property_id =" . $_GET["property_id"];
+        $query = "DELETE FROM property WHERE property_id =".$_GET["property_id"];
         if ($conn->query($query)) {
             ?>
             The following property record has been successfully deleted<br/>
@@ -333,7 +333,7 @@ case "ConfirmUpdate":
         echo "Sorry, your file was not uploaded.";
     } else {
         if (!empty($_POST['check'])) {
-            $query5 = "DELETE FROM property_feature WHERE property_id =" . $_GET["property_id"];
+            $query5 = "DELETE FROM property_feature WHERE property_id =".$_GET["property_id"];
             $conn->query($query5);
             foreach ($_POST['check'] as $feature_id) {
                 if (isset($_POST['check'])) {

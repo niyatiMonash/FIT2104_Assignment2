@@ -95,6 +95,16 @@ if (empty($_POST["property_street"])) {
         }
 
         $result = $conn->query($query);
+        foreach ($_POST['check'] as $feature_id) {
+            if (isset($_POST['check'])) {
+                $x = mysqli_insert_id($conn);
+                echo $x;
+                $query6 = "INSERT INTO property_feature(property_id, feature_id, feature_desc) VALUES ($x, $feature_id, '$_POST[$feature_id]')";
+                $conn->query($query6);
+                echo $query6;
+
+            }
+        }
         echo "Successfully Added Property";
         echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
 

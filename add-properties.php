@@ -35,7 +35,8 @@ $results = mysqli_query($conn, $query2);
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a><div>Welcome <?php echo $_SESSION['login_user'] ?></div>
+        <a class="navbar-brand" href="index.php">Ruthless Real Estate</a>
+        <div>Welcome <?php echo $_SESSION['login_user'] ?></div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -175,22 +176,52 @@ $results = mysqli_query($conn, $query2);
         Property Description
         <div class="form-row">
             <textarea name="property_desc" class="form-control col-6"> </textarea>
+        </div>
 
+        <div class="property-features">
+            <h4><u>Property Features:</u></h4>
+            <table border="1" cellpadding="10">
+                <thead>
+                <tr>
+                    <th scope="col">Feature Name</th>
+                    <th scope="col">Feature Description</th>
+                    <th scope="col">CheckBox</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $query3 = "SELECT * FROM feature ORDER BY feature_name ";
+                $result3 = $conn->query($query3);
 
+                while ($row3 = $result3->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td><?php echo $row3["feature_name"] ?></td>
+                        <td><input type="text" name="<?php echo $row3["feature_id"]; ?>" class="form-control"></td>
+                        <td align="center">
+                            <input type="checkbox" name="check[]" value="<?php echo $row3["feature_id"]; ?>">
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
+            </table>
+            </br>
         </div>
 
         <div class="form-row">
             <div class="form-group col-2">
-            Listing Date <br/>
-            <input type="date" name="listing_date" class="form-control" required
-                   onInvalid="this.setCustomValidity('Please enter the listing date for the property.')"
-                   onInput="this.setCustomValidity('')">
+                Listing Date <br/>
+                <input type="date" name="listing_date" class="form-control" required
+                       onInvalid="this.setCustomValidity('Please enter the listing date for the property.')"
+                       onInput="this.setCustomValidity('')">
             </div>
             <div class="form-group col-2">
-            Listing Price <br/>
-            <input type="number" name="listing_price" class="form-control" required
-                   onInvalid="this.setCustomValidity('Please enter the listing price for the property.')"
-                   onInput="this.setCustomValidity('')">
+                Listing Price <br/>
+                <input type="number" name="listing_price" class="form-control" required
+                       onInvalid="this.setCustomValidity('Please enter the listing price for the property.')"
+                       onInput="this.setCustomValidity('')">
             </div>
         </div>
         <div class="row">
