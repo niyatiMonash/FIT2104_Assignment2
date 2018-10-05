@@ -84,14 +84,6 @@ $result3 = $conn->query($query3);
         </div>
     </div>
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: stephanietran
-     * Date: 8/9/18
-     * Time: 7:15 PM
-     */
-
-
     switch ($_GET["Action"]) {
     case "Delete":
         ?>
